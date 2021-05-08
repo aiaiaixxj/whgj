@@ -1,0 +1,10 @@
+<import src="../../wxParse/wxParse.wxml" />
+<view class="center">
+	<view class="name">
+		<text class="name-text"> {{detail.title}}</text>
+	</view>
+	<view class="code">{{detail.date}} </view>
+	<view wx:if="{{detail.txt}}" class="wxParse" style="margin-left:50rpx;margin-right:50rpx">
+		<template is="wxParse" data="{{wxParseData:txt.nodes}}" />
+	</view>
+</view>

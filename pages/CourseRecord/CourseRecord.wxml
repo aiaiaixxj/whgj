@@ -1,0 +1,54 @@
+<!--pages/Allcourses/Allcourses.wxml-->
+<!-- <view class="main_serchbox">
+  <icon class="main_serchbox_icon" type="search" size="20"></icon>
+  <input type="text" class="main_serchbox_input" placeholder="请输入查询信息" value="{{inputVal}}" bindinput="inputTyping" />
+  <view class="main_serchbox_cancle" bindtap="hideInput" wx:if="{{searchCancle}}">取消</view>
+</view> -->
+
+<view class="box transition" wx:if="{{canshowContent}}">
+  <view class="user-panel" wx:for="{{resdata}}" wx:key="index">
+    <!-- <van-button type="primary" size="mini"
+      custom-style="width:19rpx;height:42rpx;line-height:42rpx;position:relative;top:129rpx;left:590rpx" style=""
+      class="vanbtn">{{status}}</van-button> -->
+    <!-- <navigator  url="../AllTrainingCoursesDetail/AllTrainingCoursesDetail?index={{resdata[index].id}}" style="" class="navigator"> -->
+    <view class="navigator" bindtap="gotoOtherpages">
+      <!-- <image class="head" src="https://whtx.gkybi.com.cn{{resdata[index].titleImg}}"></image> -->
+      <image class="head" src="../../images/title.png"></image>
+      <view class="center">
+        <view class="name">
+          <text class="name-text"> {{resdata[index].name}}</text>
+        </view>
+        <view class="code">讲师：{{resdata[index].teachers}} </view>
+        <view class="code">选课人数：{{resdata[index].users}} </view>
+      </view>
+    </view>
+    <!-- </navigator> -->
+  </view>
+</view>
+
+<view class="box transition" wx:if="{{canshowQuerryContent}}">
+  <view class="user-panel" wx:for="{{resdata}}" wx:key="index">
+    <van-button type="primary" size="mini"
+      custom-style="width:19rpx;height:42rpx;line-height:42rpx;position:relative;top:129rpx;left:590rpx" style=""
+      class="vanbtn">{{status}}</van-button>
+    <!-- <navigator  url="../AllTrainingCoursesDetail/AllTrainingCoursesDetail?index={{resdata[index].id}}" style="" class="navigator"> -->
+    <view class="navigator" bindtap="gotoOtherpages">
+      <!-- <image class="head" src="https://whtx.gkybi.com.cn{{resdata[index].titleImg}}"></image> -->
+      <image class="head" src="../../images/title.png"></image>
+      <view class="center">
+        <view class="name">
+          <text class="name-text"> {{resdata[index].name}}</text>
+        </view>
+        <view class="code">讲师：{{resdata[index].teachers}} </view>
+        <view class="code">选课人数：{{resdata[index].users}} </view>
+      </view>
+    </view>
+    <!-- </navigator> -->
+  </view>
+</view>
+<view style="top:{{height}}px;position: relative;background-color:#FFFAE6;" wx:if="{{hasMoreData&&dataResComplete}}">
+	<van-loading size="24px" color= "#EA6022" custom-class="custom-class1">加载中...</van-loading>
+</view>
+<view style="top:{{height}}px;position: relative;background-color:#FFFAE6;color: #EA6022;text-align: center;" wx:if="{{!hasMoreData}}">
+	<text custom-class="custom-class" > 我是有底线的!</text>
+</view>

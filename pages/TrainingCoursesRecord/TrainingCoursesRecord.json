@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-loading": "@vant/weapp/loading/index"
+  },
+  "navigationBarTitleText": "培训班记录",
+  "navigationBarBackgroundColor": "#FF0000",
+  "navigationBarTextStyle": "white"
+ 
+}

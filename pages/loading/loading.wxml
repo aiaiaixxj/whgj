@@ -1,0 +1,4 @@
+<!--pages/loading/loading.wxml-->
+<view style="top:{{height}}px;position: relative;background-color:gray;">
+  <van-loading size="20px" custom-class="custom-class" type="spinner"  >加载中...</van-loading>
+</view>

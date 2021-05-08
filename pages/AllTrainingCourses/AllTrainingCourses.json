@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "培训班列表",
+  "navigationBarBackgroundColor": "#FF0000",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "van-card": "../../miniprogram_npm/@vant/weapp/card/index",
+    "van-grid": "../../miniprogram_npm/@vant/weapp/grid/index",
+    "van-grid-item": "../../miniprogram_npm/@vant/weapp/grid-item/index",
+    "van-button": "../../miniprogram_npm/@vant/weapp/button/index",
+    "van-divider": "../../miniprogram_npm/@vant/weapp/divider/index",
+    "van-loading": "@vant/weapp/loading/index"
+  }
+}

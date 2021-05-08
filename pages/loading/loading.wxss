@@ -1,0 +1,5 @@
+/* pages/loading/loading.wxss */
+.custom-class{
+position: relative;
+left: 40%;
+}

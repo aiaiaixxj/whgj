@@ -1,0 +1,20 @@
+<!--pages/tab4/tab4.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <block wx:if="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}"  style="width:260rpx;height:260rpx">
+        <image  style="width:260rpx;height:260rpx;position:absolute;left:0;top:0"
+          src="https://mmbiz.qpic.cn/mmbiz_png/aQUhNZ20IsP6v6s6c0dNZSZHcibC3EVicBBLY8NrC4fxMm4BJJicsZSJ0icbxdUDzvxneISKTldzrR544OsWt7xDkQ/0?wx_fmt=png">
+        </image>
+      </button>
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile" style="width:260rpx;margin-top:-40rpx">
+        <text>login</text>
+      </button>
+      <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录 </button>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+</view>

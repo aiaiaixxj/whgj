@@ -1,0 +1,33 @@
+<!--index.wxml-->
+<view class="nav">
+  <view class="mengceng">
+    <van-row>
+      <van-col span="8" offset="" custom-class="custom-class">{{realname}}</van-col>
+    </van-row>
+    <van-row>
+      <van-col span="8" offset="8" custom-class="custom-class"><span style="color:white;font-size:17px">已修学时</span>
+      </van-col>
+    </van-row>
+    <van-row>
+      <van-col span="8" offset="9" custom-class="custom-class"><span style="color:white;font-size:17px;position:relative;left:-10%">{{times}}</span>
+      </van-col>
+    </van-row>
+    <van-row>
+      <van-col span="8" offset="8" custom-class="custom-class"><span style="color:white;font-size:17px">全市排名{{}}</span>
+      </van-col>
+    </van-row>
+    <view style="width:90%;height:1px;background-color:gray;margin:20rpx auto">
+    </view>
+   <view bindtap="gotoPersonalInfo">
+    <span style="color:white;font-size:15px;left:18px;top:-10px;position:relative">个人档案 <span style="font-size:11px;">（我的课程、培训计划、我的考试）<span style="font-size:25px;top:4px;position:relative;left:10px">></span></span></span>
+   </view>
+  </view>
+</view>
+<van-grid column-num="3" clickable>
+  <van-grid-item use-slot wx:for="{{ MyCourses }}" wx:key="index" ink-type="navigateTo" text="{{item.title}}"
+    data-id="{{item.id}}" data-index="{{index}}" data-text="{{item.title}}" catchtap='gotoOtherPages'
+    style="position:relative">
+    <image style="" src="{{item.url}}" />
+    <p style="">{{item.title}}</p>
+  </van-grid-item>
+</van-grid>

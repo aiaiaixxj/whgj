@@ -1,0 +1,30 @@
+<!--pages/TrainingCoursesRecord/TrainingCoursesRecord.wxml-->
+<view class="box transition" wx:if="{{resdata.length}}">
+	<view class="user-panel" bindtap="gotoOtherpages" wx:for="{{resdata}}" wx:key="index"  data-id="{{item.id}} ">
+		<!-- <van-button type="primary" size="mini" custom-style="width:19rpx;height:42rpx;line-height:42rpx;position:relative;top:129rpx;left:590rpx" style="" class="vanbtn">{{status}}</van-button> -->
+
+		<!-- <navigator  url="../AllTrainingCoursesDetail/AllTrainingCoursesDetail?index={{resdata[index].id}}" style="" class="navigator"> -->
+		<view class="navigator" >
+			<!-- <image class="head" src="https://whtx.gkybi.com.cn{{resdata[index].titleImg}}"></image> -->
+			<image class="head" src="../../images/title.png"></image>
+			<view class="center">
+				<view class="name">
+					<text class="name-text"> {{resdata[index].name}}</text>
+				</view>
+				<view   class="data_time">
+					<view class="code">开始时间：{{resdata[index].startDate}} </view>
+          <view class="code">结束时间：{{resdata[index].endDate}} </view>
+				  <view class="code" style="margin-left:58%;position:absolute">{{statusArry[index]}} </view>
+				</view>
+			
+			</view>
+		</view>
+		<!-- </navigator> -->
+	</view>
+</view>
+<view style="top:{{height}}px;position: relative;background-color:#FFFAE6;" wx:if="{{hasMoreData&&dataResComplete}}">
+	<van-loading size="24px" color= "#EA6022" custom-class="custom-class1">加载中...</van-loading>
+</view>
+<view style="top:{{height}}px;position: relative;background-color:#FFFAE6;color: #EA6022;text-align: center;" wx:if="{{!hasMoreData}}">
+	<text custom-class="custom-class" > 我是有底线的!</text>
+</view>

@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/loading/loading",
+
+   
+    "pages/personalInfo/personalInfo",
+    "pages/TestRecord/TestRecord",
+    "pages/Allcourses/Allcourses",
+    "pages/tab4/tab4",
+    "pages/Announcements/Announcements",
+    "pages/Dynamicwork/Dynamicwork",
+    "pages/Dryteachinginformation/Dryteachinginformation",
+    "pages/Newsdetail/Newsdetail",
+    "pages/AllTrainingCourses/AllTrainingCourses",
+    "pages/AllTrainingCoursesList/AllTrainingCoursesList",
+    "pages/Alltest/Alltest",
+    "pages/TrainingCoursesRecord/TrainingCoursesRecord",
+    "pages/CourseRecord/CourseRecord"
+  
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

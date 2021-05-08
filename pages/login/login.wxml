@@ -1,0 +1,29 @@
+<!--pages/login/login.wxml-->
+<view class="container" style="">
+			<image class="img" src="../../images/bg_login.png" style="" mode=""></image>
+			<image class="" src="../../images/title.png" style="position:absolute;width:25%;height:14%;left:37%;top:15%;"></image>
+		<view class="login-from" style="">
+			<!--账号-->
+			<view class="inputView">
+				<!-- <image class="nameImage" src="../../images/loginUser.png"></image> -->
+				<!-- <label class="loginLab">账号</label> -->
+				<input class="inputText" placeholder="" bindinput="phoneInput" placeholder-class="input-placeholder" value="{{username}}" type="digit" />   
+			</view>
+		
+			<!--密码-->
+			<view class="inputView">
+				<!-- <image class="keyImage" src="../../images/loginLock.png"></image> -->
+				<!-- <label class="loginLab">密码</label> -->
+				<input class="inputText" password="true" placeholder="" bindinput="passwordInput" value="{{password}}" />
+			</view>
+		
+			<!--按钮-->
+			<view class="loginBtnView">
+				<view class="loginBtn" type="" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"  style="" bindtap="login">登录</view>
+			</view>
+		</view>
+		<view class="footer-text">
+		<text>主办：武汉市委组织部干部教育处</text>
+		<text>承办：武汉市工程科学技术研究院</text>
+		</view>
+</view>

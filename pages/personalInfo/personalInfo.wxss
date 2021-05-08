@@ -1,0 +1,31 @@
+/* pages/personalInfo/personalInfo.wxss */
+.custom-class1{
+  background-color: #F8EECD;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+}
+
+.custom-class2{
+  background-color: white;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+}
+.title{
+  width:100%;
+  height:30px;
+  background-color:#D5D5D5;
+  margin-top:15px;line-height:30px
+}
+.title1{
+  width:100%;
+  height:30px;
+  background-color:#D5D5D5;
+  line-height:30px
+}
+.title_class{
+  margin-left:15px;
+  font-weight:bold;
+  font-size:15px
+}

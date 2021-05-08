@@ -1,0 +1,86 @@
+/* pages/TrainingCoursesRecord/TrainingCoursesRecord.wxss */
+page {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #f6f6f6;
+}
+
+.user-panel {
+  width: 100%;
+  overflow: hidden;
+}
+
+.divLine {
+  background: #E0E3DA;
+  width: 100%;
+  height: 3rpx;
+}
+
+
+
+.box {
+  background-color: #fff;
+}
+
+.navigator {
+
+  /* padding: 10rpx 10rpx; */
+  display: flex;
+  align-items: center;
+  border-bottom: 2rpx solid #C0C0C0;
+  margin-bottom: -10rpx;
+  padding-bottom: 33rpx;
+
+}
+
+.head {
+  flex-shrink: 0;
+  width: 190rpx;
+  height: 130rpx;
+  margin-right: 20rpx;
+}
+
+.center {
+  flex-grow: 1;
+  height: 80rpx;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+}
+
+.name-text {
+  margin-top: -30rpx;
+  font-size: 27rpx;
+  font-weight: bold;
+  color: #333;
+  margin-right: 20rpx;
+  width: 98%;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+.data_time {
+  display: flex;
+  flex-direction: column;
+}
+
+.code {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 15rpx;
+}
+
+.custom-class {
+  text-align: center;
+}
+
+.custom-class1 {
+  position: relative;
+  left: 40%;
+}

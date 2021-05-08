@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-loading": "@vant/weapp/loading/index"
+  },
+  "navigationBarTitleText": "考试记录",
+  "navigationBarBackgroundColor": "#FF0000",
+  "navigationBarTextStyle": "white"
+}

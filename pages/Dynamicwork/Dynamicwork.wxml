@@ -1,0 +1,20 @@
+<!--pages/Dynamicwork/Dynamicwork.wxml-->
+<view class="box transition" wx:if="{{resdata.length}}">
+	<view class="user-panel" wx:for="{{resdata}}" wx:key="index">
+		<navigator url="../Newsdetail/Newsdetail?index={{resdata[index].id}}" style="" class="navigator">
+		<!-- <image class="head" src="https://whtx.gkybi.com.cn{{resdata[index].titleImg}} "></image> -->
+		<view class="center">
+			<view class="name">
+				<text class="name-text"> {{resdata[index].title}}</text>
+			</view>
+			<view class="code">{{resdata[index].date}} </view>
+		</view>
+			</navigator> 
+	</view>
+</view>
+<view style="top:{{height}}px;position: relative;background-color:#FFFAE6;" wx:if="{{hasMoreData&&dataResComplete}}">
+	<van-loading size="24px" color= "#EA6022" custom-class="custom-class1">加载中...</van-loading>
+</view>
+<view style="top:{{height}}px;position: relative;background-color:#FFFAE6;color: #EA6022;text-align: center;" wx:if="{{!hasMoreData}}">
+	<text custom-class="custom-class" > 我是有底线的!</text>
+</view>
