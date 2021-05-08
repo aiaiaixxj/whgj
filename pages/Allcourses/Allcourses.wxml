@@ -1,6 +1,6 @@
 <!--pages/Allcourses/Allcourses.wxml-->
 <view class="main_serchbox">
-  <icon class="main_serchbox_icon" type="search" size="20"></icon>
+  <icon class="main_serchbox_icon" type="search" size="25"></icon>
   <input type="text" class="main_serchbox_input" placeholder="请输入查询信息" value="{{inputVal}}" bindinput="inputTyping" />
   <view class="main_serchbox_cancle" bindtap="hideInput" wx:if="{{searchCancle}}">取消</view>
 </view>

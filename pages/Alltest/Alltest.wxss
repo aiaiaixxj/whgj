@@ -23,10 +23,10 @@ page {
  
   /* padding: 10rpx 10rpx; */
   display: flex;
-  align-items: center;
+ flex-direction: row;
   border-bottom: 2rpx solid #C0C0C0;
-  margin-bottom: -10rpx;
-  padding-bottom: 33rpx;
+  padding-bottom: 30rpx;
+ margin-top: 30rpx;
 
 }
 
@@ -35,6 +35,7 @@ page {
   width: 190rpx;
   height: 130rpx;
   margin-right: 20rpx;
+  margin-left: 25rpx;
 }
 
 .center {
@@ -48,7 +49,7 @@ page {
 }
 
 .name-text {
-  margin-top: -30rpx;
+  margin-top: -8rpx;
   font-size: 27rpx;
   font-weight: bold;
   color: #333;

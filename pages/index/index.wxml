@@ -23,10 +23,10 @@
    </view>
   </view>
 </view>
-<van-grid column-num="3" clickable>
+<van-grid column-num="3" clickable >
   <van-grid-item use-slot wx:for="{{ MyCourses }}" wx:key="index" ink-type="navigateTo" text="{{item.title}}"
     data-id="{{item.id}}" data-index="{{index}}" data-text="{{item.title}}" catchtap='gotoOtherPages'
-    style="position:relative">
+    style="position:relative;">
     <image style="" src="{{item.url}}" />
     <p style="">{{item.title}}</p>
   </van-grid-item>
