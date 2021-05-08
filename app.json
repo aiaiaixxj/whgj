@@ -3,8 +3,6 @@
     "pages/login/login",
     "pages/index/index",
     "pages/loading/loading",
-
-   
     "pages/personalInfo/personalInfo",
     "pages/TestRecord/TestRecord",
     "pages/Allcourses/Allcourses",
@@ -18,7 +16,6 @@
     "pages/Alltest/Alltest",
     "pages/TrainingCoursesRecord/TrainingCoursesRecord",
     "pages/CourseRecord/CourseRecord"
-  
   ],
   "window": {
     "backgroundTextStyle": "light",
