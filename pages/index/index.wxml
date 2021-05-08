@@ -13,7 +13,7 @@
       </van-col>
     </van-row>
     <van-row>
-      <van-col span="8" offset="8" custom-class="custom-class"><span style="color:white;font-size:17px">全市排名{{}}</span>
+      <van-col span="8" offset="8" custom-class="custom-class"><span style="color:white;font-size:17px">全市排名{{ranking}}</span>
       </van-col>
     </van-row>
     <view style="width:90%;height:1px;background-color:gray;margin:20rpx auto">

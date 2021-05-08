@@ -37,6 +37,17 @@ Page({
     // this.getData('正在加载数据...');
     this.getData();
   },
+  gotoOtherpages:function(options){
+    var that = this;
+    var id = options.currentTarget.dataset.id;
+    console.log("options=>",options)
+    console.log("id=>",id)
+    if (1 == 1) {
+      wx.navigateTo({
+        url: '../AllcoursesDetail/AllcoursesDetail?index=' + id
+      });
+    }
+  },
   /*
   获取数据
   */
@@ -205,7 +216,7 @@ Page({
           totalPage: res.data.totalPage,
           resdata:res.data.courses
         })
-        var contentlistTem = that.data.resdata;
+        var contentlistTem = [];
         if (that.data.pageNo == 1) {
           contentlistTem = []; 
         }

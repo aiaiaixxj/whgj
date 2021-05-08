@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/login/login",
-  
+    "pages/index/index",
+   
     "pages/loading/loading",
     "pages/personalInfo/personalInfo",
     "pages/TestRecord/TestRecord",
@@ -16,7 +16,8 @@
     "pages/AllTrainingCoursesList/AllTrainingCoursesList",
     "pages/Alltest/Alltest",
     "pages/TrainingCoursesRecord/TrainingCoursesRecord",
-    "pages/CourseRecord/CourseRecord"
+    "pages/CourseRecord/CourseRecord",
+    "pages/AllcoursesDetail/AllcoursesDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

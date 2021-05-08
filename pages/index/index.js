@@ -6,6 +6,7 @@ Page({
   data: {
     netWorkType: '',
     times: '',
+    ranking:'',
     realname: '',
     motto: 'Hello World',
     userInfo: {},
@@ -51,19 +52,19 @@ Page({
         id: 6
       },
       {
-        url: '../../images/block4.png',
+        url: '../../images/block7.png',
         title: "课程记录",
         des: "",
         id: 7
       },
       {
-        url: '../../images/block5.png',
+        url: '../../images/block8.png',
         title: "培训班记录",
         des: "",
         id: 8
       },
       {
-        url: '../../images/block6.png',
+        url: '../../images/block9.png',
         title: "考试记录",
         des: "",
         id: 9
@@ -132,6 +133,7 @@ Page({
     this.setData({
       realname: wx.getStorageSync('realname'),
       times: wx.getStorageSync('times'),
+      ranking: wx.getStorageSync('ranking'),
     })
 
     if (wx.getUserProfile) {

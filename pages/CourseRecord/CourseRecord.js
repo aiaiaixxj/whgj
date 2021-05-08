@@ -17,6 +17,7 @@ Page({
     listLock: 1,
     pageSize: 20,
     hasMoreData: true,
+    statusArry:[],
     dataResComplete:'',
     viewShowed: false, //显示结果view的状态
     inputVal: "", // 搜索框值
@@ -29,7 +30,17 @@ Page({
       id: 1
     }, ],
   },
-
+  gotoOtherpages:function(options){
+    var that = this;
+    var id = options.currentTarget.dataset.id;
+    console.log("options=>",options)
+    console.log("id=>",id)
+    if (1 == 1) {
+      wx.navigateTo({
+        url: '../AllcoursesDetail/AllcoursesDetail?index=' + id
+      });
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -68,6 +79,23 @@ Page({
           totalPage: res.data.totalPage,
             coursesList:e
         })
+        var statusid = e.map((item) => {
+          return item.status;
+        })
+        console.log("statusid=>", statusid)
+        var statusArry = []
+        for (var i = 0; i < statusid.length; i++) {
+          if (statusid[i] == 1) {
+            statusArry.push('已完成')
+          }
+          if (statusid[i] == 2) {
+            statusArry.push('学习中')
+          }
+        }
+        that.setData({
+          statusArry: statusArry
+        })
+        console.log("statusArry=>", statusArry)
         var contentlistTem = that.data.resdata;
         if (that.data.pageNo == 1) {
           contentlistTem = []; 
@@ -78,6 +106,22 @@ Page({
             resdata: contentlistTem.concat(resdata),
             hasMoreData: false
           })
+          var statusid = that.data.resdata.map((item) => {
+            return item.status;
+          })
+          var statusArry = []
+          for (var i = 0; i < that.data.resdata.length; i++) {
+            if (statusid[i] == 1) {
+              statusArry.push('已开始')
+            }
+            if (statusid[i] == 2) {
+              statusArry.push('已结束')
+            }
+          }
+          that.setData({
+            statusArry: statusArry
+          })
+          
         } else {
           that.setData({
             resdata: contentlistTem.concat(resdata),

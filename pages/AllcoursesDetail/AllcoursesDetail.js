@@ -6,6 +6,8 @@ Page({
    */
   data: {
     trainingclassId:'',
+    courseId:'',
+    detail:'',
     searchCancle:false,
     canshowContent:true,
     canshowQuerryContent:false,
@@ -20,6 +22,7 @@ Page({
     hasMoreData: true,
     dataResComplete:'',
     height:'',
+    videoCurrentTime:'',
     viewShowed: false, //显示结果view的状态
     inputVal: "", // 搜索框值
     catList: [], //搜索渲染推荐数据
@@ -31,17 +34,18 @@ Page({
       id: 1
     }, ],
   },
-  gotoOtherpages:function(options){
+  timeUpdate(e) {
     var that = this;
-    var id = options.currentTarget.dataset.id;
-  
-    console.log("id=>",id)
-    if (1 == 1) {
-      wx.navigateTo({
-        url: '../AllcoursesDetail/AllcoursesDetail?index=' + id
-      });
-    }
+    that.setData({
+      videoCurrentTime: e.detail.currentTime
+    })
+    console.log(e.detail.currentTime);
   },
+  videoErrorCallback: function (e) {
+
+    console.log('视频错误信息:'+e.detail.errMsg);
+  
+   },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -51,7 +55,7 @@ Page({
      // width: wx.getSystemInfoSync().windowWidth,
     })
     this.setData({
-      trainingclassId:options.index
+      courseId:options.index
     })
    console.log("options",options)
    // this.getData('正在加载数据...');
@@ -70,10 +74,10 @@ Page({
      
     })
     wx.request({
-      url: app.globalData.URi + '/applets/trainingclass-course-list.jspx',
+      url: app.globalData.URi + '/applets/course.jspx',
       data: {
         userId:that.data.userId,
-        trainingclassId:that.data.trainingclassId
+        courseId:that.data.courseId
       },
       method: 'GET', //方法分GET和POST，根据需要写
       header: { //定死的格式，不用改，照敲就好
@@ -82,30 +86,9 @@ Page({
       success: function (res) { //这里写调用接口成功之后所运行的函数
         console.log(res)
         console.log(res.data); //调出来的数据在控制台显示，方便查看
-        var e = res.data.courses;
-        console.log(e);
         that.setData({
-         // resdata: e.courses,//res.data就是你调出来的所有数据（当然也可以在这里面自定义想要调用的数据），然后把值赋给resdata，之后对resdata进行处理即可，具体见wxml
-          totalPage: res.data.totalPage,
-            coursesList:e
+          detail:res.data
         })
-        var contentlistTem = that.data.resdata;
-        if (that.data.pageNo == 1) {
-          contentlistTem = []; 
-        }
-        var resdata = e;
-        if (that.data.pageNo >= res.data.totalPage) {
-          that.setData({
-            resdata: contentlistTem.concat(resdata),
-            hasMoreData: false
-          })
-        } else {
-          that.setData({
-            resdata: contentlistTem.concat(resdata),
-            hasMoreData: true,
-            pageNo: that.data.pageNo + 1,
-          })
-        }
       },
       fail: function (res) { //这里写调用接口失败之后所运行的函数
         console.log('.........fail..........');

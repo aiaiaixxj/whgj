@@ -1,0 +1,21 @@
+<!--pages/AllcoursesDetail/AllcoursesDetail.wxml-->
+
+	<view class="title_item" style="">
+		<view style="font-size:17px;word-break:break-all;margin:10px 10px"> {{detail.name}} </view>
+	</view>
+	<view class="video_box" style="">
+		<video bindtimeupdate="timeUpdate" src="{{detail.path}}" binderror="videoErrorCallback"  controls style="width:98vw"></video>
+	</view>
+
+  <van-row>
+      <van-col span="20" offset="1" custom-class="custom-class"><span style="font-size:17px">课程教师：{{detail.teachers}}</span>
+      </van-col>
+      <van-col span="20" offset="1" custom-class="custom-class"><span style="font-size:17px">课程分类： 新增课程</span>
+      </van-col>
+      <van-col span="20" offset="1" custom-class="custom-class"><span style="font-size:17px">课程学时：0.9 </span>
+      </van-col>
+      <van-col span="25" offset="1" custom-class="custom-class"><span style="font-size:17px">课程简介：{{detail.absract}}</span>
+      </van-col>
+    </van-row>
+	<!-- <view class="divLine"></view> -->
+
