@@ -1,68 +1,74 @@
 /* pages/login/login.wxss */
-page{ 
-  height: 100%; 
- } 
-   
-.img {
-  width:100%;
-  height:100%;
+page {
+  height: 100%;
 }
- .container { 
-  height: 100%; 
-  display: flex; 
-  flex-direction: column; 
-  padding: 0; 
+
+.img {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
   /* justify-content: center; */
   /* box-sizing: border-box; 
   background-color: #f2f2f2; */
   /* position: relative; */
- } 
-   
- /*登录图片*/
- .login-icon{ 
-  flex: none; 
- } 
- /* .login-img{ 
+}
+
+/*登录图片*/
+.login-icon {
+  flex: none;
+}
+
+/* .login-img{ 
  
  }  */
-   
- /*表单内容*/
- .login-from { 
-   display: flex;
-   flex-direction: column;
-   position: absolute;
-  top:40%; 
+
+/*表单内容*/
+.login-from {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 40%;
   /* flex: auto;  */
- justify-content: center;
- } 
- .input-placeholder {
-  color:gray;
-  font-size:28rpx;
- text-align: center;
+  justify-content: center;
 }
-   
- .inputView { 
+
+.input-placeholder {
+  color: gray;
+  font-size: 28rpx;
+  text-align: left;
+}
+
+.inputView {
   /* background-color: #fff;  */
-  line-height: 50px; 
- } 
- /*输入框*/
- .nameImage, .keyImage { 
+  line-height: 50px;
+}
+
+/*输入框*/
+.nameImage,
+.keyImage {
   /* margin-left: 22px;  */
-  width: 16px; 
+  width: 16px;
   height: 18px;
   margin-left: -25px;
- } 
-   
- .loginLab { 
-  margin: 15px 15px 15px 10px; 
+}
+
+.loginLab {
+  margin: 15px 15px 15px 10px;
   font-size: 14px
- } 
- .inputText { 
-  flex: block; 
-  float: right; 
-  text-align:left; 
+}
+
+.inputText {
+  flex: block;
+  float: right;
+  text-align: left;
   /* margin-left: 22px;  */
-  margin-top: 11px; 
+  margin-top: 11px;
   /* color: #cccccc;  */
   color: black;
   font-size: 14px;
@@ -70,51 +76,55 @@ page{
   width: 600rpx;
   height: 70rpx;
   border-radius: 12rpx;
- } 
-   
- .line { 
-  width: 137%; 
-  height: 1px; 
-  background-color: #DD514E; 
+  padding-left: 20rpx;
+}
+
+.line {
+  width: 137%;
+  height: 1px;
+  background-color: #DD514E;
   position: absolute;
-  margin-top: -10px; 
- } 
- /*按钮*/
- .loginBtnView { 
-  width: 100%; 
-  height: auto; 
+  margin-top: -10px;
+}
+
+/*按钮*/
+.loginBtnView {
+  width: 100%;
+  height: auto;
   /* background-color: #f2f2f2;  */
-  margin-top: 0px; 
-  margin-bottom: 0px; 
-  padding-bottom: 0px; 
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
   /* margin-left: -28px; */
- } 
-   
- .loginBtn { 
+}
+
+.loginBtn {
   /* width: 160%;  */
-  margin-top: 20px; 
-  height: 30px;
-  line-height: 30px;
+  margin-top: 20px;
+  height: 38px;
+  line-height: 38px;
   font-size: 15px;
   border-radius: 15px;
   text-align: center;
   color: white;
   letter-spacing: 6px;
-  background-color:#E8342F; 
- }
- button:last-child{
-  margin-top:10px; 
- }
- .footer-text{
-   position: absolute;
-   display: flex;
-   flex-direction: column;
-   bottom: 20rpx;
- }
- .footer-text text{
-   /* font-family: sans-serif; */
-   font-size: 25rpx;
-   color: white;
-   letter-spacing: 5rpx;
- }
- 
+  background-color: #E8342F;
+}
+
+button:last-child {
+  margin-top: 10px;
+}
+
+.footer-text {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  bottom: 20rpx;
+}
+
+.footer-text text {
+  /* font-family: sans-serif; */
+  font-size: 25rpx;
+  color: white;
+  letter-spacing: 5rpx;
+}

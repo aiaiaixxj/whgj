@@ -63,7 +63,8 @@ Page({
     wx.request({
       url: app.globalData.URi + '/applets/course-list.jspx',
       data: {
-        pageNo:that.data.pageNo
+        pageNo:that.data.pageNo,
+        userId:wx.getStorageSync('userId')
       },
       method: 'GET', //方法分GET和POST，根据需要写
       header: { //定死的格式，不用改，照敲就好
@@ -76,7 +77,7 @@ Page({
         that.setData({
          // resdata: e.courses,//res.data就是你调出来的所有数据（当然也可以在这里面自定义想要调用的数据），然后把值赋给resdata，之后对resdata进行处理即可，具体见wxml
           totalPage: res.data.totalPage,
-            coursesList:e
+          coursesList:e
         })
         var contentlistTem = that.data.resdata;
         if (that.data.pageNo == 1) {

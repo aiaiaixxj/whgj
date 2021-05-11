@@ -20,6 +20,7 @@
         </view>
         <view class="code">讲师：{{resdata[index].teachers}} </view>
         <view class="code">选课人数：{{resdata[index].users}} </view>
+        <view class="code" style="margin-top:-30px;margin-left:60%">已学进度：{{resdata[index].progress}} </view>
       </view>
     </view>
     <!-- </navigator> -->
@@ -50,5 +51,5 @@
 	<van-loading size="24px" color= "#EA6022" custom-class="custom-class1">加载中...</van-loading>
 </view>
 <view style="top:{{height}}px;position: relative;background-color:#FFFAE6;color: #EA6022;text-align: center;" wx:if="{{!hasMoreData}}">
-	<text custom-class="custom-class" > 我是有底线的!</text>
+	<text custom-class="custom-class" > 加载完成!</text>
 </view>

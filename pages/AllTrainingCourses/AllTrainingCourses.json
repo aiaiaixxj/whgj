@@ -8,6 +8,8 @@
     "van-grid-item": "../../miniprogram_npm/@vant/weapp/grid-item/index",
     "van-button": "../../miniprogram_npm/@vant/weapp/button/index",
     "van-divider": "../../miniprogram_npm/@vant/weapp/divider/index",
-    "van-loading": "@vant/weapp/loading/index"
+    "van-loading": "../../miniprogram_npm/@vant/weapp/loading/index",
+    "van-popup": "../../miniprogram_npm/@vant/weapp/popup/index",
+    "van-toast": "../../miniprogram_npm/@vant/weapp/toast/index"
   }
 }

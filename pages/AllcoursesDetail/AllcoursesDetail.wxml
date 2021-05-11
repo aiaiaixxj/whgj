@@ -1,21 +1,40 @@
 <!--pages/AllcoursesDetail/AllcoursesDetail.wxml-->
 
-	<view class="title_item" style="">
-		<view style="font-size:17px;word-break:break-all;margin:10px 10px"> {{detail.name}} </view>
-	</view>
-	<view class="video_box" style="">
-		<video bindtimeupdate="timeUpdate" src="{{detail.path}}" binderror="videoErrorCallback"  controls style="width:98vw"></video>
-	</view>
+<view class="title_item" style="">
+  <view style="font-size:17px;word-break:break-all;margin:10px 10px"> {{detail.name}} </view>
+</view>
 
-  <van-row>
-      <van-col span="20" offset="1" custom-class="custom-class"><span style="font-size:17px">课程教师：{{detail.teachers}}</span>
-      </van-col>
-      <van-col span="20" offset="1" custom-class="custom-class"><span style="font-size:17px">课程分类： 新增课程</span>
-      </van-col>
-      <van-col span="20" offset="1" custom-class="custom-class"><span style="font-size:17px">课程学时：0.9 </span>
-      </van-col>
-      <van-col span="25" offset="1" custom-class="custom-class"><span style="font-size:17px">课程简介：{{detail.absract}}</span>
-      </van-col>
-    </van-row>
-	<!-- <view class="divLine"></view> -->
+<view class="video_box" style="">
+  <video bindtimeupdate="timeUpdate" src="{{detail.path}}" binderror="videoErrorCallback" controls autoplay='{{true}}' style="width:98vw">
+    <cover-view class="cover-view" wx:if="{{coverView}}">
+    </cover-view>
+    <cover-view class="cover-view1" wx:if="{{coverView}}">
+    </cover-view>
+  </video>
+  <!-- <video id="myVideo"  class="myVideo" src="{{detail.path}}" enable-danmu danmu-btn controls="{{false}}" autoplay='{{true}}'
+    bindtimeupdate="videoUpdate" objectFit="fill" bindfullscreenchange="fullScreen"  bindended="closeVideo" style="width:98vw"></video>
+  <view class='process-container'>
+    <image src='{{playStates ? "../../images/pause.png" : "../../images/play.png"}}'
+      class='video-controls-icon' bindtap='videoOpreation'></image>
+    <view class='slider-container'>
+      <slider bindchange="sliderChange" bindchanging="sliderChanging" step="1" value="{{sliderValue}}"
+        backgroundColor="#A8A8A8" activeColor="#A8A8A8" block-color="#A8A8A8" block-size="20" style="margin:10px "/>
+    </view>
+   
+    <view bindtap='play'>  dianwo</view>
+  </view> -->
+</view>
 
+
+
+<van-row>
+  <van-col span="20" offset="1" custom-class="custom-class"><span style="font-size:17px">已学进度：{{detail.progress}}</span>
+  </van-col>
+  <van-col span="20" offset="1" custom-class="custom-class"><span style="font-size:17px">课程教师：{{detail.teachers}}</span>
+  </van-col>
+  <van-col span="20" offset="1" custom-class="custom-class"><span style="font-size:17px">课程学时：{{detail.times}} </span>
+  </van-col>
+  <van-col span="25" offset="1" custom-class="custom-class"><span style="font-size:17px">课程简介：{{detail.absract}}</span>
+  </van-col>
+</van-row>
+<!-- <view class="divLine"></view> -->

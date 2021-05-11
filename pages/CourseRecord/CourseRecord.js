@@ -121,12 +121,28 @@ Page({
           that.setData({
             statusArry: statusArry
           })
+          console.log("resdata=>",that.data.resdat)
           
         } else {
           that.setData({
             resdata: contentlistTem.concat(resdata),
             hasMoreData: true,
             pageNo: that.data.pageNo + 1,
+          })
+          var statusid = that.data.resdata.map((item) => {
+            return item.status;
+          })
+          var statusArry = []
+          for (var i = 0; i < that.data.resdata.length; i++) {
+            if (statusid[i] == 1) {
+              statusArry.push('已开始')
+            }
+            if (statusid[i] == 2) {
+              statusArry.push('已结束')
+            }
+          }
+          that.setData({
+            statusArry: statusArry
           })
         }
       },

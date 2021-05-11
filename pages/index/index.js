@@ -169,12 +169,10 @@ Page({
       hasUserInfo: true
     })
   },
-  login() {
-    wx.login({
-      success: function (res) {
-        console.log(res)
-      }
-    })
-  }
+onShow(){
+  wx.hideHomeButton({
+    success: (res) => {},
+  })
+}
 
 })

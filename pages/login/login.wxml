@@ -7,14 +7,14 @@
 			<view class="inputView">
 				<!-- <image class="nameImage" src="../../images/loginUser.png"></image> -->
 				<!-- <label class="loginLab">账号</label> -->
-				<input class="inputText" placeholder="" bindinput="phoneInput" placeholder-class="input-placeholder" value="{{username}}" type="digit" />   
+				<input class="inputText" placeholder="账号" bindinput="phoneInput" placeholder-class="input-placeholder" value="{{username}}" type="digit" />   
 			</view>
 		
 			<!--密码-->
 			<view class="inputView">
 				<!-- <image class="keyImage" src="../../images/loginLock.png"></image> -->
 				<!-- <label class="loginLab">密码</label> -->
-				<input class="inputText" password="true" placeholder="" bindinput="passwordInput" value="{{password}}" />
+				<input class="inputText" password="true" placeholder="密码" bindinput="passwordInput" value="{{password}}" />
 			</view>
 		
 			<!--按钮-->

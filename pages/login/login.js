@@ -5,8 +5,8 @@ Page({
     username: '',
     password: '',
     userId: '',
-    code:'',
-    realname:''
+    code: '',
+    realname: ''
   },
   // 获取输入账号 
   phoneInput: function (e) {
@@ -30,11 +30,33 @@ Page({
       username: wx.getStorageSync("username"),
       password: wx.getStorageSync("password"),
     })
+    wx.request({
+      url: app.globalData.URi + '/applets/openid/login.jspx', //自己的服务接口地址
+      method: 'post',
+      data: {
+        openId:wx.getStorageSync("openId"),
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log("res=>", res)
+        if(res.data.status==1){
+          wx.redirectTo({
+            url: '../index/index',
+          })
+        }
+       
+      },
+      fail: function () {
+        console.log('系统错误！')
+      }
+    })
   },
   login: function (e) {
-     var that = this;
-    wx.setStorageSync("username",that.data.username);
-    wx.setStorageSync("password",that.data.password);
+    var that = this;
+    wx.setStorageSync("username", that.data.username);
+    wx.setStorageSync("password", that.data.password);
     console.log(app.globalData.URL);
     if (that.data.username.length == 0 || that.data.password.length == 0) {
       wx.showToast({
@@ -44,50 +66,92 @@ Page({
       })
     }
     console.log("this.data.username:", that.data.username)
-    // wx.login({
-    //   success(res) {
-    //     console.log("res.code=>",res.code);
-    //     if (res.code) {
-    //       //发起网络请求
-    //       wx.request({
-    //         url: app.globalData.URi + '/applets/code.jspx', //自己的服务接口地址
-    //         method: 'post',
-    //         data: {
-    //           code: res.code
-    //         },
-    //         header: {
-    //           'content-type': 'application/x-www-form-urlencoded'
-    //         },
-    //         success: function (res) {
-    //           console.log("this.data.username:", that.data.username);
-    //           console.log(res);
-    //           console.log(res.data);
-    //           console.log(res.data.username);
+    wx.login({
+      success(res) {
 
-    //           //4.解密成功后 获取自己服务器返回的结果
-    //           if (res.statusCode == 200) {
-
-    //             wx.navigateTo({
-    //               url: '../index/index',
-    //             })
-    //           } else {
-    //             console.log('请重新核对账号或密码!')
-    //             wx.showToast({
-    //               title: '请重新核对账号或密码!',
-    //               icon: 'none',
-    //               duration: 1000
-    //             })
-    //           }
-    //         },
-    //         fail: function () {
-    //           console.log('系统错误')
-    //         }
-    //       })
-    //     } else {
-    //       console.log('登录失败！' + res.errMsg)
-    //     }
-    //   }
-    // })
+        console.log("res.code=>", res.code);
+        that.setData({
+          code: res.code
+        })
+        //发起网络请求
+        wx.request({
+          url: app.globalData.URi + '/applets/login.jspx', //自己的服务接口地址
+          method: 'post',
+          data: {
+            username: that.data.username,
+            password: that.data.password
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success: function (res) {
+            console.log("this.data.username:", that.data.username);
+            console.log(res);
+            console.log(res.data);
+            console.log(res.data.username);
+            wx.setStorageSync("times", res.data.times);
+            wx.setStorageSync("realname", res.data.realname);
+            wx.setStorageSync("userId", res.data.userId);
+            wx.setStorageSync("ranking", res.data.ranking);
+            //4.解密成功后 获取自己服务器返回的结果
+            if (res.data.status == 1) {
+              wx.request({
+                url: app.globalData.URi + '/applets/code.jspx', //自己的服务接口地址
+                method: 'post',
+                data: {
+                  code: that.data.code,
+                  userId: wx.getStorageSync('userId')
+                },
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded'
+                },
+                success: function (res) {
+                  console.log("res=>", res);
+                  wx.setStorageSync("openId", res.data.openId);
+                },
+                fail: function () {
+                  console.log('系统错误！')
+                }
+              })
+              wx.navigateTo({
+                url: '../index/index',
+              })
+            } else if (res.data.status == -1) {
+              console.log('用户被禁用！')
+              wx.showToast({
+                title: '用户被禁用！',
+                icon: 'none',
+                duration: 1000
+              })
+            } else if (res.data.status == -2) {
+              console.log('用户名错误！')
+              wx.showToast({
+                title: '用户名错误！',
+                icon: 'none',
+                duration: 1000
+              })
+            } else if (res.data.status == 0) {
+              console.log('密码错误！')
+              wx.showToast({
+                title: '密码错误！',
+                icon: 'none',
+                duration: 1000
+              })
+            } else {
+              console.log('请重新核对账号或密码！')
+              wx.showToast({
+                title: '请重新核对账号或密码！',
+                icon: 'none',
+                duration: 1000
+              })
+            }
+          },
+          fail: function () {
+            console.log('系统错误！')
+          }
+        })
+      }
+    })
     // var that = this;
     // wx.setStorageSync("username",that.data.username);
     // wx.setStorageSync("password",that.data.password);
@@ -100,69 +164,69 @@ Page({
     //   })
     // }
     // console.log("this.data.username:", that.data.username)
-    wx.request({
-      url:app.globalData.URi+'/applets/login.jspx', //自己的服务接口地址
-      method: 'post',
-      data: {
-        username: that.data.username,
-        password: that.data.password
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        console.log("this.data.username:", that.data.username);
-        console.log(res);
-        console.log(res.data);
-        console.log(res.data.username);
-      wx.setStorageSync("times",res.data.times);
-       wx.setStorageSync("realname",res.data.realname);
-       wx.setStorageSync("userId",res.data.userId);
-       wx.setStorageSync("ranking",res.data.ranking);
-        //4.解密成功后 获取自己服务器返回的结果
-        if (res.data.status == 1) {
+    // wx.request({
+    //   url:app.globalData.URi+'/applets/login.jspx', //自己的服务接口地址
+    //   method: 'post',
+    //   data: {
+    //     username: that.data.username,
+    //     password: that.data.password
+    //   },
+    //   header: {
+    //     'content-type': 'application/x-www-form-urlencoded'
+    //   },
+    //   success: function (res) {
+    //     console.log("this.data.username:", that.data.username);
+    //     console.log(res);
+    //     console.log(res.data);
+    //     console.log(res.data.username);
+    //   wx.setStorageSync("times",res.data.times);
+    //    wx.setStorageSync("realname",res.data.realname);
+    //    wx.setStorageSync("userId",res.data.userId);
+    //    wx.setStorageSync("ranking",res.data.ranking);
+    //     //4.解密成功后 获取自己服务器返回的结果
+    //     if (res.data.status == 1) {
 
-            wx.navigateTo({
-                url: '../index/index',
-              })
-        } 
-        else if(res.data.status == -1){
-          console.log('用户被禁用！')
-          wx.showToast({
-            title: '用户被禁用！',
-            icon: 'none',
-            duration: 1000
-          })
-        }
-        else if(res.data.status == -2){
-          console.log('用户名错误！')
-          wx.showToast({
-            title: '用户名错误！',
-            icon: 'none',
-            duration: 1000
-          })
-        }
-        else if(res.data.status == 0){
-          console.log('密码错误！')
-          wx.showToast({
-            title: '密码错误！',
-            icon: 'none',
-            duration: 1000
-          })
-        }
-        else {
-          console.log('请重新核对账号或密码！')
-          wx.showToast({
-            title: '请重新核对账号或密码！',
-            icon: 'none',
-            duration: 1000
-          })
-        }
-      },
-      fail: function () {
-        console.log('系统错误！')
-      }
-    })
+    //         wx.navigateTo({
+    //             url: '../index/index',
+    //           })
+    //     } 
+    //     else if(res.data.status == -1){
+    //       console.log('用户被禁用！')
+    //       wx.showToast({
+    //         title: '用户被禁用！',
+    //         icon: 'none',
+    //         duration: 1000
+    //       })
+    //     }
+    //     else if(res.data.status == -2){
+    //       console.log('用户名错误！')
+    //       wx.showToast({
+    //         title: '用户名错误！',
+    //         icon: 'none',
+    //         duration: 1000
+    //       })
+    //     }
+    //     else if(res.data.status == 0){
+    //       console.log('密码错误！')
+    //       wx.showToast({
+    //         title: '密码错误！',
+    //         icon: 'none',
+    //         duration: 1000
+    //       })
+    //     }
+    //     else {
+    //       console.log('请重新核对账号或密码！')
+    //       wx.showToast({
+    //         title: '请重新核对账号或密码！',
+    //         icon: 'none',
+    //         duration: 1000
+    //       })
+    //     }
+    //   },
+    //   fail: function () {
+    //     console.log('系统错误！')
+    //   }
+    // })
     // wx.getUserProfile({
     //   desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
     //   success: (res) => {

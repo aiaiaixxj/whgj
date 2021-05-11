@@ -1,4 +1,5 @@
 // pages/AllTrainingCourses/AllTrainingCourses.js
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 const app = getApp();
 Page({
   /**
@@ -29,6 +30,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+   
     //this.getData('正在加载数据...');
     this.getData();
   },
@@ -36,13 +38,16 @@ Page({
   gotoOtherpages: function (e) {
     var that = this;
     var id = e.currentTarget.dataset.id;
+    var status = e.currentTarget.dataset.status;
+    console.log("e=>",e)
     console.log("id=>",id)
-    if (1 == 1) {
+    if (status == 1) {
       wx.navigateTo({
         url: '../AllTrainingCoursesList/AllTrainingCoursesList?index=' + id
       });
     }
-    if (that.data.statusid == 0 || that.data.statusid == 2) {
+    if (status == 0 || status == 2) {
+      Toast('已结束');
       wx.navigateTo({
         url: ''
       });
