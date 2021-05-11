@@ -20,6 +20,11 @@ Page({
       password: e.detail.value
     })
   },
+  onShow:function(){
+    wx.hideHomeButton({
+      success: (res) => {},
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -34,19 +39,19 @@ Page({
       url: app.globalData.URi + '/applets/openid/login.jspx', //自己的服务接口地址
       method: 'post',
       data: {
-        openId:wx.getStorageSync("openId"),
+        openId: wx.getStorageSync("openId"),
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
         console.log("res=>", res)
-        if(res.data.status==1){
+        if (res.data.status == 1) {
           wx.redirectTo({
             url: '../index/index',
           })
         }
-       
+
       },
       fail: function () {
         console.log('系统错误！')
@@ -64,6 +69,7 @@ Page({
         icon: 'none',
         duration: 2000
       })
+      return
     }
     console.log("this.data.username:", that.data.username)
     wx.login({

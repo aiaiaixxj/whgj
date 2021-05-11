@@ -1,6 +1,9 @@
 {
   "usingComponents": {
-    "van-loading": "@vant/weapp/loading/index",
-    "van-notify": "@vant/weapp/notify/index"
-  }
+    "van-loading": "@vant/weapp/loading/index"
+  },
+  "navigationBarTitleText": "武汉干部教育网络学院",
+  "navigationBarBackgroundColor": "#FF0000",
+  "navigationBarTextStyle": "white",
+  "disableScroll":true
 }

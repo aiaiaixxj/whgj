@@ -1,5 +1,5 @@
 // pages/loading/loading.js
-import Notify from './../../miniprogram_npm/@vant/weapp/notify/notify';
+
 Page({
 
   /**
@@ -14,19 +14,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      height: wx.getSystemInfoSync().windowHeight-50,
-     // width: wx.getSystemInfoSync().windowWidth,
-    })
-    console.log("height",this.data.height)
-    console.log("width",this.data.width)
-    console.log("wx.getSystemInfoSync().statusBarHeight",wx.getSystemInfoSync().statusBarHeight)
-    Notify({
-      message: '自定义颜色',
-      color: '#ad0000',
-      background: '#ffe1e1',
-    });
-
+     if(wx.getStorageSync('openId'))
+        {
+          wx.redirectTo({
+            url: '../index/index',
+          })
+        }
+        else{
+          wx.redirectTo({
+            url: '../login/login',
+          })
+        }
   },
 
   /**

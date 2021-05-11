@@ -1,8 +1,11 @@
 {
   "pages": [
-    "pages/login/login",
-    "pages/index/index",
     "pages/loading/loading",
+    "pages/login/login",
+  
+
+    "pages/index/index",
+  
     "pages/personalInfo/personalInfo",
     "pages/TestRecord/TestRecord",
     "pages/Allcourses/Allcourses",
