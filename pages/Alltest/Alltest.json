@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "van-loading": "@vant/weapp/loading/index"
+    "van-loading": "@vant/weapp/loading/index",
+    "van-toast": "../../miniprogram_npm/@vant/weapp/toast/index"
   },
   "navigationBarTitleText": "全部考试",
   "navigationBarBackgroundColor": "#FF0000",

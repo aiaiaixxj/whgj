@@ -2,10 +2,7 @@
   "pages": [
     "pages/loading/loading",
     "pages/login/login",
-  
-
     "pages/index/index",
-  
     "pages/personalInfo/personalInfo",
     "pages/TestRecord/TestRecord",
     "pages/Allcourses/Allcourses",
@@ -19,7 +16,8 @@
     "pages/Alltest/Alltest",
     "pages/TrainingCoursesRecord/TrainingCoursesRecord",
     "pages/CourseRecord/CourseRecord",
-    "pages/AllcoursesDetail/AllcoursesDetail"
+    "pages/AllcoursesDetail/AllcoursesDetail",
+    "pages/AlltestDetail/AlltestDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -9,7 +9,7 @@ Page({
     statusArry: [],
     userId: '',
     resdata: [],
-    dataResComplete:'',
+    dataResComplete: '',
     totalpage: '',
     pageNo: 1,
     listLock: 1,
@@ -30,7 +30,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+
     //this.getData('正在加载数据...');
     this.getData();
   },
@@ -39,8 +39,8 @@ Page({
     var that = this;
     var id = e.currentTarget.dataset.id;
     var status = e.currentTarget.dataset.status;
-    console.log("e=>",e)
-    console.log("id=>",id)
+    console.log("e=>", e)
+    console.log("id=>", id)
     if (status == 1) {
       wx.navigateTo({
         url: '../AllTrainingCoursesList/AllTrainingCoursesList?index=' + id
@@ -48,14 +48,7 @@ Page({
     }
     if (status == 0 || status == 2) {
       Toast('已结束');
-      wx.navigateTo({
-        url: ''
-      });
-    } else {
-      wx.navigateTo({
-        url: ''
-      });
-    }
+    } else {}
 
   },
 
@@ -141,18 +134,18 @@ Page({
           that.setData({
             statusArry: statusArry
           })
-          console.log("resdata",that.data.resdata)
+          console.log("resdata", that.data.resdata)
 
         } else {
-          console.log("that.data.pageNo=>",that.data.pageNo)
-          console.log("res.data.totalpage=>",res.data.totalPage)
-          console.log("that.data.pageNo >= res.data.totalpage=>",that.data.pageNo >= res.data.totalPage)
+          console.log("that.data.pageNo=>", that.data.pageNo)
+          console.log("res.data.totalpage=>", res.data.totalPage)
+          console.log("that.data.pageNo >= res.data.totalpage=>", that.data.pageNo >= res.data.totalPage)
           that.setData({
             resdata: contentlistTem.concat(resdata),
             hasMoreData: true,
             pageNo: that.data.pageNo + 1
           })
-        
+
         }
       },
       fail: function (res) { //这里写调用接口失败之后所运行的函数
@@ -161,7 +154,7 @@ Page({
       complete: function () {
         wx.hideLoading();
         that.setData({
-        dataResComplete:true 
+          dataResComplete: true
         })
         // complete
         wx.hideNavigationBarLoading() //完成停止加载
@@ -212,8 +205,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log("this.data.hasMoreData",this.data.hasMoreData);
-    console.log("this.data.pageNo",this.data.pageNo);
+    console.log("this.data.hasMoreData", this.data.hasMoreData);
+    console.log("this.data.pageNo", this.data.pageNo);
     if (this.data.hasMoreData) {
       this.getData('加载更多数据')
     } else {

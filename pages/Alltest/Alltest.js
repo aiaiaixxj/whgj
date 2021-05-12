@@ -1,4 +1,5 @@
 // pages/Dynamicwork/Dynamicwork.js
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 const app = getApp();
 Page({
   /**
@@ -30,7 +31,125 @@ Page({
       id: 1
     }, ],
   },
-
+  gotoOtherpages:function(options){
+    var that = this;
+    var id = options.currentTarget.dataset.id;
+    console.log("id=>",id)
+    console.log("options=>",options)
+    wx.request({
+      url: app.globalData.URi + '/applets/exam/status.jspx',
+      data: {
+        examId:id,
+        userId:wx.getStorageSync("userId")
+      },
+      method: 'GET', //方法分GET和POST，根据需要写
+      header: { 
+        'Content-Type': 'application/json'
+      },
+      success: function (res) { //这里写调用接口成功之后所运行的函数
+        console.log(res)
+        console.log(res.data); //调出来的数据在控制台显示，方便查看
+        that.setData({
+          detail: res.data,
+        })
+        if (res.data.status == 1 ) {
+          wx.request({
+            url: app.globalData.URi + '/applets/exam/start.jspx', //自己的服务接口地址
+            method: 'post',
+            data: {
+              examuserId: that.data.detail.examuserId,
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (res) {
+              console.log("res=>", res)
+            },
+            fail: function () {
+              console.log('系统错误！')
+            }
+          })
+         
+        } 
+        if (res.data.status == 2 ) {
+          wx.request({
+            url: app.globalData.URi + '/applets/exam/start.jspx', //自己的服务接口地址
+            method: 'post',
+            data: {
+              examuserId: that.data.detail.examuserId,
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (res) {
+              console.log("res=>", res)
+            },
+            fail: function () {
+              console.log('系统错误！')
+            }
+          })
+        } 
+        if (res.data.status == 3 ) {
+          wx.request({
+            url: app.globalData.URi + '/applets/exam/start.jspx', //自己的服务接口地址
+            method: 'post',
+            data: {
+              examuserId: that.data.detail.examuserId,
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (res) {
+              console.log("res=>", res)
+            },
+            fail: function () {
+              console.log('系统错误！')
+            }
+          })
+        } 
+        if (res.data.status == -1 ) {
+          Toast('已超出最大限制');
+         
+        } 
+        if (res.data.status == -2 ) {
+          Toast('培训班未完成');
+         
+        } 
+        if (res.data.status == -3 ) {
+          Toast('未加入培训班');
+         
+        } 
+        if (res.data.status == -5 ) {
+          Toast('考试已结束');
+         
+        } 
+        if (res.data.status == -6 ) {
+          Toast('考试未开始');
+         
+        } 
+        else {
+        
+        }
+      },
+      fail: function (res) { //这里写调用接口失败之后所运行的函数
+        console.log('.........fail..........');
+      },
+      complete: function () {
+        wx.hideLoading();
+        // complete
+        that.setData({
+          dataResComplete: true
+        })
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
+      }
+    })
+    // if (1 == 1) {
+    //   wx.navigateTo({
+    //     url: '../AlltestDetail/AlltestDetail?index=' + id
+    //   });
+    // }
+  },
   /**
    * 生命周期函数--监听页面加载
    */

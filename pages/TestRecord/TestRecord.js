@@ -37,18 +37,9 @@ Page({
     var id = e.currentTarget.dataset.id;
     console.log("id=>",id)
     if (1 == 1) {
-      wx.navigateTo({
-        url: '../AllTrainingCoursesList/AllTrainingCoursesList?index=' + id
-      });
-    }
-    if (that.data.statusid == 0 || that.data.statusid == 2) {
-      wx.navigateTo({
-        url: ''
-      });
-    } else {
-      wx.navigateTo({
-        url: ''
-      });
+      // wx.navigateTo({
+      //   url: '../AllTrainingCoursesList/AllTrainingCoursesList?index=' + id
+      // });
     }
   },
   /*

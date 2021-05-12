@@ -10,6 +10,23 @@ Page({
         canIUseGetUserProfile: true
       })
     }
+    wx.request({
+      url: app.globalData.URi + '/applets/openid/login.jspx', //自己的服务接口地址
+      method: 'post',
+      data: {
+        openId: wx.getStorageSync("openId"),
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log("res=>", res)
+      },
+      fail: function () {
+        console.log('系统错误！')
+      }
+    })
+
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
