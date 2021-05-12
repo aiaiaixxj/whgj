@@ -1,2 +1,27 @@
 <!--pages/AlltestDetail/AlltestDetail.wxml-->
-<text>pages/AlltestDetail/AlltestDetail.wxml</text>
+<view  >
+  <text></text>
+</view>
+
+<view class="container" wx:for="{{questionArray}}" wx:key="index" wx:for-item="questionitem">
+      <view class="title">
+        <text>{{pageno}}.{{questionitem.name}}</text>
+      </view>
+      <view class="radioGroup">
+        <radio-group bindchange="radiochange" data-id="">
+              <view wx:for="{{questionitem.optionArray}}" wx:key="index" wx:for-item="optionitem">
+                <view style="">
+                  <radio value='{{questionitem.id}},{{optionitem.id}}' checked="{{optionitem.check}}" >
+                    {{optionitem.name}}
+                  </radio>
+                </view>
+              </view>
+            </radio-group>
+      </view>
+</view>
+<view class="bottom-bar" style="">
+      <view class="btn" style="" bindtap="BeforeStep" hidden="{{hiddenBeforeStep}}"> 上一题 </view>
+      <view  class="btn" style="" bindtap="NextStep"  hidden="{{hiddenNextStep}}" > 下一题 </view>
+      <view  class="btn" style="" bindtap="Complete"  hidden="{{hiddenComplete}}" > 完成考试 </view>
+</view>   
+

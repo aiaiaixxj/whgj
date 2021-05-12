@@ -63,7 +63,10 @@ Page({
               'content-type': 'application/x-www-form-urlencoded'
             },
             success: function (res) {
-              console.log("res=>", res)
+              console.log("res=>", res.data)
+              wx.navigateTo({
+                url: '../AlltestDetail/AlltestDetail?examuserId=' + that.data.detail.examuserId
+              })
             },
             fail: function () {
               console.log('系统错误！')

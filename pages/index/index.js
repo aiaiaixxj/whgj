@@ -122,10 +122,8 @@ Page({
         url: '../TestRecord/TestRecord'
       });
     }
-
   },
   onLoad() {
-
     console.log("wx.getUserProfile=>", wx.getUserProfile);
     console.log("this.data.canIUseOpenData", this.data.canIUseOpenData);
     console.log("this.data.hasUserInfo", this.data.hasUserInfo);
@@ -174,5 +172,4 @@ onShow(){
     success: (res) => {},
   })
 }
-
 })

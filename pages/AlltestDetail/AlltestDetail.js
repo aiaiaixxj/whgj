@@ -17,7 +17,7 @@ Page({
     resdata: [],
     coursesList: [],
     totalpage: '',
-    pageNo: 1,
+    pageno: 1,
     listLock: 1,
     pageSize: 20,
     hasMoreData: true,
@@ -33,19 +33,75 @@ Page({
     playStates: true, //控制播放 & 暂停按钮的显示
     fullScreen: '',
     coverView:true,
+    examuserId:'',
+    questionArray:''
+  },
+    /**
+   * 
+   * 上一题
+   */
+  BeforeStep() {
+    var that = this;
+    if (that.data.pageno == 1) {
+      that.setData({
+        pageno: 1
+      })
+      return  
+    }
+    that.setData({
+      pageno: that.data.pageno - 1
+    })
+ 
+    if (that.data.pageno < that.data.totalpage) {
+      that.getNewData();
+    }
+
+    console.log("that.data.pageno", that.data.pageno);
+  },
+  /**
+   * 
+   * 下一题 
+   */
+  NextStep() {
+
+    // if (this.data.selectedQuestionList.length < this.data.requiredCount) {
+    //   wx.showToast({
+    //     title: '请完成所有必选项之后再进行下一步操作!',
+    //     icon: 'none',
+    //     duration: 2000
+    //   })
+    // } else {
+
+
+      var that = this;
+
+      if (that.data.pageno == that.data.totalpage) {
+        that.setData({
+          pageno: that.data.totalpage
+        })
+        console.log("当前页等于总页数", that.data.pageno, that.data.totalpage)
+      } else {
+        that.setData({
+          pageno: that.data.pageno + 1
+        })
+        console.log("当前页小于总页数", that.data.pageno, that.data.totalpage)
+        that.getNewData();
+      }
+
+      console.log("that.data.pageno", that.data.pageno);
+    
+    // }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
-    console.log("options.index=>", options.index)
-
-    this.setData({
-      examId: options.index
-    })
     console.log("options", options)
-     this.getData('正在加载数据...');
+    this.setData({
+      examuserId:options.examuserId
+    })
+     this.getData();
 
   },
   /*
@@ -56,44 +112,52 @@ Page({
     //   title: message,
     // })
     var that = this;
-    that.setData({
-      userId: wx.getStorageSync("userId"),
-
-    })
     wx.request({
-      url: app.globalData.URi + '/applets/exam/status.jspx',
+      url: app.globalData.URi + '/applets/exam/start.jspx', //自己的服务接口地址
+      method: 'post',
       data: {
-        examId:that.data.examId,
-        userId:wx.getStorageSync("userId")
+        examuserId: that.data.examuserId,
       },
-      method: 'GET', //方法分GET和POST，根据需要写
-      header: { 
-        'Content-Type': 'application/json'
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) { //这里写调用接口成功之后所运行的函数
-        console.log(res)
-        console.log(res.data); //调出来的数据在控制台显示，方便查看
+      success: function (res) {
+        console.log("res=>", res.data)
         that.setData({
-          detail: res.data
+          questionArray:res.data.array,
+          totalpage:res.data.totalPage,
+          resdata:res.data
         })
-
-        if (that.data.detail.progress == '100%') {
-             that.setData({
-              coverView:false 
-             })
-        }
       },
-      fail: function (res) { //这里写调用接口失败之后所运行的函数
-        console.log('.........fail..........');
+      fail: function () {
+        console.log('系统错误！')
+      }
+    })
+  },
+  getNewData: function (message) {
+    // wx.showLoading({
+    //   title: message,
+    // })
+    var that = this;
+    wx.request({
+      url: app.globalData.URi + '/applets/exam/pagination.jspx', //自己的服务接口地址
+      method: 'post',
+      data: {
+        examuserId: that.data.examuserId,
+        pageNo:that.data.pageno
       },
-      complete: function () {
-        wx.hideLoading();
-        // complete
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log("res=>", res.data)
         that.setData({
-          dataResComplete: true
+          questionArray:res.data.array,
+          totalpage:res.data.totalPage
         })
-        wx.hideNavigationBarLoading() //完成停止加载
-        wx.stopPullDownRefresh() //停止下拉刷新
+      },
+      fail: function () {
+        console.log('系统错误！')
       }
     })
   },

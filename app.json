@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/Alltest/Alltest",
     "pages/loading/loading",
     "pages/login/login",
     "pages/index/index",
@@ -13,7 +14,7 @@
     "pages/Newsdetail/Newsdetail",
     "pages/AllTrainingCourses/AllTrainingCourses",
     "pages/AllTrainingCoursesList/AllTrainingCoursesList",
-    "pages/Alltest/Alltest",
+   
     "pages/TrainingCoursesRecord/TrainingCoursesRecord",
     "pages/CourseRecord/CourseRecord",
     "pages/AllcoursesDetail/AllcoursesDetail",
