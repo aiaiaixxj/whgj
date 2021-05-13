@@ -1,27 +1,102 @@
 <!--pages/AlltestDetail/AlltestDetail.wxml-->
-<view  >
+<view>
   <text></text>
 </view>
 
 <view class="container" wx:for="{{questionArray}}" wx:key="index" wx:for-item="questionitem">
-      <view class="title">
-        <text>{{pageno}}.{{questionitem.name}}</text>
+  <view class="title">
+    <text>{{pageno}}.{{questionitem.name}}</text>
+  </view>
+  <view wx:if="{{questionitem.type ==0}}">
+    <view class="radioGroup">
+      <radio-group bindchange="radiochange" data-id="">
+        <view wx:for="{{questionitem.optionArray}}" wx:key="index" wx:for-item="optionitem">
+          <view style="margin-top:10px">
+            <radio value='{{questionitem.id}},{{optionitem.id}}' checked="{{optionitem.check}}">
+              {{optionitem.name}}
+            </radio>
+          </view>
+        </view>
+      </radio-group>
+    </view>
+  </view>
+  <view wx:elif="{{questionitem.type ==1}}">
+    <view class="checkboxGroup">
+      <checkbox-group bindchange="checkboxChange" data-checks="{{}}">
+        <view wx:for="{{questionitem.optionArray}}" wx:key="index" wx:for-item="optionitem">
+          
+            <checkbox value='{{questionitem.id}},{{optionitem.id}}' data-id="{{questionitem.id}}"
+              bindtap="check" checked="{{optionitem.check}}">
+              {{optionitem.name}}
+            </checkbox>
+        
+        </view>
+      </checkbox-group>
+    </view>
+  </view>
+  <view wx:elif="{{questionitem.flag ==2}}" bindtap="handleJumpPage" data-id="{{questionitem.id}}">
+    <view class="textarea-wrp">
+      <textarea bindblur="bindTextAreaBlur" style="height:200px;" value="{{questionitem.remark}}"  />
       </view>
-      <view class="radioGroup">
-        <radio-group bindchange="radiochange" data-id="">
-              <view wx:for="{{questionitem.optionArray}}" wx:key="index" wx:for-item="optionitem">
-                <view style="">
-                  <radio value='{{questionitem.id}},{{optionitem.id}}' checked="{{optionitem.check}}" >
-                    {{optionitem.name}}
-                  </radio>
-                </view>
-              </view>
-            </radio-group>
-      </view>
-</view>
-<view class="bottom-bar" style="">
-      <view class="btn" style="" bindtap="BeforeStep" hidden="{{hiddenBeforeStep}}"> 上一题 </view>
-      <view  class="btn" style="" bindtap="NextStep"  hidden="{{hiddenNextStep}}" > 下一题 </view>
-      <view  class="btn" style="" bindtap="Complete"  hidden="{{hiddenComplete}}" > 完成考试 </view>
-</view>   
+  </view>  
+  <view wx:if="{{questionitem.type ==3}}">
+    <view class="radioGroup">
+      <radio-group bindchange="radiochange" data-id="">
+        <view wx:for="{{questionitem.optionArray}}" wx:key="index" wx:for-item="optionitem">
+          <view style="">
+            <radio value='{{questionitem.id}},{{optionitem.id}}' checked="{{optionitem.check}}">
+              {{optionitem.name}}
+            </radio>
+          </view>
+        </view>
+      </radio-group>
+    </view>
+  </view>
+  <view wx:if="{{questionitem.type ==4}}" style="display: flex;flex-direction: row;">
+        <view wx:for="{{questionitem.optionArray}}" wx:key="index" wx:for-item="optionitem">
+          <view style="">
+            <!-- <radio value='{{questionitem.id}},{{optionitem.id}}' checked="{{optionitem.check}}">
+              {{optionitem.name}}
+            </radio> -->
+            <van-cell-group >
+                 <van-field
+                   value="{{}}"
+                   placeholder=""
+                   input-class="inputClass"
+                   maxlength="1"
+                  bind:change="onChangeinput"
+                  bind:click="onChangeinputclick"
+                           />
+            </van-cell-group>
+          </view>
+        </view>
+  </view>
 
+          
+</view>
+<view class="bottom-bar" >
+  <view  class="datika" bindtap="getAllquestions" >
+    <image src="../../images/card.png"  class="all"></image>
+    <text>答题卡</text>
+  </view>
+  <van-popup 
+  show="{{ canshowAllquestions }}"
+  position="bottom"
+  closeable
+  duration="500"
+  close-icon="close"
+  custom-style="height: 60%;"
+  bind:close="CloseAllquestionspanel"
+  > 
+    <view wx:for="{{allquestionsData}}" class="allquestionsBox" wx:key="index" wx:for-item="" data-index="{{index+1}}" bindtap="jumpTosomeoneQuestion">
+       <view class="{{allquestionsData[index].answer ? 'allquestionsBox-child':'allquestionsBox-child1' }}" >
+          {{index+1}}
+       </view>      
+      
+    </view>
+  </van-popup>
+  
+  <view class="btn"  bindtap="BeforeStep" hidden="{{hiddenBeforeStep}}"> 上一题 </view>
+  <view class="btn"  bindtap="NextStep" hidden="{{hiddenNextStep}}"> 下一题 </view>
+  <!-- <view class="btn" style="" bindtap="Complete" hidden="{{hiddenComplete}}"> 完成考试 </view> -->
+</view>

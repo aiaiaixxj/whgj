@@ -1,39 +1,113 @@
 /* pages/AlltestDetail/AlltestDetail.wxss */
-.container{
+.container {
   padding: 0 0;
 }
-.title{
-display: flex;
-text-indent: 2em;
-}
-.radioGroup{
- 
 
-  margin: 16px;
+.title {
+  display: flex;
+  text-indent: 2em;
+}
+
+.radioGroup {
+  margin: 10px;
   position: fixed;
-  top: 40%;
+  top: 17%;
+  left: 0;
 }
-radio{
-  margin:10rpx
-}
-.bottom-bar {
 
-position: fixed;
+.checkboxGroup {
+  margin: 10px;
+  position: fixed;
+  top: 17%;
+  left: 0;
+}
+
+/* 未选中的 背景样式 */
+checkbox .wx-checkbox-input {
+
+  /* 背景的高 */
+  line-height: 35rpx;
+  border-radius: 50%;
+  /* 圆角:border-radius: 50%; */
+  margin: 10rpx
+}
+
+radio {
+  margin: 10rpx
+}
+
+.bottom-bar {
+  position: fixed;
   /* background-color: #EEEEEE; */
   bottom: 20px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  width: 100%;
+  justify-content: center;
 }
-.btn{
+
+.btn {
   background-color: #D8271D;
   color: white;
   font-size: 20px;
   letter-spacing: 3px;
-  width: 117px;
+  width: 132px;
   height: 40px;
   line-height: 40px;
   text-align: center;
-  margin: 0px 10px;
+  margin: 0 10px;
+  border-radius: 20px;
 }
-  
+
+view .van-field__input {
+  background-color: pink;
+  border: 1px red solid;
+}
+
+view .van-button {
+  width: 132px;
+  height: 40px;
+  margin: 0 10px;
+}
+
+.all {
+  width: 56px;
+  height: 40px;
+}
+
+.datika {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 12px;
+}
+
+view .van-bottom-enter-to {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.allquestionsBox {
+  position: relative;
+  top: 50px;
+}
+
+.allquestionsBox-child {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: #1099FB;
+  text-align: center;
+  line-height: 40px;
+  margin: 8px 8px;
+}
+
+.allquestionsBox-child1 {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: #D3D3D3;
+  text-align: center;
+  line-height: 40px;
+  margin: 8px 8px;
+}
