@@ -59,6 +59,7 @@ radio {
 }
 
 view .van-field__input {
+  text-align: center;
   background-color: pink;
   border: 1px red solid;
 }
@@ -110,4 +111,26 @@ view .van-bottom-enter-to {
   text-align: center;
   line-height: 40px;
   margin: 8px 8px;
+}
+input{
+  background-color: pink;
+}
+.ans-btn {
+  margin: 120rpx 32rpx 32rpx 32rpx;
+  opacity: 0.5;
+  background: #4193FF;
+  border-radius: 6px;
+  text-align: center;
+  height: 92rpx;
+  line-height: 92rpx;
+  font-family: 'PingFangSC-Regular';
+  font-size: 15px;
+  color: #FFFFFF;
+}
+.ans-btn-active {
+  opacity: 1;
+}
+view .van-progress{
+  width: 90%;
+  left: 5%;
 }

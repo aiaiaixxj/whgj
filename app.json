@@ -1,20 +1,18 @@
 {
   "pages": [
-    "pages/Alltest/Alltest",
     "pages/loading/loading",
+    "pages/Alltest/Alltest",
     "pages/login/login",
     "pages/index/index",
     "pages/personalInfo/personalInfo",
     "pages/TestRecord/TestRecord",
     "pages/Allcourses/Allcourses",
-    "pages/tab4/tab4",
     "pages/Announcements/Announcements",
     "pages/Dynamicwork/Dynamicwork",
     "pages/Dryteachinginformation/Dryteachinginformation",
     "pages/Newsdetail/Newsdetail",
     "pages/AllTrainingCourses/AllTrainingCourses",
     "pages/AllTrainingCoursesList/AllTrainingCoursesList",
-   
     "pages/TrainingCoursesRecord/TrainingCoursesRecord",
     "pages/CourseRecord/CourseRecord",
     "pages/AllcoursesDetail/AllcoursesDetail",

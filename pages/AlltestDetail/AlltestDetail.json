@@ -4,6 +4,10 @@
     "van-button": "@vant/weapp/button/index",
     "van-popup": "@vant/weapp/popup/index",
     "van-checkbox": "@vant/weapp/checkbox/index",
-    "van-checkbox-group": "@vant/weapp/checkbox-group/index"
-  }
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+    "Completion": "../Completion/Completion",
+    "van-progress": "@vant/weapp/progress/index"
+  },
+  "disableScroll":true
+
 }

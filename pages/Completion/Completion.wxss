@@ -1,0 +1,27 @@
+/* pages/Completion/Completion.wxss */
+.fill-item {
+  font-family: 'PingFangSC-Semibold';
+  font-size: 32rpx;
+  color: #333333;
+  letter-spacing: 0;
+  line-height: 64rpx;
+  margin: 30rpx 32rpx 20rpx 32rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+ .fill-input {
+   width: 196rpx;
+   height: 52rpx;
+   background: #FFFFFF;
+   border: 1px solid #4193FF;
+   border-radius: 4px;
+   margin: 0 20rpx;
+   padding: 0 10rpx;
+   font-family: 'PingFangSC-Regular';
+   font-size: 32rpx;
+   color: #2F89FF;
+   letter-spacing: 0;
+   line-height: 44rpx;
+   display: inline-block;
+   vertical-align: middle;
+ }

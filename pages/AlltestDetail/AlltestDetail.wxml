@@ -1,10 +1,17 @@
 <!--pages/AlltestDetail/AlltestDetail.wxml-->
-<view>
-  <text></text>
+<view style="height: 27px;position: relative;top: 14px;">
+  <van-progress
+custom-class="custom-class"
+  percentage="{{percentage}}"
+  pivot-text="{{percentage}}%"
+  pivot-color="#FF0000"
+  color="#ee0a24"
+/>
 </view>
 
 <view class="container" wx:for="{{questionArray}}" wx:key="index" wx:for-item="questionitem">
   <view class="title">
+    
     <text>{{pageno}}.{{questionitem.name}}</text>
   </view>
   <view wx:if="{{questionitem.type ==0}}">
@@ -55,21 +62,26 @@
   <view wx:if="{{questionitem.type ==4}}" style="display: flex;flex-direction: row;">
         <view wx:for="{{questionitem.optionArray}}" wx:key="index" wx:for-item="optionitem">
           <view style="">
-            <!-- <radio value='{{questionitem.id}},{{optionitem.id}}' checked="{{optionitem.check}}">
-              {{optionitem.name}}
-            </radio> -->
+          
             <van-cell-group >
                  <van-field
-                   value="{{}}"
+                 data-id="{{questionitem.id}}"
+                   value="{{a}}"
+                   clearable
+                   center="{{true}}"
                    placeholder=""
                    input-class="inputClass"
                    maxlength="1"
                   bind:change="onChangeinput"
                   bind:click="onChangeinputclick"
+                  bind:blur="onChangeinputblur"
                            />
             </van-cell-group>
+           
           </view>
         </view>
+        <!-- <Completion  question="{{question}}"
+             bind:CompletionEvent="fnGetChildParamEvent"></Completion> -->
   </view>
 
           

@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "Completion": "../Completion/Completion"
+  },
   "navigationBarTitleText": "个人中心"
 }
