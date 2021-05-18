@@ -6,7 +6,9 @@
 		<!-- <navigator  url="../AllTrainingCoursesDetail/AllTrainingCoursesDetail?index={{resdata[index].id}}" style="" class="navigator"> -->
 		<view class="navigator" >
 			<!-- <image class="head" src="https://whtx.gkybi.com.cn{{resdata[index].titleImg}}"></image> -->
-			<image class="head" src="../../images/title.png"></image>
+			<view class="imgBorder">
+        <image class="head" src="../../images/title.png"></image>
+      </view>
 			<view class="center">
 				<view class="name">
 					<text class="name-text"> {{resdata[index].name}}</text>
@@ -14,7 +16,7 @@
 				<view   class="data_time">
 					<view class="code">开始时间：{{resdata[index].startDate}} </view>
           <view class="code">结束时间：{{resdata[index].endDate}} </view>
-				  <view class="code" style="margin-left:70%;margin-top:-20px">{{statusArry[index]}} </view>
+				  <view class="" style="position: absolute;left:82%;font-size:24rpx;color:#999;margin-top:38rpx;">{{statusArry[index]}} </view>
 				</view>
 			</view>
 		</view>

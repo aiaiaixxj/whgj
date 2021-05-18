@@ -5,8 +5,8 @@
     "van-popup": "@vant/weapp/popup/index",
     "van-checkbox": "@vant/weapp/checkbox/index",
     "van-checkbox-group": "@vant/weapp/checkbox-group/index",
-    "Completion": "../Completion/Completion",
-    "van-progress": "@vant/weapp/progress/index"
+    "van-progress": "@vant/weapp/progress/index",
+    "Completion": "../Completion/Completion"
   },
   "disableScroll":true
 

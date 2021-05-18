@@ -10,7 +10,7 @@
   flex-wrap: wrap;
 }
  .fill-input {
-   width: 196rpx;
+   width: 57rpx;
    height: 52rpx;
    background: #FFFFFF;
    border: 1px solid #4193FF;

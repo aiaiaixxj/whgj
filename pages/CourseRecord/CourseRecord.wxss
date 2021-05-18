@@ -50,14 +50,12 @@ page {
 }
 
 .navigator {
-
   /* padding: 10rpx 10rpx; */
   display: flex;
- flex-direction: row;
-  border-bottom: 2rpx solid #C0C0C0;
-  padding-bottom: 30rpx;
- margin-top: 30rpx;
-
+  flex-direction: row;
+  border-bottom: 2rpx solid #EAEAEA;
+  padding-bottom: 26rpx;
+  margin-top: 25rpx;
 }
 
 .head {
@@ -68,9 +66,16 @@ page {
   margin-left: 25rpx;
 }
 
+.imgBorder {
+  border: 3rpx solid #EAEAEA;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  margin-left:25rpx;
+}
+
 .center {
-  flex-grow: 1;
-  height: 80rpx;
+  margin-left: 12rpx;
+  margin-top: 13rpx;
 }
 
 .name {

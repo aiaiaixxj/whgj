@@ -13,7 +13,9 @@
     <!-- <navigator  url="../AllTrainingCoursesDetail/AllTrainingCoursesDetail?index={{resdata[index].id}}" style="" class="navigator"> -->
     <view class="navigator" >
       <!-- <image class="head" src="https://whtx.gkybi.com.cn{{resdata[index].titleImg}}"></image> -->
-      <image class="head" src="../../images/title.png"></image>
+      <view class="imgBorder">
+        <image class="head" src="../../images/title.png"></image>
+      </view>
       <view class="center">
         <view class="name">
           <text class="name-text"> {{resdata[index].name}}</text>
@@ -21,7 +23,7 @@
         <view class="code">讲师：{{resdata[index].teachers}} </view>
         <view class="code">选课人数：{{resdata[index].users}} </view>
         <!-- <view class="code" style="margin-top:-18px;margin-left:60%">{{statusArry[index]}} </view> -->
-         <view class="code" style="margin-top:-30px;margin-left:60%">已学进度：{{resdata[index].progress}} </view>
+         <view class="" style="position: absolute;left:73%;font-size:24rpx;color:#999;margin-top:-53rpx;">已学进度：{{resdata[index].progress}} </view>
       </view>
     </view>
     <!-- </navigator> -->

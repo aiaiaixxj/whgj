@@ -131,6 +131,12 @@ input{
   opacity: 1;
 }
 view .van-progress{
-  width: 90%;
-  left: 5%;
+  width: 100%;
+  /* left: 5%; */
+}
+progress{
+  width: 88%;
+}
+.progress-box{
+  display: flex;
 }

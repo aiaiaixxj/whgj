@@ -1,5 +1,5 @@
 <!--pages/AlltestDetail/AlltestDetail.wxml-->
-<view style="height: 27px;position: relative;top: 14px;">
+<!-- <view style="height: 27px;position: relative;top: 14px;">
   <van-progress
 custom-class="custom-class"
   percentage="{{percentage}}"
@@ -7,11 +7,17 @@ custom-class="custom-class"
   pivot-color="#FF0000"
   color="#ee0a24"
 />
+</view> -->
+<view class="progress-box">
+  <progress percent="{{percentage}}" color="#ee0a24" active-mode="forwards"  active stroke-width="3"
+    duration="0" />
+    <!-- <icon class="progress-cancel" type="cancel"></icon> -->
+    <view>{{pageno}}</view>
+    <view>/{{totalpage}}</view>
 </view>
 
 <view class="container" wx:for="{{questionArray}}" wx:key="index" wx:for-item="questionitem">
   <view class="title">
-    
     <text>{{pageno}}.{{questionitem.name}}</text>
   </view>
   <view wx:if="{{questionitem.type ==0}}">
@@ -31,19 +37,17 @@ custom-class="custom-class"
     <view class="checkboxGroup">
       <checkbox-group bindchange="checkboxChange" data-checks="{{}}">
         <view wx:for="{{questionitem.optionArray}}" wx:key="index" wx:for-item="optionitem">
-          
-            <checkbox value='{{questionitem.id}},{{optionitem.id}}' data-id="{{questionitem.id}}"
-              bindtap="check" checked="{{optionitem.check}}">
-              {{optionitem.name}}
-            </checkbox>
-        
+          <checkbox value='{{questionitem.id}},{{optionitem.id}}' data-id="{{questionitem.id}}" bindtap="check"
+            checked="{{optionitem.check}}">
+            {{optionitem.name}}
+          </checkbox>
         </view>
       </checkbox-group>
     </view>
   </view>
   <view wx:elif="{{questionitem.flag ==2}}" bindtap="handleJumpPage" data-id="{{questionitem.id}}">
     <view class="textarea-wrp">
-      <textarea bindblur="bindTextAreaBlur" style="height:200px;" value="{{questionitem.remark}}"  />
+      <textarea bindblur="bindTextAreaBlur" style="height:200px;" value="{{questionitem.remark}}" />
       </view>
   </view>  
   <view wx:if="{{questionitem.type ==3}}">
@@ -60,9 +64,8 @@ custom-class="custom-class"
     </view>
   </view>
   <view wx:if="{{questionitem.type ==4}}" style="display: flex;flex-direction: row;">
-        <view wx:for="{{questionitem.optionArray}}" wx:key="index" wx:for-item="optionitem">
-          <view style="">
-          
+        <!-- <view wx:for="{{questionitem.optionArray}}" wx:key="index" wx:for-item="optionitem">
+          <view style="">  
             <van-cell-group >
                  <van-field
                  data-id="{{questionitem.id}}"
@@ -76,16 +79,15 @@ custom-class="custom-class"
                   bind:click="onChangeinputclick"
                   bind:blur="onChangeinputblur"
                            />
-            </van-cell-group>
-           
+            </van-cell-group>      
           </view>
-        </view>
-        <!-- <Completion  question="{{question}}"
-             bind:CompletionEvent="fnGetChildParamEvent"></Completion> -->
-  </view>
-
-          
+        </view> -->
+        <Completion  question="{{question}}"  testData="{{testData}}"
+             bind:CompletionEvent="fnGetChildParamEvent">  
+        </Completion>
+  </view>         
 </view>
+
 <view class="bottom-bar" >
   <view  class="datika" bindtap="getAllquestions" >
     <image src="../../images/card.png"  class="all"></image>
@@ -104,10 +106,8 @@ custom-class="custom-class"
        <view class="{{allquestionsData[index].answer ? 'allquestionsBox-child':'allquestionsBox-child1' }}" >
           {{index+1}}
        </view>      
-      
     </view>
   </van-popup>
-  
   <view class="btn"  bindtap="BeforeStep" hidden="{{hiddenBeforeStep}}"> 上一题 </view>
   <view class="btn"  bindtap="NextStep" hidden="{{hiddenNextStep}}"> 下一题 </view>
   <!-- <view class="btn" style="" bindtap="Complete" hidden="{{hiddenComplete}}"> 完成考试 </view> -->
