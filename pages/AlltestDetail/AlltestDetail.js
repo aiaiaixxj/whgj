@@ -5,6 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    questionType:'',
+    hiddenBeforeStep:true,
+    hiddenNextStep:false,
+    hiddenComplete:true,
     trainingclassId: '',
     courseId: '',
     examId: '',
@@ -38,18 +42,20 @@ Page({
     canshowAllquestions: false,
     allquestionsData: '',
     questionId: '',
+    fieldQuestionId:'',
     optionId: '',
     focus: false,
     flag: false,
     fieldContentArry: [],
     percentage:'',
-    question: {
-      content: '坚定文化自信，是事关国运兴衰，事关文化安全、事关民族精神独立性的大问题。坚定中国特色社会主义_、_、_，说到底就是要坚定文化自信。讲文化自信，我们有充足的理由和充足的底气，因为中国特色社会主义文化_、_、_、_',
-      title: '填空题',
-      score: 10,
-      answer: '道路自信;理论自信;制度自信;源自于博大精深的中华优秀传统文化;承继于激昂向上的革命文化;熔铸于生机勃勃的社会主义先进文化;植根于中国特色社会主义伟大实践',
-      id:1
-    }, // 从后台获取的题目信息
+    // question: {
+    //   content: '坚定文化自信，是事关国运兴衰，事关文化安全、事关民族精神独立性的大问题。坚定中国特色社会主义_、_、_，说到底就是要坚定文化自信。讲文化自信，我们有充足的理由和充足的底气，因为中国特色社会主义文化_、_、_、_',
+    //   title: '填空题',
+    //   score: 10,
+    //   answer: '道路自信;理论自信;制度自信;源自于博大精深的中华优秀传统文化;承继于激昂向上的革命文化;熔铸于生机勃勃的社会主义先进文化;植根于中国特色社会主义伟大实践',
+    //   id:1
+    // }, // 从后台获取的题目信息
+    question:'',
     testData:{
       id:1,
       content:'因为中国特@色社会@主义文化,源自于博大精深的中华@优秀传统文化'
@@ -75,6 +81,8 @@ Page({
         console.log("res=>", res.data)
         that.setData({
           questionArray: res.data.array,
+          question:res.data.array[0].name,
+          questionType:res.data.array[0].type,
           totalpage: res.data.totalPage,
           pageno: options.currentTarget.dataset.index,
           percentage: parseInt(options.currentTarget.dataset.index/res.data.totalPage*100)
@@ -314,19 +322,30 @@ Page({
     var that = this;
     if (that.data.pageno == 1) {
       that.setData({
-        pageno: 1
+        pageno: 1,
+        hiddenNextStep:false,
+        hiddenBeforeStep:true,
+        hiddenComplete:true
       })
       return
     }
     that.setData({
-      pageno: that.data.pageno - 1
+      pageno: that.data.pageno - 1,
+      hiddenNextStep:false,
+      hiddenBeforeStep:false,
+      hiddenComplete:true
     })
 
     if (that.data.pageno < that.data.totalpage) {
+      
       that.getNewData();
+    
+      console.log("that.data.pageno", that.data.pageno);
     }
-
-    console.log("that.data.pageno", that.data.pageno);
+    setTimeout(()=>{
+      console.log("questionType=>",that.data.questionType)
+    },200)
+   
   },
   /**
    * 
@@ -341,29 +360,122 @@ Page({
     //     duration: 2000
     //   })
     // } else {
-
-
     var that = this;
-
     if (that.data.pageno == that.data.totalpage) {
       that.setData({
-        pageno: that.data.totalpage
+        pageno: that.data.totalpage,
+        hiddenNextStep:true,
+        hiddenBeforeStep:false,
+        hiddenComplete:false
       })
       console.log("当前页等于总页数", that.data.pageno, that.data.totalpage)
     } else {
       that.setData({
-        pageno: that.data.pageno + 1
+        pageno: that.data.pageno + 1,
+        hiddenNextStep:false,
+        hiddenBeforeStep:false,
+        hiddenComplete:true
       })
       console.log("当前页小于总页数", that.data.pageno, that.data.totalpage)
       that.getNewData();
+    
+      console.log("当前页数", that.data.pageno)
+     
     }
-
+  
+    if(that.data.pageno == that.data.totalpage){
+      that.setData({
+        hiddenNextStep:true,
+        hiddenBeforeStep:false,
+        hiddenComplete:false
+      })
+    }
     console.log("that.data.pageno", that.data.pageno);
     that.setData({
       a: ''
     })
+    setTimeout(()=>{
+      console.log("questionType=>",that.data.questionType)
+      console.log("that.data.answer",that.data.answer)
+      console.log("that.data.answer!=',,,,'",that.data.answer!=',,,,')
+      if(that.data.questionType==4){
+        wx.request({
+          url: app.globalData.URi + '/applets/exam/option_save.jspx', //自己的服务接口地址
+          method: 'post',
+          data: {
+            userId: wx.getStorageSync('userId'),
+            options: that.data.answer,
+            themeId: that.data.fieldQuestionId
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success: function (res) {
+            console.log(res.data);
+            that.setData({
+              answer:''
+            })
+          }
+        })
+      }
+     
+    },200)
+ 
     // }
   },
+    /**
+   * 完成考试
+   */
+  Complete(){
+    
+    var that=this
+    console.log("当前页数", that.data.pageno)
+    wx.request({
+      url: app.globalData.URi + '/applets/exam/option_save.jspx', //自己的服务接口地址
+      method: 'post',
+      data: {
+        userId: wx.getStorageSync('userId'),
+        options: that.data.answer,
+        themeId: that.data.fieldQuestionId
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res.data);
+        that.setData({
+          answer:''
+        })
+      }
+    })
+    setTimeout(()=>{
+      wx.request({
+        url: app.globalData.URi + '/applets/exam/finish.jspx', //自己的服务接口地址
+        method: 'post',
+        data: {
+          // userId: wx.getStorageSync('userId'),
+          // options: that.data.answer,
+          // themeId: that.data.fieldQuestionId
+          examuserId:that.data.examuserId
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          console.log(res.data);
+         
+        }
+      })
+
+    },200)
+    // setTimeout(()=>{
+    //   wx.navigateTo({
+    //     url: '../finishTest/finishTest?examuserId=' + that.data.examuserId
+    //    })
+    // },200)
+   
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -397,10 +509,12 @@ Page({
         console.log("res=>", res.data)
         that.setData({
           questionArray: res.data.array,
+          questionType:res.data.array[0].type,
           totalpage: res.data.totalPage,
           resdata: res.data,
           percentage: parseInt(that.data.pageno/res.data.totalPage*100)
         })
+        // console.log("questionType=>",that.data.questionType)
         
       },
       fail: function () {
@@ -427,9 +541,12 @@ Page({
         console.log("res=>", res.data)
         that.setData({
           questionArray: res.data.array,
+          question:res.data.array[0].name,
+          questionType:res.data.array[0].type,
           totalpage: res.data.totalPage,
           percentage: parseInt(that.data.pageno/res.data.totalPage*100)
         })
+        console.log("questionType=>",that.data.questionType)
         console.log('Math.floor(that.data.pageno/res.data.totalPage) ',that.data.pageno/res.data.totalPage*100)
       },
       fail: function () {
@@ -492,12 +609,10 @@ Page({
       // })
     }
   },
-
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
   },
   /**
    * 接收填空题组件的值来控制按钮isactive
@@ -512,8 +627,11 @@ Page({
     } = e.detail;
     this.setData({
       isBtnActive,
-      answer
+      answer,
+      fieldQuestionId:e.currentTarget.dataset.id
     });
+    console.log("isBtnActive=>",this.data.isBtnActive)
+    console.log("answer=>",this.data.answer)
   },
   /**
    * 点击确定，调后台接口保存用户答题的答案

@@ -93,22 +93,25 @@ Page({
           })
         } 
         if (res.data.status == 3 ) {
-          wx.request({
-            url: app.globalData.URi + '/applets/exam/start.jspx', //自己的服务接口地址
-            method: 'post',
-            data: {
-              examuserId: that.data.detail.examuserId,
-            },
-            header: {
-              'content-type': 'application/x-www-form-urlencoded'
-            },
-            success: function (res) {
-              console.log("res=>", res)
-            },
-            fail: function () {
-              console.log('系统错误！')
-            }
-          })
+          wx.navigateTo({
+            url: '../finishTest/finishTest?examuserId=' + res.data.examuserId
+           })
+          // wx.request({
+          //   url: app.globalData.URi + '/applets/exam/start.jspx', //自己的服务接口地址
+          //   method: 'post',
+          //   data: {
+          //     examuserId: that.data.detail.examuserId,
+          //   },
+          //   header: {
+          //     'content-type': 'application/x-www-form-urlencoded'
+          //   },
+          //   success: function (res) {
+          //     console.log("res=>", res)
+          //   },
+          //   fail: function () {
+          //     console.log('系统错误！')
+          //   }
+          // })
         } 
         if (res.data.status == -1 ) {
           Toast('已超出最大限制');

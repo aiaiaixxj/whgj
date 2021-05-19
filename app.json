@@ -16,7 +16,8 @@
     "pages/TrainingCoursesRecord/TrainingCoursesRecord",
     "pages/CourseRecord/CourseRecord",
     "pages/AllcoursesDetail/AllcoursesDetail",
-    "pages/AlltestDetail/AlltestDetail"
+    "pages/AlltestDetail/AlltestDetail",
+    "pages/finishTest/finishTest"
   ],
   "window": {
     "backgroundTextStyle": "light",

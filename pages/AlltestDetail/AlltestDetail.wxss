@@ -71,8 +71,8 @@ view .van-button {
 }
 
 .all {
-  width: 56px;
-  height: 40px;
+  width: 36px;
+  height: 32px;
 }
 
 .datika {
@@ -139,4 +139,7 @@ progress{
 }
 .progress-box{
   display: flex;
+}
+.Completion{
+  text-indent: 2em;
 }

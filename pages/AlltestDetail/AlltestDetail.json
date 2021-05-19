@@ -8,6 +8,9 @@
     "van-progress": "@vant/weapp/progress/index",
     "Completion": "../Completion/Completion"
   },
-  "disableScroll":true
+  "disableScroll":true,
+  "navigationBarTitleText": "考试详情",
+  "navigationBarBackgroundColor": "#FF0000",
+  "navigationBarTextStyle": "white"
 
 }

@@ -18,7 +18,7 @@ custom-class="custom-class"
 
 <view class="container" wx:for="{{questionArray}}" wx:key="index" wx:for-item="questionitem">
   <view class="title">
-    <text>{{pageno}}.{{questionitem.name}}</text>
+    <text wx:if="{{questionitem.type!=4}}">{{pageno}}.{{questionitem.name}}</text>
   </view>
   <view wx:if="{{questionitem.type ==0}}">
     <view class="radioGroup">
@@ -64,6 +64,7 @@ custom-class="custom-class"
     </view>
   </view>
   <view wx:if="{{questionitem.type ==4}}" style="display: flex;flex-direction: row;">
+    
         <!-- <view wx:for="{{questionitem.optionArray}}" wx:key="index" wx:for-item="optionitem">
           <view style="">  
             <van-cell-group >
@@ -82,7 +83,8 @@ custom-class="custom-class"
             </van-cell-group>      
           </view>
         </view> -->
-        <Completion  question="{{question}}"  testData="{{testData}}"
+ 
+        <Completion  class="Completion" question="{{pageno}}.{{question}} "   data-id='{{questionitem.id}}'
              bind:CompletionEvent="fnGetChildParamEvent">  
         </Completion>
   </view>         
@@ -95,10 +97,10 @@ custom-class="custom-class"
   </view>
   <van-popup 
   show="{{ canshowAllquestions }}"
-  position="bottom"
   closeable
   duration="500"
   close-icon="close"
+  position="bottom"
   custom-style="height: 60%;"
   bind:close="CloseAllquestionspanel"
   > 
@@ -110,5 +112,5 @@ custom-class="custom-class"
   </van-popup>
   <view class="btn"  bindtap="BeforeStep" hidden="{{hiddenBeforeStep}}"> 上一题 </view>
   <view class="btn"  bindtap="NextStep" hidden="{{hiddenNextStep}}"> 下一题 </view>
-  <!-- <view class="btn" style="" bindtap="Complete" hidden="{{hiddenComplete}}"> 完成考试 </view> -->
+  <view class="btn" style="" bindtap="Complete" hidden="{{hiddenComplete}}"> 完成考试 </view>
 </view>

@@ -1,5 +1,5 @@
 /* pages/Completion/Completion.wxss */
-.fill-item {
+/* .fill-item {
   font-family: 'PingFangSC-Semibold';
   font-size: 32rpx;
   color: #333333;
@@ -8,7 +8,8 @@
   margin: 30rpx 32rpx 20rpx 32rpx;
   display: flex;
   flex-wrap: wrap;
-}
+} */
+
  .fill-input {
    width: 57rpx;
    height: 52rpx;

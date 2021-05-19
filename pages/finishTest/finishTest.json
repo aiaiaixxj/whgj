@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-popup": "@vant/weapp/popup/index",
+    "Completion": "../Completion/Completion"
+  },
+  "navigationBarTitleText": "在线考试评分",
+  "navigationBarBackgroundColor": "#FF0000",
+  "navigationBarTextStyle": "white"
+}

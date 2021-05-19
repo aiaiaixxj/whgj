@@ -5,12 +5,12 @@ Component({
   properties: {
     // 父组件传过来的题目数据
     question: {
-      type: Object,
+      type: String,
       observer: function (news, old, path) {
-        const titleArr = news.content.split(''); // 将题目分割为数组
+        const titleArr = news.split(''); // 将题目分割为数组
         let inputMap = new Map(); // 新建map
         for (let i = 0; i < titleArr.length; i++) { // 遍历分割的数组
-          if (titleArr[i] === '_') {
+          if (titleArr[i] === '@') {
             inputMap.set(i, ''); // 如果遇到下划线，就set进map里
           }
         }
@@ -18,8 +18,8 @@ Component({
           titleArr,
           inputMap
         })
-        console.log("titleArr=>", this.data.titleArr)
-        console.log("inputMap=>", this.data.inputMap)
+        // console.log("titleArr=>", this.data.titleArr)
+        // console.log("inputMap=>", this.data.inputMap)
       }
     },
     testData: {
@@ -36,8 +36,8 @@ Component({
           titleArr,
           inputMap
         })
-        console.log("titleArr=>", this.data.titleArr)
-        console.log("inputMap=>", this.data.inputMap)
+        // console.log("titleArr=>", this.data.titleArr)
+        // console.log("inputMap=>", this.data.inputMap)
       }
     }
   },
@@ -51,17 +51,17 @@ Component({
     testData: []
   },
   observers:{
-    '**' (val) {
-      console.log('**所有的setData变化：', val) // 此时返回的 val 值是一个包含所有data变量的对象
-    },
-    // 监听 properties 接收的值的变化
-    'question' (val) {
-      console.log('observers-question', val)
-    },
-    // 监听对象
-    'question' (val) {
-      console.log('observers-question', val)
-    }
+    // '**' (val) {
+    //   console.log('**所有的setData变化：', val) // 此时返回的 val 值是一个包含所有data变量的对象
+    // },
+    // // 监听 properties 接收的值的变化
+    // 'question' (val) {
+    //   console.log('observers-question', val)
+    // },
+    // // 监听对象
+    // 'question' (val) {
+    //   console.log('observers-question', val)
+    // }
   },
 
   /**
@@ -77,7 +77,7 @@ Component({
       this.data.inputMap.forEach((value, key) => {
         answerRes += value + ','
       })
-      answerRes = answerRes.substring(0, answerRes.length - 1);
+      answerRes = answerRes.substring(0, answerRes.length);
       let btnActive = {
         isBtnActive: true,
         answer: answerRes
