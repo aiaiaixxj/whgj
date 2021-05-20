@@ -83,15 +83,15 @@ custom-class="custom-class"
             </van-cell-group>      
           </view>
         </view> -->
- 
-        <Completion  class="Completion" question="{{pageno}}.{{question}} "   data-id='{{questionitem.id}}'
+        {{pageno}}.
+        <Completion  class="Completion" questiondata="{{question}}"   data-id='{{questionitem.id}}'
              bind:CompletionEvent="fnGetChildParamEvent">  
         </Completion>
   </view>         
 </view>
 
 <view class="bottom-bar" >
-  <view  class="datika" bindtap="getAllquestions" >
+  <view wx:if="{{datika}}"  class="datika" bindtap="getAllquestions" >
     <image src="../../images/card.png"  class="all"></image>
     <text>答题卡</text>
   </view>

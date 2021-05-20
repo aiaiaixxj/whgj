@@ -12,7 +12,8 @@ Page({
     examuserId:'',
     questionArray:'',
     pageno:'',
-    question:'',
+    question:[],
+    rightAnswerArray:''
   },
   jumpTosomeoneQuestion(options) {
     var that=this
@@ -36,11 +37,16 @@ Page({
       },
       success: function (res) {
         console.log(res.data);
+        var qusetionnamearray=[];
+        qusetionnamearray.push(res.data.array[0].name);
+        qusetionnamearray.push(res.data.array[0].optionArray)
         that.setData({
           questionArray:res.data.array,
           pageno:id,
-          question:res.data.array[0].name,
+          question:  qusetionnamearray ,
+         
         })
+        console.log("question=========>>>>", that.data.question)
       }
     })
   },
@@ -54,10 +60,22 @@ Page({
       canshowAllquestions: false,
     })
   },
+      /**
+   * 
+   * 重新考试
+   */
+  ReTest(){
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const page = getCurrentPages();
+    console.log("page=>",page)
+
     var that = this
     console.log("options=>", options)
     wx.request({
@@ -77,7 +95,8 @@ Page({
         that.setData({
           resArraylist: res.data.array,
           resData: res.data,
-          examuserId:options.examuserId
+          examuserId:options.examuserId,
+          
         })
       }
     })

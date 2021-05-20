@@ -6,14 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    searchCancle:false,
-    canshowContent:true,
-    canshowQuerryContent:false,
-    name:'',
+    topscore:'',
+    showWxcDialog:false,
+    searchCancle: false,
+    canshowContent: true,
+    canshowQuerryContent: false,
+    name: '',
     userId: '',
-    dataResComplete:'',
+    dataResComplete: '',
     resdata: [],
-    coursesList:[],
+    coursesList: [],
     totalpage: '',
     pageNo: 1,
     listLock: 1,
@@ -31,19 +33,19 @@ Page({
       id: 1
     }, ],
   },
-  gotoOtherpages:function(options){
+  gotoOtherpages: function (options) {
     var that = this;
     var id = options.currentTarget.dataset.id;
-    console.log("id=>",id)
-    console.log("options=>",options)
+    console.log("id=>", id)
+    console.log("options=>", options)
     wx.request({
       url: app.globalData.URi + '/applets/exam/status.jspx',
       data: {
-        examId:id,
-        userId:wx.getStorageSync("userId")
+        examId: id,
+        userId: wx.getStorageSync("userId")
       },
       method: 'GET', //方法分GET和POST，根据需要写
-      header: { 
+      header: {
         'Content-Type': 'application/json'
       },
       success: function (res) { //这里写调用接口成功之后所运行的函数
@@ -52,7 +54,7 @@ Page({
         that.setData({
           detail: res.data,
         })
-        if (res.data.status == 1 ) {
+        if (res.data.status == 1) {
           wx.request({
             url: app.globalData.URi + '/applets/exam/start.jspx', //自己的服务接口地址
             method: 'post',
@@ -72,9 +74,9 @@ Page({
               console.log('系统错误！')
             }
           })
-         
-        } 
-        if (res.data.status == 2 ) {
+
+        }
+        if (res.data.status == 2) {
           wx.request({
             url: app.globalData.URi + '/applets/exam/start.jspx', //自己的服务接口地址
             method: 'post',
@@ -91,50 +93,53 @@ Page({
               console.log('系统错误！')
             }
           })
-        } 
-        if (res.data.status == 3 ) {
-          wx.navigateTo({
-            url: '../finishTest/finishTest?examuserId=' + res.data.examuserId
-           })
-          // wx.request({
-          //   url: app.globalData.URi + '/applets/exam/start.jspx', //自己的服务接口地址
-          //   method: 'post',
-          //   data: {
-          //     examuserId: that.data.detail.examuserId,
-          //   },
-          //   header: {
-          //     'content-type': 'application/x-www-form-urlencoded'
-          //   },
-          //   success: function (res) {
-          //     console.log("res=>", res)
-          //   },
-          //   fail: function () {
-          //     console.log('系统错误！')
-          //   }
-          // })
-        } 
-        if (res.data.status == -1 ) {
+        }
+        if (res.data.status == 3) {
+          // wx.navigateTo({
+          //   url: '../finishTest/finishTest?examuserId=' + res.data.examuserId
+          //  })
+          that.setData({
+          topscore:  res.data.topscore
+          })
+          that.showDialog()
+          wx.request({
+            url: app.globalData.URi + '/exam/inner_member/o_clear_option.jspx', //自己的服务接口地址
+            method: 'post',
+            data: {
+              examuserId: that.data.detail.examuserId,
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (res) {
+              console.log("res=>", res)
+            },
+            fail: function () {
+              console.log('系统错误！')
+            }
+          })
+        }
+        if (res.data.status == -1) {
           Toast('已超出最大限制');
-         
-        } 
-        if (res.data.status == -2 ) {
+
+        }
+        if (res.data.status == -2) {
           Toast('培训班未完成');
-         
-        } 
-        if (res.data.status == -3 ) {
+
+        }
+        if (res.data.status == -3) {
           Toast('未加入培训班');
-         
-        } 
-        if (res.data.status == -5 ) {
+
+        }
+        if (res.data.status == -5) {
           Toast('考试已结束');
-         
-        } 
-        if (res.data.status == -6 ) {
+
+        }
+        if (res.data.status == -6) {
           Toast('考试未开始');
-         
-        } 
-        else {
-        
+
+        } else {
+
         }
       },
       fail: function (res) { //这里写调用接口失败之后所运行的函数
@@ -173,12 +178,12 @@ Page({
     var that = this;
     // that.setData({
     //   userId: wx.getStorageSync("userId"),
-     
+
     // })
     wx.request({
       url: app.globalData.URi + '/applets/exam-list.jspx',
       data: {
-        pageNo:that.data.pageNo
+        pageNo: that.data.pageNo
       },
       method: 'GET', //方法分GET和POST，根据需要写
       header: { //定死的格式，不用改，照敲就好
@@ -189,13 +194,13 @@ Page({
         var e = res.data.exams;
         console.log(e);
         that.setData({
-         // resdata: e.courses,//res.data就是你调出来的所有数据（当然也可以在这里面自定义想要调用的数据），然后把值赋给resdata，之后对resdata进行处理即可，具体见wxml
+          // resdata: e.courses,//res.data就是你调出来的所有数据（当然也可以在这里面自定义想要调用的数据），然后把值赋给resdata，之后对resdata进行处理即可，具体见wxml
           totalPage: res.data.totalPage,
-            coursesList:e
+          coursesList: e
         })
         var contentlistTem = that.data.resdata;
         if (that.data.pageNo == 1) {
-          contentlistTem = []; 
+          contentlistTem = [];
         }
         var resdata = e;
         if (that.data.pageNo >= res.data.totalPage) {
@@ -218,8 +223,8 @@ Page({
         wx.hideLoading();
         // complete
         that.setData({
-          dataResComplete:true 
-          })
+          dataResComplete: true
+        })
         wx.hideNavigationBarLoading() //完成停止加载
         wx.stopPullDownRefresh() //停止下拉刷新
       }
@@ -283,5 +288,155 @@ Page({
   onShareAppMessage: function () {
 
   },
+  showDialog() {
+    let dialogComponent = this.selectComponent('.wxc-dialog')
+    dialogComponent && dialogComponent.show();
+  },
+  hideDialog() {
+    let dialogComponent = this.selectComponent('.wxc-dialog')
+    dialogComponent && dialogComponent.hide();
+  },
+  onConfirm () {
+    var that =this
+    console.log('点击了确认按钮')
+    wx.request({
+      url: app.globalData.URi + '/applets/exam/option_clear.jspx', //自己的服务接口地址
+      method: 'post',
+      data: {
+        examuserId: that.data.detail.examuserId,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log("res=>", res.data)
+        wx.request({
+          url: app.globalData.URi + '/applets/exam/status.jspx',
+          data: {
+            examId:  res.data.examId,
+            userId: res.data.userId
+          },
+          method: 'GET', //方法分GET和POST，根据需要写
+          header: {
+            'Content-Type': 'application/json'
+          },
+          success: function (res) { //这里写调用接口成功之后所运行的函数
+            console.log(res)
+            console.log(res.data); //调出来的数据在控制台显示，方便查看
+            that.setData({
+              detail: res.data,
+            })
+            if (res.data.status == 1) {
+              wx.request({
+                url: app.globalData.URi + '/applets/exam/start.jspx', //自己的服务接口地址
+                method: 'post',
+                data: {
+                  examuserId: that.data.detail.examuserId,
+                },
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded'
+                },
+                success: function (res) {
+                  console.log("res=>", res.data)
+                  wx.navigateTo({
+                    url: '../AlltestDetail/AlltestDetail?examuserId=' + that.data.detail.examuserId
+                  })
+                },
+                fail: function () {
+                  console.log('系统错误！')
+                }
+              })
+    
+            }
+            if (res.data.status == 2) {
+              wx.request({
+                url: app.globalData.URi + '/applets/exam/start.jspx', //自己的服务接口地址
+                method: 'post',
+                data: {
+                  examuserId: that.data.detail.examuserId,
+                },
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded'
+                },
+                success: function (res) {
+                  console.log("res=>", res)
+                },
+                fail: function () {
+                  console.log('系统错误！')
+                }
+              })
+            }
+            if (res.data.status == 3) {
+              // wx.navigateTo({
+              //   url: '../finishTest/finishTest?examuserId=' + res.data.examuserId
+              //  })
+              that.setData({
+              topscore:  res.data.topscore
+              })
+              that.showDialog()
+              wx.request({
+                url: app.globalData.URi + '/exam/inner_member/o_clear_option.jspx', //自己的服务接口地址
+                method: 'post',
+                data: {
+                  examuserId: that.data.detail.examuserId,
+                },
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded'
+                },
+                success: function (res) {
+                  console.log("res=>", res)
+                },
+                fail: function () {
+                  console.log('系统错误！')
+                }
+              })
+            }
+            if (res.data.status == -1) {
+              Toast('已超出最大限制');
+    
+            }
+            if (res.data.status == -2) {
+              Toast('培训班未完成');
+    
+            }
+            if (res.data.status == -3) {
+              Toast('未加入培训班');
+    
+            }
+            if (res.data.status == -5) {
+              Toast('考试已结束');
+    
+            }
+            if (res.data.status == -6) {
+              Toast('考试未开始');
+    
+            } else {
+    
+            }
+          },
+          fail: function (res) { //这里写调用接口失败之后所运行的函数
+            console.log('.........fail..........');
+          },
+          complete: function () {
+            wx.hideLoading();
+            // complete
+            that.setData({
+              dataResComplete: true
+            })
+            wx.hideNavigationBarLoading() //完成停止加载
+            wx.stopPullDownRefresh() //停止下拉刷新
+          }
+        })
+      },
+      fail: function () {
+        console.log('系统错误！')
+      }
+    })
+    this.hideDialog()
+  },
+  onCancel () {
+    console.log('点击了取消按钮')
+    this.hideDialog()
+  }
 
 })

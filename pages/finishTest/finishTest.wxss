@@ -15,7 +15,7 @@
   top: 40%;
   left: 41px; */
   display: flex;
-    justify-content: center;
+  justify-content: center;
 }
 
 .checkboxGroup {
@@ -40,6 +40,7 @@ checkbox .wx-checkbox-input {
 radio {
   margin: 10rpx
 }
+
 .allquestionsBox {
   position: relative;
   top: 50px;
@@ -64,4 +65,29 @@ radio {
   text-align: center;
   line-height: 30px;
   margin: 8px 8px;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  border: none;
+  background: red;
+}
+
+radio .wx-radio-input.wx-radio-input-checked {
+  border: none;
+  background: red;
+}
+
+.btn {
+  display: flex;
+  background-color: #D8271D;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  letter-spacing: 3px;
+  width: 132px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  margin: 0 10px;
+  border-radius: 20px;
 }

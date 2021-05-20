@@ -31,3 +31,4 @@
     <p style="">{{item.title}}</p>
   </van-grid-item>
 </van-grid>
+<wxc-toast is-show="{{false}}" text="提示成功!"></wxc-toast>

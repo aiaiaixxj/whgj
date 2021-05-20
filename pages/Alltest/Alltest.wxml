@@ -1,13 +1,19 @@
 <van-toast id="van-toast" />
+
+<wxc-dialog class="wxc-dialog" title="提示" content="您已完成考试，最高分数为{{topscore}}分，确定重新考试吗" confirm-text="确认" cancel-text="取消"
+	bindconfirm="onConfirm" bindcancel="onCancel"></wxc-dialog>
+
 <view class="box transition" wx:if="{{resdata.length}}">
-	<view class="user-panel" wx:for="{{resdata}}" wx:key="index"  bindtap="gotoOtherpages" data-id="{{item.id}}">
-		<van-button type="primary" size="mini" custom-style="width:19rpx;height:42rpx;line-height:42rpx;position:relative;top:129rpx;left:590rpx" style="" class="vanbtn">{{status}}</van-button>
+	<view class="user-panel" wx:for="{{resdata}}" wx:key="index" bindtap="gotoOtherpages" data-id="{{item.id}}">
+		<van-button type="primary" size="mini"
+			custom-style="width:19rpx;height:42rpx;line-height:42rpx;position:relative;top:129rpx;left:590rpx" style=""
+			class="vanbtn">{{status}}</van-button>
 		<!-- <navigator  url="../AllTrainingCoursesDetail/AllTrainingCoursesDetail?index={{resdata[index].id}}" style="" class="navigator"> -->
 		<view class="navigator">
-      <!-- <image class="head" src="https://whtx.gkybi.com.cn{{resdata[index].titleImg}}"></image> -->
+			<!-- <image class="head" src="https://whtx.gkybi.com.cn{{resdata[index].titleImg}}"></image> -->
 			<view class="imgBorder">
-        <image class="head" src="../../images/title.png"></image>
-      </view>
+				<image class="head" src="../../images/title.png"></image>
+			</view>
 			<view class="center">
 				<view class="name">
 					<text class="name-text"> {{resdata[index].name}}</text>
@@ -20,8 +26,9 @@
 	</view>
 </view>
 <view style="top:{{height}}px;position: relative;background-color:#FFFAE6;" wx:if="{{hasMoreData&&dataResComplete}}">
-	<van-loading size="24px" color= "#EA6022" custom-class="custom-class1">加载中...</van-loading>
+	<van-loading size="24px" color="#EA6022" custom-class="custom-class1">加载中...</van-loading>
 </view>
-<view style="top:{{height}}px;position: relative;background-color:#FFFAE6;color: #EA6022;text-align: center;" wx:if="{{!hasMoreData}}">
-	<text custom-class="custom-class" > 加载完成!</text>
+<view style="top:{{height}}px;position: relative;background-color:#FFFAE6;color: #EA6022;text-align: center;"
+	wx:if="{{!hasMoreData}}">
+	<text custom-class="custom-class"> 加载完成!</text>
 </view>

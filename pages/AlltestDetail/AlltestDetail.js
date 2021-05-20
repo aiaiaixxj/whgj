@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    datika:true,
     questionType:'',
     hiddenBeforeStep:true,
     hiddenNextStep:false,
@@ -55,7 +56,7 @@ Page({
     //   answer: '道路自信;理论自信;制度自信;源自于博大精深的中华优秀传统文化;承继于激昂向上的革命文化;熔铸于生机勃勃的社会主义先进文化;植根于中国特色社会主义伟大实践',
     //   id:1
     // }, // 从后台获取的题目信息
-    question:'',
+    question:[],
     testData:{
       id:1,
       content:'因为中国特@色社会@主义文化,源自于博大精深的中华@优秀传统文化'
@@ -79,14 +80,18 @@ Page({
       },
       success: function (res) {
         console.log("res=>", res.data)
+        let questionarray =[]
+        questionarray.push(res.data.array[0].name)
+        console.log("questionarray=>",questionarray)
         that.setData({
           questionArray: res.data.array,
-          question:res.data.array[0].name,
           questionType:res.data.array[0].type,
           totalpage: res.data.totalPage,
           pageno: options.currentTarget.dataset.index,
-          percentage: parseInt(options.currentTarget.dataset.index/res.data.totalPage*100)
+          percentage: parseInt(options.currentTarget.dataset.index/res.data.totalPage*100),
+          question:questionarray,
         })
+        console.log("question=>",that.data.question)
       },
       fail: function () {
         console.log('系统错误！')
@@ -429,6 +434,12 @@ Page({
   Complete(){
     
     var that=this
+    that.setData({
+      hiddenComplete:true,
+      hiddenBeforeStep:true,
+      hiddenNextStep:true,
+      datika:false
+    })
     console.log("当前页数", that.data.pageno)
     wx.request({
       url: app.globalData.URi + '/applets/exam/option_save.jspx', //自己的服务接口地址
@@ -468,11 +479,12 @@ Page({
       })
 
     },200)
-    // setTimeout(()=>{
-    //   wx.navigateTo({
-    //     url: '../finishTest/finishTest?examuserId=' + that.data.examuserId
-    //    })
-    // },200)
+    setTimeout(()=>{
+      
+      wx.redirectTo({
+        url: '../finishTest/finishTest?examuserId=' + that.data.examuserId
+       })
+    },200)
    
   },
 
@@ -507,13 +519,21 @@ Page({
       },
       success: function (res) {
         console.log("res=>", res.data)
-        that.setData({
-          questionArray: res.data.array,
-          questionType:res.data.array[0].type,
-          totalpage: res.data.totalPage,
-          resdata: res.data,
-          percentage: parseInt(that.data.pageno/res.data.totalPage*100)
-        })
+        if(res.data.status==-1){
+            wx.redirectTo({
+            url: '../finishTest/finishTest?examuserId=' + res.data.examuserId
+           })
+        }
+        else{
+          that.setData({
+            questionArray: res.data.array,
+            questionType:res.data.array[0].type,
+            totalpage: res.data.totalPage,
+            resdata: res.data,
+            percentage: parseInt(that.data.pageno/res.data.totalPage*100)
+          })
+        }
+       
         // console.log("questionType=>",that.data.questionType)
         
       },
@@ -539,13 +559,16 @@ Page({
       },
       success: function (res) {
         console.log("res=>", res.data)
+        var questionarray =[]
+        questionarray.push(res.data.array[0].name)
         that.setData({
           questionArray: res.data.array,
-          question:res.data.array[0].name,
+          question:questionarray,
           questionType:res.data.array[0].type,
           totalpage: res.data.totalPage,
           percentage: parseInt(that.data.pageno/res.data.totalPage*100)
         })
+        console.log("question=>",that.data.question)
         console.log("questionType=>",that.data.questionType)
         console.log('Math.floor(that.data.pageno/res.data.totalPage) ',that.data.pageno/res.data.totalPage*100)
       },
