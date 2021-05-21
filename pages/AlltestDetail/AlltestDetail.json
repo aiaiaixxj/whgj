@@ -6,7 +6,8 @@
     "van-checkbox": "@vant/weapp/checkbox/index",
     "van-checkbox-group": "@vant/weapp/checkbox-group/index",
     "van-progress": "@vant/weapp/progress/index",
-    "Completion": "../Completion/Completion"
+    "Completion": "../Completion/Completion",
+    "van-count-down": "@vant/weapp/count-down/index"
   },
   "disableScroll":true,
   "navigationBarTitleText": "考试详情",

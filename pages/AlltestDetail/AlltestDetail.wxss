@@ -135,11 +135,23 @@ view .van-progress{
   /* left: 5%; */
 }
 progress{
-  width: 88%;
+  width: 62%;
 }
 .progress-box{
   display: flex;
+  justify-content: space-around;
 }
 .Completion{
   text-indent: 2em;
+}
+.item {
+
+  display: inline-block;
+  width: 22px;
+  margin-right: 5px;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  background-color: red;
+  border-radius: 2px;
 }

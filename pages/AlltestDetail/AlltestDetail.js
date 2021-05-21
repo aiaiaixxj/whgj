@@ -5,9 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    disableBeforeStep:true,
+    getrtime:'',
+    time: 30 * 60 * 60 * 1000,
+    timeData: {},
     datika:true,
     questionType:'',
-    hiddenBeforeStep:true,
+    hiddenBeforeStep:false,
     hiddenNextStep:false,
     hiddenComplete:true,
     trainingclassId: '',
@@ -90,7 +94,10 @@ Page({
           pageno: options.currentTarget.dataset.index,
           percentage: parseInt(options.currentTarget.dataset.index/res.data.totalPage*100),
           question:questionarray,
+          time:res.data.getrtime
         })
+      
+     
         console.log("question=>",that.data.question)
       },
       fail: function () {
@@ -98,7 +105,17 @@ Page({
       }
     })
     that.CloseAllquestionspanel();
-
+    if(options.currentTarget.dataset.index==1){
+      that.setData({
+        disableBeforeStep:true
+      })
+      if(options.currentTarget.dataset.index==that.data.totalpage){
+        that.setData({
+          disableBeforeStep:false
+        })
+      }
+    
+    }
   },
 
   /**
@@ -325,12 +342,13 @@ Page({
    */
   BeforeStep() {
     var that = this;
-    if (that.data.pageno == 1) {
+    if (that.data.pageno == 2) {
       that.setData({
         pageno: 1,
         hiddenNextStep:false,
-        hiddenBeforeStep:true,
-        hiddenComplete:true
+        hiddenBeforeStep:false,
+        hiddenComplete:true,
+        disableBeforeStep:true
       })
       return
     }
@@ -379,7 +397,8 @@ Page({
         pageno: that.data.pageno + 1,
         hiddenNextStep:false,
         hiddenBeforeStep:false,
-        hiddenComplete:true
+        hiddenComplete:true,
+        disableBeforeStep:false
       })
       console.log("当前页小于总页数", that.data.pageno, that.data.totalpage)
       that.getNewData();
@@ -392,7 +411,8 @@ Page({
       that.setData({
         hiddenNextStep:true,
         hiddenBeforeStep:false,
-        hiddenComplete:false
+        hiddenComplete:false,
+        disableBeforeStep:true
       })
     }
     console.log("that.data.pageno", that.data.pageno);
@@ -474,18 +494,14 @@ Page({
         },
         success: function (res) {
           console.log(res.data);
-         
         }
       })
-
-    },200)
+    },100)
     setTimeout(()=>{
-      
       wx.redirectTo({
         url: '../finishTest/finishTest?examuserId=' + that.data.examuserId
        })
-    },200)
-   
+    },100)
   },
 
   /**
@@ -530,7 +546,8 @@ Page({
             questionType:res.data.array[0].type,
             totalpage: res.data.totalPage,
             resdata: res.data,
-            percentage: parseInt(that.data.pageno/res.data.totalPage*100)
+            percentage: parseInt(that.data.pageno/res.data.totalPage*100),
+            time:res.data.getrtime
           })
         }
        
@@ -566,7 +583,8 @@ Page({
           question:questionarray,
           questionType:res.data.array[0].type,
           totalpage: res.data.totalPage,
-          percentage: parseInt(that.data.pageno/res.data.totalPage*100)
+          percentage: parseInt(that.data.pageno/res.data.totalPage*100),
+          time:res.data.getrtime
         })
         console.log("question=>",that.data.question)
         console.log("questionType=>",that.data.questionType)
@@ -680,5 +698,11 @@ Page({
       }
     })
   },
-  fnToNext: function () {}
+  fnToNext: function () {},
+  onChange(e){
+    this.setData({
+      timeData: e.detail,
+    });
+    // console.log("this.data.timeData=>",this.data.timeData)
+  }
 })

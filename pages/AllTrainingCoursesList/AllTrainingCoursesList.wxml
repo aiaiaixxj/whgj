@@ -1,11 +1,11 @@
 <!--pages/AllTrainingCoursesList/AllTrainingCoursesList.wxml-->
-<view class="box transition" wx:if="{{canshowContent}}" >
+<view class="box transition" wx:if="{{canshowContent}}">
   <view class="user-panel" wx:for="{{resdata}}" wx:key="index" bindtap="gotoOtherpages" data-id="{{item.courseId}}">
     <!-- <van-button type="primary" size="mini"
       custom-style="width:19rpx;height:42rpx;line-height:42rpx;position:relative;top:129rpx;left:590rpx" style=""
       class="vanbtn">{{status}}</van-button> -->
     <!-- <navigator  url="../AllTrainingCoursesDetail/AllTrainingCoursesDetail?index={{resdata[index].id}}" style="" class="navigator"> -->
-    <view class="navigator" >
+    <view class="navigator">
       <!-- <image class="head" src="https://whtx.gkybi.com.cn{{resdata[index].titleImg}}"></image> -->
       <view class="imgBorder">
         <image class="head" src="../../images/title.png"></image>
@@ -16,7 +16,7 @@
         </view>
         <view class="code">讲师：{{resdata[index].teachers}} </view>
         <view class="code">选课人数：{{resdata[index].users}} </view>
-          <view class="" style="position: absolute;left:72%;font-size:24rpx;color:#999;margin-top:-53rpx;">已学进度：{{resdata[index].progress}} </view>
+        <view class="code">已学进度：{{resdata[index].progress}} </view>
       </view>
     </view>
     <!-- </navigator> -->
@@ -38,15 +38,15 @@
         </view>
         <view class="code">讲师：{{resdata[index].teachers}} </view>
         <view class="code">选课人数：{{resdata[index].users}} </view>
-      
+
       </view>
     </view>
     <!-- </navigator> -->
   </view>
 </view>
 <view style="top:{{height}}px;position: relative;background-color:#FFFAE6;" wx:if="{{hasMoreData&&dataResComplete}}">
-	<van-loading size="24px" color= "#EA6022" custom-class="custom-class1">加载中...</van-loading>
+  <van-loading size="24px" color="#EA6022" custom-class="custom-class1">加载中...</van-loading>
 </view>
 <view style="position: relative;background-color:#FFFAE6;color: #EA6022;text-align: center;" wx:if="{{!hasMoreData}}">
-	<text custom-class="custom-class" > 加载完成!</text>
+  <text custom-class="custom-class"> 加载完成!</text>
 </view>

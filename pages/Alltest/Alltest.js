@@ -36,8 +36,6 @@ Page({
   gotoOtherpages: function (options) {
     var that = this;
     var id = options.currentTarget.dataset.id;
-    console.log("id=>", id)
-    console.log("options=>", options)
     wx.request({
       url: app.globalData.URi + '/applets/exam/status.jspx',
       data: {
@@ -66,6 +64,24 @@ Page({
             },
             success: function (res) {
               console.log("res=>", res.data)
+              if(res.data.status==-1){
+                wx.request({
+                  url: app.globalData.URi + '/applets/exam/finish.jspx', //自己的服务接口地址
+                  method: 'post',
+                  data: {
+                    // userId: wx.getStorageSync('userId'),
+                    // options: that.data.answer,
+                    // themeId: that.data.fieldQuestionId
+                    examuserId:res.data.examuserId
+                  },
+                  header: {
+                    'content-type': 'application/x-www-form-urlencoded'
+                  },
+                  success: function (res) {
+                    console.log(res.data);
+                  }
+                })
+              }
               wx.navigateTo({
                 url: '../AlltestDetail/AlltestDetail?examuserId=' + that.data.detail.examuserId
               })
@@ -101,7 +117,17 @@ Page({
           that.setData({
           topscore:  res.data.topscore
           })
-          that.showDialog()
+          that.showDialog();
+          // Dialog.confirm({
+          //   title: '标题',
+          //   message: '弹窗内容',
+          // })
+          //   .then(() => {
+          //     // on confirm
+          //   })
+          //   .catch(() => {
+          //     // on cancel
+          //   });
           wx.request({
             url: app.globalData.URi + '/exam/inner_member/o_clear_option.jspx', //自己的服务接口地址
             method: 'post',
@@ -120,6 +146,7 @@ Page({
           })
         }
         if (res.data.status == -1) {
+        
           Toast('已超出最大限制');
 
         }
@@ -392,6 +419,7 @@ Page({
               })
             }
             if (res.data.status == -1) {
+         
               Toast('已超出最大限制');
     
             }

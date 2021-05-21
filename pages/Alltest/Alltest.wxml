@@ -2,6 +2,7 @@
 
 <wxc-dialog class="wxc-dialog" title="提示" content="您已完成考试，最高分数为{{topscore}}分，确定重新考试吗" confirm-text="确认" cancel-text="取消"
 	bindconfirm="onConfirm" bindcancel="onCancel"></wxc-dialog>
+	<!-- <van-dialog id="van-dialog" /> -->
 
 <view class="box transition" wx:if="{{resdata.length}}">
 	<view class="user-panel" wx:for="{{resdata}}" wx:key="index" bindtap="gotoOtherpages" data-id="{{item.id}}">

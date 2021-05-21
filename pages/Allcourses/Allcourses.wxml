@@ -1,8 +1,16 @@
 <!--pages/Allcourses/Allcourses.wxml-->
+
 <view class="main_serchbox">
-  <icon class="main_serchbox_icon" type="search" size="25"></icon>
-  <input type="text" class="main_serchbox_input" placeholder="请输入查询信息" value="{{inputVal}}" bindinput="inputTyping" />
+  <!-- <icon class="main_serchbox_icon" type="search" size="25"></icon> -->
+  <input type="text" class="main_serchbox_input" placeholder="     请输入查询信息" value="{{inputVal}}" bindinput="inputTyping" />
   <view class="main_serchbox_cancle" bindtap="hideInput" wx:if="{{searchCancle}}">取消</view>
+  <view class="main_serchbox_querry" bindtap="querry" wx:if="{{true}}">筛选</view>
+</view>
+
+<view class="" wx:if="{{showanimation}}" style="background-color:pink;height:40px;width:100%;display: flex;flex-direction: row;justify-content: space-around;line-height:40px" >
+ <view>已查询</view>
+ <view>未查询</view>
+<image src="../../images/close.png" style="width:20px;height:20px;display: inline;margin: 5px -45px;"></image>
 </view>
 
 <view class="box transition" wx:if="{{canshowContent}}" >
@@ -23,7 +31,7 @@
         </view>
         <view class="code">讲师：{{resdata[index].teachers}} </view>
         <view class="code">选课人数：{{resdata[index].users}} </view>
-        <view class="code" style="margin-top:-30px;margin-left:55%">已学进度：{{resdata[index].progress}} </view>
+        <view class="code">已学进度：{{resdata[index].progress}} </view>
       </view>
     </view>
     <!-- </navigator> -->

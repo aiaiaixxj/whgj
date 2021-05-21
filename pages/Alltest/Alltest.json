@@ -2,7 +2,8 @@
   "usingComponents": {
     "van-loading": "@vant/weapp/loading/index",
     "van-toast": "../../miniprogram_npm/@vant/weapp/toast/index",
-    "wxc-dialog": "../../dist/packages/@minui/wxc-dialog/dist/index"
+    "wxc-dialog": "../../dist/packages/@minui/wxc-dialog/dist/index",
+    "van-dialog": "@vant/weapp/dialog/index"
   },
   "navigationBarTitleText": "全部考试",
   "navigationBarBackgroundColor": "#FF0000",

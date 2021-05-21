@@ -23,7 +23,7 @@
         <view class="code">讲师：{{resdata[index].teachers}} </view>
         <view class="code">选课人数：{{resdata[index].users}} </view>
         <!-- <view class="code" style="margin-top:-18px;margin-left:60%">{{statusArry[index]}} </view> -->
-         <view class="" style="position: absolute;left:73%;font-size:24rpx;color:#999;margin-top:-53rpx;">已学进度：{{resdata[index].progress}} </view>
+         <view class="code" >已学进度：{{resdata[index].progress}} </view>
       </view>
     </view>
     <!-- </navigator> -->

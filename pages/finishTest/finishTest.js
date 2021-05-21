@@ -65,6 +65,20 @@ Page({
    * 重新考试
    */
   ReTest(){
+    wx.request({
+      url: app.globalData.URi + '/applets/exam/option_clear.jspx', //自己的服务接口地址
+      method: 'post',
+      data: {
+        examuserId:this.data.examuserId
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res.data);
+       
+      }
+    })
     wx.navigateBack({
       delta: 1
     })

@@ -14,7 +14,14 @@ custom-class="custom-class"
     <!-- <icon class="progress-cancel" type="cancel"></icon> -->
     <view>{{pageno}}</view>
     <view>/{{totalpage}}</view>
+    <van-count-down style="" use-slot time="{{ time }}" bind:change="onChange">
+      <text class="item">{{ timeData.hours }}</text>
+  <text class="item">{{ timeData.minutes }}</text> <text style="color:red">:  </text>
+  <text class="item">{{ timeData.seconds }}</text>
+</van-count-down>
 </view>
+
+
 
 <view class="container" wx:for="{{questionArray}}" wx:key="index" wx:for-item="questionitem">
   <view class="title">
@@ -110,7 +117,19 @@ custom-class="custom-class"
        </view>      
     </view>
   </van-popup>
-  <view class="btn"  bindtap="BeforeStep" hidden="{{hiddenBeforeStep}}"> 上一题 </view>
+  <!-- <view class="btn"  bindtap="BeforeStep" hidden="{{hiddenBeforeStep}}" > 上一题 </view>
   <view class="btn"  bindtap="NextStep" hidden="{{hiddenNextStep}}"> 下一题 </view>
-  <view class="btn" style="" bindtap="Complete" hidden="{{hiddenComplete}}"> 完成考试 </view>
+  <view class="btn" style="" bindtap="Complete" hidden="{{hiddenComplete}}"> 完成考试 </view> -->
+  <view hidden="{{hiddenBeforeStep}}" >
+    <van-button round type="info" bind:click="BeforeStep" color="red" disabled="{{disableBeforeStep}}" >上一题</van-button>
+  </view>
+  <view hidden="{{hiddenNextStep}}">
+    <van-button round type="info" bind:click="NextStep" color="red">下一题</van-button>
+  </view>
+  <view hidden="{{hiddenComplete}}">
+    <van-button round type="info" bind:click="Complete" color="red">完成考试</van-button>
+  </view>
+ 
+  
+ 
 </view>

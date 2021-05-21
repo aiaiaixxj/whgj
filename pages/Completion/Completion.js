@@ -7,68 +7,23 @@ Component({
     questiondata: {
       type: Array,
       observer: function (news, old, path) {
-        console.log("news=>",news)
-        console.log("old=>",old)
-        console.log("path=>",path)
+        console.log("news=>", news)
         const titleArr = news[0].split(''); // 将题目分割为数组
         let inputMap = new Map(); // 新建map
         for (let i = 0; i < titleArr.length; i++) { // 遍历分割的数组
-          if (titleArr[i] === '_') {
+          if (titleArr[i] === '@') {
             inputMap.set(i, ''); // 如果遇到下划线，就set进map里
           }
-        }
-    
+        }  
         this.setData({
           titleArr,
-          inputMap
-        })
-     
-        for (let i = 0; i < inputMap.length; i++) { // 遍历分割的数组
-          inputMap.push(i, news[1][i].name)
-        
-        }
+          inputMap,
+          rightAnswerArray:news[1]
+        })     
         console.log("titleArr=>", this.data.titleArr)
-         console.log("inputMap=>", this.data.inputMap)
+        console.log("inputMap=>", this.data.inputMap)
       }
     },
-    answer:{
-      type:Object,
-      observer: function (news, old, path) {
-        console.log("inputMap=>>>>>>>>>>", this.data.inputMap)
-        console.log("old=>>>>>>>>>>", old)
-        console.log("path=>>>>>>>>>>", path)
-        let array = [];
-        console.log("news=>",news)
-        for (let i = 0; i < news.length; i++) { // 遍历分割的数组
-          console.log("news[i]=>",news[i].name)
-          array.push(news[i].name) 
-        }
-        console.log("array=>",array)
-        this.setData({
-        rightAnswerArray: array
-        })
-        console.log("rightAnswerArray=>",this.data.rightAnswerArray)
-       
-      }
-    },
-    testData: {
-      type: Object,
-      observer: function (news, old, path) {
-        const titleArr = news.content.split(''); // 将题目分割为数组
-        let inputMap = new Map(); // 新建map
-        for (let i = 0; i < titleArr.length; i++) { // 遍历分割的数组
-          if (titleArr[i] === '_') {
-            inputMap.set(i, ''); // 如果遇到下划线，就set进map里
-          }
-        }
-        this.setData({
-          titleArr,
-          inputMap
-        })
-        // console.log("titleArr=>", this.data.titleArr)
-        // console.log("inputMap=>", this.data.inputMap)
-      }
-    }
   },
 
   /**
@@ -78,9 +33,9 @@ Component({
     titleArr: [], // 题目分割的数组
     inputMap: new Map(), // 新建map 存放用户输入的答案
     testData: [],
-    rightAnswerArray:[]
+    rightAnswerArray: []
   },
-  observers:{
+  observers: {
     // '**' (val) {
     //   console.log('**所有的setData变化：', val) // 此时返回的 val 值是一个包含所有data变量的对象
     // },
@@ -93,11 +48,34 @@ Component({
     //   console.log('observers-question', val)
     // }
   },
-
+  lifetimes: {
+    // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
+    attached: function () {
+     },
+    moved: function () { },
+    detached: function () { },
+  },
+  pageLifetimes: {
+    // 组件所在页面的生命周期函数
+    show: function () {
+    },
+    hide: function () {},
+    resize: function () {},
+  },
   /**
    * 组件的方法列表
    */
   methods: {
+    showData() {
+      for (let i = 0; i < this.data.titleArr.length; i++) { // 遍历分割的数组
+        for (let j = 0; j < this.data.rightAnswerArray.length; j++) { 
+          if (this.data.titleArr[i] === '_') {
+            this.data.inputMap.set(i, this.data.rightAnswerArray[j].name);
+          }
+        }
+       }
+       console.log("inputMap===========>", this.data.inputMap)
+    },
     fnInput(e) {
       console.log("e=>", e)
       const value = e.detail.value;

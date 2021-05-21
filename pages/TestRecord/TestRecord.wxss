@@ -76,13 +76,13 @@ page {
 
 .data_time {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .code {
   font-size: 24rpx;
   color: #999;
-  margin-top: 55rpx;
+  margin-top: 12rpx;
 }
 
 .custom-class {
