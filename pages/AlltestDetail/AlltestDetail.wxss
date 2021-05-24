@@ -2,34 +2,41 @@
 .container {
   padding: 0 0;
 }
-
+.Main-box{
+  display: flex;
+  flex-direction: column;
+}
 .title {
   display: flex;
   text-indent: 2em;
 }
 
 .radioGroup {
-  margin: 10px;
-  position: fixed;
-  top: 17%;
-  left: 0;
+  margin: 19px 14px;
 }
 
 .checkboxGroup {
-  margin: 10px;
-  position: fixed;
-  top: 17%;
-  left: 0;
+  margin: 19px 14px;
 }
 
 /* 未选中的 背景样式 */
 checkbox .wx-checkbox-input {
+  /* 背景的高 */
+  line-height: 35rpx;
+  /* border-radius: 50%; */
+  /* 圆角:border-radius: 50%; */
+  margin: 10rpx;
+  flex: none;
+}
+/* 未选中的 背景样式 */
+radio .wx-radio-input {
 
   /* 背景的高 */
   line-height: 35rpx;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   /* 圆角:border-radius: 50%; */
-  margin: 10rpx
+  margin: 10rpx;
+  flex: none;
 }
 
 radio {

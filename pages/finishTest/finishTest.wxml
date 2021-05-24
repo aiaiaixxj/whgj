@@ -19,9 +19,6 @@
       {{index+1}}
     </view>
   </view>
-
-
-
 </view>
 
 <van-popup show="{{ canshowAllquestions }}" closeable duration="500" close-icon="close" position="bottom"
@@ -34,15 +31,17 @@
       <view class="radioGroup">
         <radio-group bindchange="radiochange" data-id="">
           <view wx:for="{{questionitem.optionArray}}" wx:key="index" wx:for-item="optionitem">
-            <view style="margin-top:10px">
+            <view>
               <radio value='{{questionitem.id}},{{optionitem.id}}' checked="{{optionitem.check?optionitem.check:optionitem.id==13722}}" color="red"
                 disabled="true">
                 {{optionitem.name}}
               </radio>
             </view>
+          
           </view>
         </radio-group>
       </view>
+        <text style="margin: 0 30px;">正确答案：{{rightAnswerlist}}</text> 
     </view>
     <view wx:elif="{{questionitem.type ==1}}">
       <view class="checkboxGroup">
@@ -55,6 +54,7 @@
           </view>
         </checkbox-group>
       </view>
+      <text style="margin: 0 30px;">正确答案：{{rightAnswerlist}}</text> 
     </view>
     <view wx:elif="{{questionitem.type ==2}}" bindtap="handleJumpPage" data-id="{{questionitem.id}}">
       <view class="textarea-wrp">
@@ -73,14 +73,13 @@
         </view>
       </radio-group>
     </view>
+    <text style="margin: 0 30px;">正确答案：{{rightAnswerlist}}</text> 
   </view>
-  <view wx:if="{{questionitem.type ==4}}" style="">
-    {{pageno}}.
+  <view wx:if="{{questionitem.type ==4}}">
         <Completion  class="Completion" questiondata="{{question}}"    data-id='{{questionitem.id}}' 
              bind:CompletionEvent="fnGetChildParamEvent">  
+             <view  style="display: inline;">{{pageno}}.</view> 
         </Completion>
   </view>        
-
 </view>
-
 </van-popup>

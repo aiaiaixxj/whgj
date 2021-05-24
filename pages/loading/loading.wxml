@@ -1,7 +1,7 @@
 <!--pages/loading/loading.wxml-->
 <view class="container" style="">
   <van-loading type="spinner" custom-class="custom-class" />
-<image class="img" src="../../images/bg_loading.jpg" style="" mode="">
-</image>
+  <image class="img" src="../../images/bg_loading.jpg" style="" mode="">
+  </image>
 
 </view>

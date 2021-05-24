@@ -8,6 +8,7 @@ custom-class="custom-class"
   color="#ee0a24"
 />
 </view> -->
+<view class="Main-box">
 <view class="progress-box">
   <progress percent="{{percentage}}" color="#ee0a24" active-mode="forwards"  active stroke-width="3"
     duration="0" />
@@ -31,7 +32,7 @@ custom-class="custom-class"
     <view class="radioGroup">
       <radio-group bindchange="radiochange" data-id="">
         <view wx:for="{{questionitem.optionArray}}" wx:key="index" wx:for-item="optionitem">
-          <view style="margin-top:10px">
+          <view >
             <radio value='{{questionitem.id}},{{optionitem.id}}' checked="{{optionitem.check}}">
               {{optionitem.name}}
             </radio>
@@ -61,7 +62,7 @@ custom-class="custom-class"
     <view class="radioGroup">
       <radio-group bindchange="radiochange" data-id="">
         <view wx:for="{{questionitem.optionArray}}" wx:key="index" wx:for-item="optionitem">
-          <view style="">
+          <view>
             <radio value='{{questionitem.id}},{{optionitem.id}}' checked="{{optionitem.check}}">
               {{optionitem.name}}
             </radio>
@@ -70,7 +71,7 @@ custom-class="custom-class"
       </radio-group>
     </view>
   </view>
-  <view wx:if="{{questionitem.type ==4}}" style="display: flex;flex-direction: row;">
+  <view wx:if="{{questionitem.type ==4}}" style="">
     
         <!-- <view wx:for="{{questionitem.optionArray}}" wx:key="index" wx:for-item="optionitem">
           <view style="">  
@@ -90,9 +91,10 @@ custom-class="custom-class"
             </van-cell-group>      
           </view>
         </view> -->
-        {{pageno}}.
+      
         <Completion  class="Completion" questiondata="{{question}}"   data-id='{{questionitem.id}}'
              bind:CompletionEvent="fnGetChildParamEvent">  
+             <view  style="display: inline;">{{pageno}}.</view> 
         </Completion>
   </view>         
 </view>
@@ -111,7 +113,7 @@ custom-class="custom-class"
   custom-style="height: 60%;"
   bind:close="CloseAllquestionspanel"
   > 
-    <view wx:for="{{allquestionsData}}" class="allquestionsBox" wx:key="index" wx:for-item="" data-index="{{index+1}}" bindtap="jumpTosomeoneQuestion">
+    <view wx:for="{{allquestionsData}}" wx:if="{{canshowallquestionsData}}"class="allquestionsBox" wx:key="index" wx:for-item="" data-index="{{index+1}}" bindtap="jumpTosomeoneQuestion">
        <view class="{{allquestionsData[index].answer ? 'allquestionsBox-child':'allquestionsBox-child1' }}" >
           {{index+1}}
        </view>      
@@ -129,7 +131,5 @@ custom-class="custom-class"
   <view hidden="{{hiddenComplete}}">
     <van-button round type="info" bind:click="Complete" color="red">完成考试</van-button>
   </view>
- 
-  
- 
+</view>
 </view>

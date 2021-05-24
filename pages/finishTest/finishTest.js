@@ -6,22 +6,24 @@ Page({
    * 页面的初始数据
    */
   data: {
+    newoptionrowarray: [],
+    rightAnswerlist: '',
     resArraylist: '',
     resData: '',
-    canshowAllquestions:false,
-    examuserId:'',
-    questionArray:'',
-    pageno:'',
-    question:[],
-    rightAnswerArray:''
+    canshowAllquestions: false,
+    examuserId: '',
+    questionArray: '',
+    pageno: '',
+    question: [],
+    rightAnswerArray: ''
   },
   jumpTosomeoneQuestion(options) {
-    var that=this
+    var that = this
     that.setData({
       canshowAllquestions: true,
     })
     console.log("options=>", options)
-    var id =  options.currentTarget.dataset.index;
+    var id = options.currentTarget.dataset.index;
     wx.request({
       url: app.globalData.URi + '/applets/exam/answer.jspx', //自己的服务接口地址
       method: 'post',
@@ -30,27 +32,56 @@ Page({
         // options: that.data.answer,
         // themeId: that.data.fieldQuestionId
         pageNo: id,
-        examuserId:that.data.examuserId
+        examuserId: that.data.examuserId
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
         console.log(res.data);
-        var qusetionnamearray=[];
+        var qusetionnamearray = [];
         qusetionnamearray.push(res.data.array[0].name);
         qusetionnamearray.push(res.data.array[0].optionArray)
         that.setData({
-          questionArray:res.data.array,
-          pageno:id,
-          question:  qusetionnamearray ,
-         
+          questionArray: res.data.array,
+          pageno: id,
+          question: qusetionnamearray,
         })
-        console.log("question=========>>>>", that.data.question)
+        var newoptionrowdata = [];
+        for (var i = 0; i < that.data.questionArray[0].optionArray.length; i++) {
+          if (that.data.questionArray[0].type == 0 || that.data.questionArray[0].type == 3) {
+            var option = that.data.questionArray[0].optionArray[i]
+            console.log("option==>", option)
+            if (option.rightanswer != null && option.rightanswer == 1) {
+              const newoptionrow = option.name.split('')
+              console.log("newoptionrow==>", newoptionrow)
+              that.setData({
+                rightAnswerlist: newoptionrow[0]
+              })
+            }
+            console.log("rightAnswerlist==>", that.data.rightAnswerlist)
+          }
+          if (that.data.questionArray[0].type == 1) {
+            var option = that.data.questionArray[0].optionArray[i]
+            console.log("option==>", option)
+            if (option.rightanswer != null && option.rightanswer == 1) {
+              console.log("查到")
+              console.log("option.name===>", option.name)
+              const newoptionrow = option.name.split('')
+              console.log("newoptionrow===>", newoptionrow)
+              newoptionrowdata.push(newoptionrow[0][0])
+              console.log("newoptionrowdata===>", newoptionrowdata)
+              that.setData({
+                rightAnswerlist: newoptionrowdata
+              })
+            }
+          }
+        }
+        // console.log("question=========>>>>", that.data.question)
       }
     })
   },
-    /**
+  /**
    * 
    * 关闭答题回顾
    */
@@ -60,23 +91,23 @@ Page({
       canshowAllquestions: false,
     })
   },
-      /**
+  /**
    * 
    * 重新考试
    */
-  ReTest(){
+  ReTest() {
     wx.request({
       url: app.globalData.URi + '/applets/exam/option_clear.jspx', //自己的服务接口地址
       method: 'post',
       data: {
-        examuserId:this.data.examuserId
+        examuserId: this.data.examuserId
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
         console.log(res.data);
-       
+
       }
     })
     wx.navigateBack({
@@ -88,7 +119,7 @@ Page({
    */
   onLoad: function (options) {
     const page = getCurrentPages();
-    console.log("page=>",page)
+    console.log("page=>", page)
 
     var that = this
     console.log("options=>", options)
@@ -109,8 +140,8 @@ Page({
         that.setData({
           resArraylist: res.data.array,
           resData: res.data,
-          examuserId:options.examuserId,
-          
+          examuserId: options.examuserId,
+
         })
       }
     })

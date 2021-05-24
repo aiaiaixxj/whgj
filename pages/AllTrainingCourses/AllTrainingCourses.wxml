@@ -17,10 +17,8 @@
 					<view class="code">结束时间：{{resdata[index].endDate}} </view>
 					<view class="code" style="">{{statusArry[index]}} </view>
 				</view>
-
 			</view>
 		</view>
-
 	</view>
 </view>
 <view style="top:{{height}}px;position: relative;background-color:#FFFAE6;" wx:if="{{hasMoreData&&dataResComplete}}">

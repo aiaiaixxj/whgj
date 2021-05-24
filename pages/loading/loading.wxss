@@ -14,7 +14,8 @@ page {
   padding: 0;
 }
 .custom-class{
- justify-content: center;
- position: absolute;
- top: 40%;
+ position: fixed;
+ left: 50%;
+ top: 36%;
+
 }

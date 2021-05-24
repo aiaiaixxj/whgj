@@ -1,7 +1,9 @@
 <!--pages/Completion/Completion.wxml-->
 <view class="fill-item">
-   <block wx:for="{{titleArr}}" wx:key="item">
-     <text wx:if="{{item !== '@'}}">{{item}}</text>
-     <input wx:else class="fill-input" data-value="{{index}}" bindinput="fnInput"  maxlength="1" value="{{inputMap[index].value}}" />
-   </block>
+  <block wx:for="{{titleArr}}" wx:key="item">
+    <slot></slot>
+    <text wx:if="{{item !== '@'}}">{{item}}</text>
+    <input wx:else class="fill-input" data-value="{{index}}" bindinput="fnInput" maxlength="1"
+      value="{{inputMap[index].value}}" />
+  </block>
 </view>
