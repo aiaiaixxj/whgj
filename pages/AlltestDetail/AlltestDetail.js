@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    canshowallquestionsData:true,
+    canshowallquestionsData: true,
     disableBeforeStep: true,
     getrtime: '',
     time: 30 * 60 * 60 * 1000,
@@ -111,11 +111,16 @@ Page({
         disableBeforeStep: true
       })
     }
+    if(options.currentTarget.dataset.index>1&&options.currentTarget.dataset.index<that.data.totalpage){
+      that.setData({
+        disableBeforeStep: false
+      })
+    }
     if (options.currentTarget.dataset.index == that.data.totalpage) {
       that.setData({
         disableBeforeStep: false,
-        hiddenNextStep:true,
-        hiddenComplete:false
+        hiddenNextStep: true,
+        hiddenComplete: false
       })
     }
   },
@@ -128,7 +133,7 @@ Page({
     var that = this;
     that.setData({
       canshowAllquestions: true,
-      canshowallquestionsData:true
+      canshowallquestionsData: true
     })
     wx.request({
       url: app.globalData.URi + '/applets/exam/all.jspx', //自己的服务接口地址
@@ -158,7 +163,7 @@ Page({
   CloseAllquestionspanel() {
     var that = this;
     that.setData({
-      canshowallquestionsData:false,
+      canshowallquestionsData: false,
       canshowAllquestions: false,
       percentage: parseInt(that.data.pageno / that.data.totalpage * 100)
     })
@@ -354,7 +359,7 @@ Page({
         hiddenComplete: true,
         disableBeforeStep: true
       })
-      
+
     }
     that.setData({
       pageno: that.data.pageno - 1,

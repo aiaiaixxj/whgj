@@ -8,8 +8,14 @@
 </view>
 
 <view class="" wx:if="{{showanimation}}" style="background-color:pink;height:40px;width:100%;display: flex;flex-direction: row;justify-content: space-around;line-height:40px" >
- <view>已查询</view>
- <view>未查询</view>
+ <!-- <view>已查询</view>
+ <view>未查询</view> -->
+ <van-tag round type="primary">标签</van-tag>
+<van-tag round type="success">标签</van-tag>
+<!-- <van-tag round type="danger">标签</van-tag>
+<van-tag round type="warning">标签</van-tag> -->
+<!-- <van-tag type="danger">标签</van-tag>
+<van-tag type="warning">标签</van-tag> -->
 <image src="../../images/close.png" style="width:20px;height:20px;display: inline;margin: 5px -45px;"></image>
 </view>
 

@@ -43,7 +43,6 @@ Page({
     this.setData({
       showanimation:true
     })
-    this.app.slideupshow(this, 'slide_up1',200, 1)
   },
   gotoOtherpages:function(options){
     var that = this;

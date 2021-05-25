@@ -26,3 +26,7 @@
    display: inline-block;
    vertical-align: middle;
  }
+ .rightAnswer{
+  margin: 28px 6px;
+  font-size: 17px;
+ }
