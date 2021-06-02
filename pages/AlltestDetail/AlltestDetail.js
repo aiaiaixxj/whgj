@@ -87,6 +87,7 @@ Page({
         console.log("res=>", res.data)
         let questionarray = []
         questionarray.push(res.data.array[0].name)
+        questionarray.push(res.data.array[0].answer)
         console.log("questionarray=>", questionarray)
         that.setData({
           questionArray: res.data.array,
@@ -587,6 +588,7 @@ Page({
         console.log("res=>", res.data)
         var questionarray = []
         questionarray.push(res.data.array[0].name)
+        questionarray.push(res.data.array[0].answer)
         that.setData({
           questionArray: res.data.array,
           question: questionarray,

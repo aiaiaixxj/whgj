@@ -5,20 +5,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showanimation:false,
-    searchCancle:false,
-    canshowContent:true,
-    canshowQuerryContent:false,
-    name:'',
+    canshowContenthavenolearning:false,
+    canshowContentlearned:false,
+    showanimation: false,
+    searchCancle: false,
+    canshowContent: true,
+    canshowQuerryContent: false,
+    name: '',
     userId: '',
     resdata: [],
-    coursesList:[],
+    coursesList: [],
     totalpage: '',
     pageNo: 1,
     listLock: 1,
     pageSize: 20,
     hasMoreData: true,
-    dataResComplete:'',
+    dataResComplete: '',
     viewShowed: false, //显示结果view的状态
     inputVal: "", // 搜索框值
     catList: [], //搜索渲染推荐数据
@@ -39,16 +41,40 @@ Page({
     // this.getData('正在加载数据...');
     this.getData();
   },
-  querry(){
+  querry() {
     this.setData({
-      showanimation:true
+      showanimation: true
     })
   },
-  gotoOtherpages:function(options){
+  hiddenCloseBtn() {
+    this.setData({
+      showanimation: false,
+      canshowContentlearned:false,
+      canshowContenthavenolearning:false,
+      canshowContent:true
+    })
+  },
+  learned() {
+    console.log("learn")
+    this.setData({
+      canshowContentlearned:true,
+      canshowContent:false,
+      canshowContenthavenolearning:false
+    })
+  },
+  havenolearning() {
+    this.setData({
+      canshowContenthavenolearning:true,
+      canshowContentlearned:false,
+      canshowContent:false
+    })
+    console.log("nolearn")
+  },
+  gotoOtherpages: function (options) {
     var that = this;
     var id = options.currentTarget.dataset.id;
-    console.log("options=>",options)
-    console.log("id=>",id)
+    console.log("options=>", options)
+    console.log("id=>", id)
     if (1 == 1) {
       wx.navigateTo({
         url: '../AllcoursesDetail/AllcoursesDetail?index=' + id
@@ -65,13 +91,13 @@ Page({
     var that = this;
     // that.setData({
     //   userId: wx.getStorageSync("userId"),
-     
+
     // })
     wx.request({
       url: app.globalData.URi + '/applets/course-list.jspx',
       data: {
-        pageNo:that.data.pageNo,
-        userId:wx.getStorageSync('userId')
+        pageNo: that.data.pageNo,
+        userId: wx.getStorageSync('userId')
       },
       method: 'GET', //方法分GET和POST，根据需要写
       header: { //定死的格式，不用改，照敲就好
@@ -81,14 +107,15 @@ Page({
         console.log(res.data); //调出来的数据在控制台显示，方便查看
         var e = res.data.courses;
         console.log(e);
+        console.log("======>",typeof( Number(e[0].progress) ));
         that.setData({
-         // resdata: e.courses,//res.data就是你调出来的所有数据（当然也可以在这里面自定义想要调用的数据），然后把值赋给resdata，之后对resdata进行处理即可，具体见wxml
+          // resdata: e.courses,//res.data就是你调出来的所有数据（当然也可以在这里面自定义想要调用的数据），然后把值赋给resdata，之后对resdata进行处理即可，具体见wxml
           totalPage: res.data.totalPage,
-          coursesList:e
+          coursesList: e
         })
         var contentlistTem = that.data.resdata;
         if (that.data.pageNo == 1) {
-          contentlistTem = []; 
+          contentlistTem = [];
         }
         var resdata = e;
         if (that.data.pageNo >= res.data.totalPage) {
@@ -111,8 +138,8 @@ Page({
         wx.hideLoading();
         // complete
         that.setData({
-          dataResComplete:true 
-          })
+          dataResComplete: true
+        })
         wx.hideNavigationBarLoading() //完成停止加载
         wx.stopPullDownRefresh() //停止下拉刷新
       }
@@ -129,24 +156,24 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-   
+
 
     // setTimeout(function () {
     //   this.app.slideupshow(this, 'slide_up2', -200, 1)
     // }.bind(this), 200);
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
- //你可以看到，动画参数的200,0与渐入时的-200,1刚好是相反的，其实也就做到了页面还原的作用，使页面重新打开时重新展示动画
- this.app.slideupshow(this, 'slide_up1', 200, 0)
- //延时展现容器2，做到瀑布流的效果，见上面预览图
- setTimeout(function () {
-   this.app.slideupshow(this, 'slide_up2', 200, 0)
- }.bind(this), 200);
+    //你可以看到，动画参数的200,0与渐入时的-200,1刚好是相反的，其实也就做到了页面还原的作用，使页面重新打开时重新展示动画
+    this.app.slideupshow(this, 'slide_up1', 200, 0)
+    //延时展现容器2，做到瀑布流的效果，见上面预览图
+    setTimeout(function () {
+      this.app.slideupshow(this, 'slide_up2', 200, 0)
+    }.bind(this), 200);
   },
 
   /**
@@ -187,39 +214,40 @@ Page({
 
   },
   // 隐藏搜索框样式
-  hideInput: function(e) {
+  hideInput: function (e) {
     this.setData({
       inputVal: "",
       viewShowed: false,
-      canshowContent:true,
-      canshowQuerryContent:false,
-      searchCancle:false,
-      pageNo:1
+      canshowContent: true,
+      canshowQuerryContent: false,
+      searchCancle: false,
+      pageNo: 1
     });
     this.getData('正在刷新数据');
   },
   // 键盘抬起事件2
-  inputTyping: function(e) {
+  inputTyping: function (e) {
 
-    var that =this;
+    var that = this;
     that.setData({
-      canshowContent:false,
-      canshowQuerryContent:true
+      canshowContent: false,
+      canshowQuerryContent: true
     })
-    console.log("canshowContent=>",that.data.canshowContent)
-    console.log("canshowQuerryContent=>",that.data.canshowQuerryContent)
-    console.log("input-----",e)
-    console.log("input-----eeeeeeee",e.detail.value)
-    if(e.detail.value!=""){
+    console.log("canshowContent=>", that.data.canshowContent)
+    console.log("canshowQuerryContent=>", that.data.canshowQuerryContent)
+    console.log("input-----", e)
+    console.log("input-----eeeeeeee", e.detail.value)
+    if (e.detail.value != "") {
       that.setData({
-        searchCancle:true
+        searchCancle: true
       })
     }
     var value = e.detail.value
     wx.request({
       url: app.globalData.URi + '/applets/course-list.jspx',
       data: {
-        name:value
+        userId: wx.getStorageSync('userId'),
+        name: value
       },
       method: 'GET', //方法分GET和POST，根据需要写
       header: { //定死的格式，不用改，照敲就好
@@ -230,13 +258,13 @@ Page({
         var e = res.data.courses;
         console.log(e);
         that.setData({
-         // resdata: e.courses,//res.data就是你调出来的所有数据（当然也可以在这里面自定义想要调用的数据），然后把值赋给resdata，之后对resdata进行处理即可，具体见wxml
+          // resdata: e.courses,//res.data就是你调出来的所有数据（当然也可以在这里面自定义想要调用的数据），然后把值赋给resdata，之后对resdata进行处理即可，具体见wxml
           totalPage: res.data.totalPage,
-          resdata:res.data.courses
+          resdata: res.data.courses
         })
         var contentlistTem = [];
         if (that.data.pageNo == 1) {
-          contentlistTem = []; 
+          contentlistTem = [];
         }
         var resdata = e;
         if (that.data.pageNo >= res.data.totalPage) {
@@ -286,7 +314,7 @@ Page({
     // }
   },
   // 获取选中推荐列表中的值
-  name: function(res) {
+  name: function (res) {
     console.log(res.currentTarget.dataset.index);
     var index = res.currentTarget.dataset.index
     var that = this;

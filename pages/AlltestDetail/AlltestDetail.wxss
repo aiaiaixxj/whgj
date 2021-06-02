@@ -30,7 +30,6 @@ checkbox .wx-checkbox-input {
 }
 /* 未选中的 背景样式 */
 radio .wx-radio-input {
-
   /* 背景的高 */
   line-height: 35rpx;
   /* border-radius: 50%; */
@@ -153,11 +152,12 @@ progress{
 }
 .item {
   display: inline-block;
-  width: 22px;
+  width: 30px;
   /* margin-right: 5px; */
   color: #fff;
   font-size: 12px;
   text-align: center;
   background-color: red;
   border-radius: 0;
+  margin: 0px -4px;
 }

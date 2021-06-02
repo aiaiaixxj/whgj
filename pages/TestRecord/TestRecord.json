@@ -1,6 +1,9 @@
 {
   "usingComponents": {
-    "van-loading": "@vant/weapp/loading/index"
+    "van-loading": "@vant/weapp/loading/index",
+    "wxc-dialog": "../../dist/packages/@minui/wxc-dialog/dist/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-toast": "../../miniprogram_npm/@vant/weapp/toast/index"
   },
   "navigationBarTitleText": "考试记录",
   "navigationBarBackgroundColor": "#FF0000",

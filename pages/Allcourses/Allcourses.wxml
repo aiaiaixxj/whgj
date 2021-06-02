@@ -7,19 +7,63 @@
   <view class="main_serchbox_querry" bindtap="querry" wx:if="{{true}}">筛选</view>
 </view>
 
-<view class="" wx:if="{{showanimation}}" style="background-color:pink;height:40px;width:100%;display: flex;flex-direction: row;justify-content: space-around;line-height:40px" >
- <!-- <view>已查询</view>
- <view>未查询</view> -->
- <van-tag round type="primary">标签</van-tag>
-<van-tag round type="success">标签</van-tag>
-<!-- <van-tag round type="danger">标签</van-tag>
-<van-tag round type="warning">标签</van-tag> -->
-<!-- <van-tag type="danger">标签</van-tag>
-<van-tag type="warning">标签</van-tag> -->
-<image src="../../images/close.png" style="width:20px;height:20px;display: inline;margin: 5px -45px;"></image>
+<view class="querry_box" wx:if="{{showanimation}}">
+ <view class="querrytag querrytag1" bindtap="learned">已学习</view>
+ <view class="querrytag querrytag2" bindtap="havenolearning">未学完</view>
+<image class="close_img" src="../../images/close.png" bindtap="hiddenCloseBtn"></image>
+</view>
+
+<view class="box transition" wx:if="{{canshowContentlearned}}" >
+  <view class="user-panel" wx:for="{{resdata}}" wx:key="index" bindtap="gotoOtherpages" data-id="{{item.id}}">
+    <!-- <van-button type="primary" size="mini"
+      custom-style="width:19rpx;height:42rpx;line-height:42rpx;position:relative;top:129rpx;left:590rpx" style=""
+      class="vanbtn">{{status}}</van-button> -->
+    <!-- <navigator  url="../AllTrainingCoursesDetail/AllTrainingCoursesDetail?index={{resdata[index].id}}" style="" class="navigator"> -->
+    <view class="navigator"  wx:if="{{ resdata[index].progress==100}}">
+      <!-- <image class="head" src="https://whtx.gkybi.com.cn{{resdata[index].titleImg}}"></image> -->
+      <view class="imgBorder">
+        <image class="head" src="../../images/title.png"></image>
+      </view>
+   
+      <view class="center">
+        <view class="name">
+          <text class="name-text"> {{resdata[index].name}}</text>
+        </view>
+        <view class="code">讲师：{{resdata[index].teachers}} </view>
+        <view class="code">选课人数：{{resdata[index].users}} </view>
+        <view class="code">已学进度：{{resdata[index].progress}} </view>
+      </view>
+    </view>
+    <!-- </navigator> -->
+  </view>
+</view>
+<view class="box transition" wx:if="{{canshowContenthavenolearning}}" >
+  <view class="user-panel" wx:for="{{resdata}}" wx:key="index" bindtap="gotoOtherpages" data-id="{{item.id}}">
+    <!-- <van-button type="primary" size="mini"
+      custom-style="width:19rpx;height:42rpx;line-height:42rpx;position:relative;top:129rpx;left:590rpx" style=""
+      class="vanbtn">{{status}}</van-button> -->
+    <!-- <navigator  url="../AllTrainingCoursesDetail/AllTrainingCoursesDetail?index={{resdata[index].id}}" style="" class="navigator"> -->
+    <view class="navigator"  wx:if="{{ resdata[index].progress < 100}}">
+      <!-- <image class="head" src="https://whtx.gkybi.com.cn{{resdata[index].titleImg}}"></image> -->
+      <view class="imgBorder">
+        <image class="head" src="../../images/title.png"></image>
+      </view>
+   
+      <view class="center">
+        <view class="name">
+          <text class="name-text"> {{resdata[index].name}}</text>
+        </view>
+        <view class="code">讲师：{{resdata[index].teachers}} </view>
+        <view class="code">选课人数：{{resdata[index].users}} </view>
+        <view class="code">已学进度：{{resdata[index].progress}} </view>
+      </view>
+    </view>
+    <!-- </navigator> -->
+  </view>
 </view>
 
 <view class="box transition" wx:if="{{canshowContent}}" >
+  
   <view class="user-panel" wx:for="{{resdata}}" wx:key="index" bindtap="gotoOtherpages" data-id="{{item.id}}">
     <!-- <van-button type="primary" size="mini"
       custom-style="width:19rpx;height:42rpx;line-height:42rpx;position:relative;top:129rpx;left:590rpx" style=""
@@ -45,6 +89,7 @@
 </view>
 
 <view class="box transition" wx:if="{{canshowQuerryContent}}">
+
   <view class="user-panel" wx:for="{{resdata}}" wx:key="index" bindtap="gotoOtherpages" data-id="{{item.id}}">
     <van-button type="primary" size="mini"
       custom-style="width:19rpx;height:42rpx;line-height:42rpx;position:relative;top:129rpx;left:590rpx" style=""
@@ -61,6 +106,7 @@
         </view>
         <view class="code">讲师：{{resdata[index].teachers}} </view>
         <view class="code">选课人数：{{resdata[index].users}} </view>
+        <view class="code">已学进度：{{resdata[index].progress}} </view>
       </view>
     </view>
     <!-- </navigator> -->

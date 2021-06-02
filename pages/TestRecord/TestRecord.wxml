@@ -1,6 +1,9 @@
 <!--pages/TestRecord/TestRecord.wxml-->
+<van-toast id="van-toast" />
+<wxc-dialog class="wxc-dialog" title="提示" content="您已完成考试，最高分数为{{topscore}}分，确定重新考试吗" confirm-text="确认" cancel-text="取消"
+	bindconfirm="onConfirm" bindcancel="onCancel"></wxc-dialog>
 <view class="box transition" wx:if="{{resdata.length}}">
-	<view class="user-panel" bindtap="gotoOtherpages" wx:for="{{resdata}}" wx:key="index" data-id="{{item.id}} ">
+	<view class="user-panel" bindtap="gotoOtherpages" wx:for="{{resdata}}" wx:key="index" data-id="{{item.examId}} ">
 		<!-- <van-button type="primary" size="mini" custom-style="width:19rpx;height:42rpx;line-height:42rpx;position:relative;top:129rpx;left:590rpx" style="" class="vanbtn">{{status}}</van-button> -->
 
 		<!-- <navigator  url="../AllTrainingCoursesDetail/AllTrainingCoursesDetail?index={{resdata[index].id}}" style="" class="navigator"> -->
@@ -14,8 +17,9 @@
 					<text class="name-text"> {{resdata[index].name}}</text>
 				</view>
 				<view class="data_time">
-					<view class="code">开始时间：{{resdata[index].startDate}} </view>
-					<view class="code">结束时间：{{resdata[index].endDate}} </view>
+					<view class="code" wx:if="{{resdata[index].topscore}}">最高分：{{resdata[index].topscore}} </view>
+					<view class="code" wx:else>最高分：{{resdata[index].score}} </view>
+					<!-- <view class="code">结束时间：{{resdata[index].endDate}} </view> -->
 					<view class="code">{{statusArry[index]}} </view>
 				</view>
 

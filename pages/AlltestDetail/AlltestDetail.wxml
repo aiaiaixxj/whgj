@@ -15,8 +15,8 @@ custom-class="custom-class"
     <view>{{pageno}}</view>
     <view>/{{totalpage}}</view>
     <van-count-down style="" use-slot time="{{ time }}" bind:change="onChange">
-      <text class="item">{{ timeData.hours }}</text>
-      <text class="item">{{ timeData.minutes }}</text>
+      <text class="item">{{ timeData.hours }} ：</text>
+      <text class="item">{{ timeData.minutes }} ：</text>
       <text class="item">{{ timeData.seconds }}</text>
     </van-count-down>
   </view>

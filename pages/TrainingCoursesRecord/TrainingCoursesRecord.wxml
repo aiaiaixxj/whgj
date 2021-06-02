@@ -16,7 +16,7 @@
 				<view   class="data_time">
 					<view class="code">开始时间：{{resdata[index].startDate}} </view>
           <view class="code">结束时间：{{resdata[index].endDate}} </view>
-				  <view class="" style="position: absolute;left:82%;font-size:24rpx;color:#999;margin-top:38rpx;">{{statusArry[index]}} </view>
+				  <view class="code">{{statusArry[index]}} </view>
 				</view>
 			</view>
 		</view>

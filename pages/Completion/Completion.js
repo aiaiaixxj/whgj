@@ -15,23 +15,67 @@ Component({
             inputMap.set(i, ''); // 如果遇到下划线，就set进map里
           }
         }
+        let myarray = []
+        for (let i = 0; i < titleArr.length; i++) {
+          if (titleArr[i] !== '@') {
+            myarray.push(
+              ''
+            )
+          }
+          if (titleArr[i] === '@') {
+            myarray.push(
+              '@'
+            )
+          }
+        }
+        console.log("typeof(news[1])=>>>>",typeof(news[1]))
+        if (typeof(news[1])!='object') {
+          let myanswer = news[1].split(''); // 将题目分割为数组
+          let NewMyanswer = [];
+          for (let i = 0; i < myanswer.length; i++) {
+            if (myanswer[i] === '-') {
+              NewMyanswer.push(myanswer[i])
+            } else if (myanswer[i] === ',') {
+
+            } else if (myanswer[i] !== ',' && myanswer[i] !== '-') {
+              NewMyanswer.push(myanswer[i])
+            }
+          }
+          console.log("NewMyanswer=>>>>", NewMyanswer)
+
+          for (let i = 0; i < myarray.length; i++) {
+            if (myarray[i] === '@') {
+              console.log("i", i)
+              for (let j = 0; j < NewMyanswer.length; j++) {
+                // console.log("i++", i++)
+                console.log("j", j)
+                console.log("NewMyanswer[j]", NewMyanswer[j])
+                myarray.splice(i++, 1, NewMyanswer[j])
+                // myarray[i] = NewMyanswer[j]
+                // console.log("myarray=>", myarray)
+              }
+            }
+          }
+          console.log("myarray=>", myarray)
+        }
         this.setData({
+          myarray,
           titleArr,
           inputMap,
           rightAnswerArray: news[1],
 
         })
         var rightAnswer = []
-        if(news[1]){
-          for (let i = 0; i < news[1].length; i++) {  
-            rightAnswer.push(news[1][i].name); 
+        if (typeof(news[1])=='object') {
+          for (let i = 0; i < news[1].length; i++) {
+            rightAnswer.push(news[1][i].name);
+          }
+          this.setData({
+            rightAnswer,
+            canshowAnswer: true
+          })
         }
-        this.setData({
-          rightAnswer,
-          canshowAnswer:true
-        })
-        }
-      
+
         console.log("rightAnswer==>", rightAnswer)
         console.log("titleArr=>", this.data.titleArr)
         console.log("inputMap=>", this.data.inputMap)
@@ -48,7 +92,8 @@ Component({
     testData: [],
     rightAnswerArray: [],
     rightAnswer: [],
-    canshowAnswer:false
+    canshowAnswer: false,
+    myarray: ''
   },
   observers: {
     // '**' (val) {
@@ -96,7 +141,12 @@ Component({
       let answerRes = '';
       this.data.inputMap.set(index, value);
       this.data.inputMap.forEach((value, key) => {
-        answerRes += value + ','
+        if (value == '') {
+          answerRes += "-" + ','
+        } else {
+          answerRes += value + ','
+        }
+
       })
       answerRes = answerRes.substring(0, answerRes.length);
       let btnActive = {
