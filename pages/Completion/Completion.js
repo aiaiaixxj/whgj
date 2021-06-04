@@ -9,13 +9,17 @@ Component({
       observer: function (news, old, path) {
         console.log("news=>", news)
         const titleArr = news[0].split(''); // 将题目分割为数组
-        let inputMap = new Map(); // 新建map
-        for (let i = 0; i < titleArr.length; i++) { // 遍历分割的数组
-          if (titleArr[i] === '@') {
-            inputMap.set(i, ''); // 如果遇到下划线，就set进map里
+        let myarray = []
+        let myanswerData = []
+        let myanswer = news[1].split(''); // 将题目分割为数组
+        for (let i = 0; i < myanswer.length; i++) {
+          if (myanswer[i] !== ",") {
+            myanswerData.push(myanswer[i])
           }
         }
-        let myarray = []
+        console.log("myanswer=>>>", myanswer)
+        let inputMap = new Map(); // 新建map
+        let index = 0;
         for (let i = 0; i < titleArr.length; i++) {
           if (titleArr[i] !== '@') {
             myarray.push(
@@ -24,49 +28,63 @@ Component({
           }
           if (titleArr[i] === '@') {
             myarray.push(
-              '@'
+              ''
             )
           }
         }
-        console.log("typeof(news[1])=>>>>",typeof(news[1]))
-        if (typeof(news[1])!='object') {
-          let myanswer = news[1].split(''); // 将题目分割为数组
-          let NewMyanswer = [];
-          for (let i = 0; i < myanswer.length; i++) {
-            if (myanswer[i] === '-') {
-              NewMyanswer.push(myanswer[i])
-            } else if (myanswer[i] === ',') {
+        for (let i = 0; i < titleArr.length; i++) { // 遍历分割的数组
+          if (titleArr[i] === '@') {
+            inputMap.set(i, ''); // 如果遇到下划线，就set进map里
 
-            } else if (myanswer[i] !== ',' && myanswer[i] !== '-') {
-              NewMyanswer.push(myanswer[i])
-            }
+            myarray.splice(i, 1, myanswerData[index])
+            index++;
           }
-          console.log("NewMyanswer=>>>>", NewMyanswer)
-
-          for (let i = 0; i < myarray.length; i++) {
-            if (myarray[i] === '@') {
-              console.log("i", i)
-              for (let j = 0; j < NewMyanswer.length; j++) {
-                // console.log("i++", i++)
-                console.log("j", j)
-                console.log("NewMyanswer[j]", NewMyanswer[j])
-                myarray.splice(i++, 1, NewMyanswer[j])
-                // myarray[i] = NewMyanswer[j]
-                // console.log("myarray=>", myarray)
-              }
-            }
-          }
-          console.log("myarray=>", myarray)
         }
+        console.log("myarray=>", myarray)
+
+
+
+
+        // console.log("typeof(news[1])=>>>>", typeof (news[1]))
+        // if (typeof (news[1]) != 'object') {
+        //   let myanswer = news[1].split(''); // 将题目分割为数组
+        //   let NewMyanswer = [];
+        //   for (let i = 0; i < myanswer.length; i++) {
+        //     if (myanswer[i] === '-') {
+        //       NewMyanswer.push(myanswer[i])
+        //     } else if (myanswer[i] === ',') {
+
+        //     } else if (myanswer[i] !== ',' && myanswer[i] !== '-') {
+        //       NewMyanswer.push(myanswer[i])
+        //     }
+        //   }
+        //   console.log("NewMyanswer=>>>>", NewMyanswer)
+        //   this.setData({
+        //     NewMyanswer
+        //   })
+        //   for (let i = 0; i < myarray.length; i++) {
+        //     if (myarray[i] === '') {
+        //       console.log("i", i)
+        //       for (let j = 0; j < NewMyanswer.length; j++) {
+        //         // console.log("i++", i++)
+        //         console.log("j", j)
+        //         console.log("NewMyanswer[j]", NewMyanswer[j])
+        //         myarray.splice(i++, 1, NewMyanswer[j])
+        //         // myarray[i] = NewMyanswer[j]
+        //         // console.log("myarray=>", myarray)
+        //       }
+        //     }
+        //   }
+        //   console.log("myarray=>", myarray)
+        // }
         this.setData({
           myarray,
           titleArr,
           inputMap,
           rightAnswerArray: news[1],
-
         })
         var rightAnswer = []
-        if (typeof(news[1])=='object') {
+        if (typeof (news[1]) == 'object') {
           for (let i = 0; i < news[1].length; i++) {
             rightAnswer.push(news[1][i].name);
           }
@@ -93,7 +111,8 @@ Component({
     rightAnswerArray: [],
     rightAnswer: [],
     canshowAnswer: false,
-    myarray: ''
+    myarray: '',
+    NewMyanswer: []
   },
   observers: {
     // '**' (val) {
@@ -140,15 +159,34 @@ Component({
       const index = e.currentTarget.dataset.value;
       let answerRes = '';
       this.data.inputMap.set(index, value);
-      this.data.inputMap.forEach((value, key) => {
-        if (value == '') {
-          answerRes += "-" + ','
-        } else {
-          answerRes += value + ','
-        }
+      console.log("inputMap=>>>>", this.data.inputMap)
 
-      })
-      answerRes = answerRes.substring(0, answerRes.length);
+      this.data.myarray.splice(index, 1, value)
+      console.log("this.data.myarray=>-----", this.data.myarray)
+      // this.data.inputMap.forEach((value, key) => {
+
+      //   if (value == '') {
+      //     console.log("NewMyanswer=>-----", this.data.NewMyanswer)
+      //     // for(let i = 0; i < this.data.NewMyanswer.length; i++){
+      //     //     console.log("this.data.NewMyanswer=>",this.data.NewMyanswer[i])
+      //     // }
+      //     answerRes += "-" + ','
+      //   } else {
+      //     answerRes += value + ','
+      //   }
+      // })
+      let answerArray = []
+      for (let i = 0; i < this.data.myarray.length; i++) {
+        if (this.data.myarray[i] !== "") {
+          answerArray.push(this.data.myarray[i])
+        }
+      }
+      console.log("answerArray=>", answerArray)
+      for (let i = 0; i < answerArray.length; i++) {
+        answerRes += answerArray[i] + ','
+      }
+      // answerRes = answerRes.substring(0, answerRes.length);
+      console.log("answerRes=>", answerRes)
       let btnActive = {
         isBtnActive: true,
         answer: answerRes

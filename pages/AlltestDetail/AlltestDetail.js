@@ -693,7 +693,7 @@ Page({
       return false;
     }
     const that = this;
-    const params = {
+    const params = { 
       answer: this.data.answer
     };
     wx.request({
