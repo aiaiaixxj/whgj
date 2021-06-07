@@ -164,7 +164,6 @@ Component({
       this.data.myarray.splice(index, 1, value)
       console.log("this.data.myarray=>-----", this.data.myarray)
       // this.data.inputMap.forEach((value, key) => {
-
       //   if (value == '') {
       //     console.log("NewMyanswer=>-----", this.data.NewMyanswer)
       //     // for(let i = 0; i < this.data.NewMyanswer.length; i++){
@@ -179,6 +178,9 @@ Component({
       for (let i = 0; i < this.data.myarray.length; i++) {
         if (this.data.myarray[i] !== "") {
           answerArray.push(this.data.myarray[i])
+        }
+        if(this.data.myarray[i]){
+
         }
       }
       console.log("answerArray=>", answerArray)
