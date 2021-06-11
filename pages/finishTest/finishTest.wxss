@@ -1,12 +1,23 @@
 /* pages/finishTest/finishTest.wxss */
+
 .container {
   padding: 0 0;
+  background-color: lightgray;
+  border-radius: 15px;
+  margin-top: 38px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .title {
   display: flex;
-  text-indent: 2em;
-  margin: 38px 3px;
+  line-height: 35px;
+  margin: 6px 15px 5px 19px;
+}
+
+image {
+  width: 281px;
+  height: 227px;
 }
 
 .radioGroup {
@@ -27,6 +38,7 @@ checkbox .wx-checkbox-input {
   margin: 10rpx;
   flex: none;
 }
+
 /* 未选中的 背景样式 */
 radio .wx-radio-input {
 

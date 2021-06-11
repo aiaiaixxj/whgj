@@ -4,7 +4,7 @@
     <slot></slot>
     <text wx:if="{{item !== '@'}}">{{item}}</text>
     <input wx:else class="fill-input" data-value="{{index}}" bindinput="fnInput" maxlength="1"
-      value="{{myarray[index]}}" />
+      value="{{myarray[index]==' ' ? '':myarray[index]  }}" />
    
   </block>
      <view wx:if="{{canshowAnswer}}" class="rightAnswer">正确答案：{{rightAnswer}}</view>

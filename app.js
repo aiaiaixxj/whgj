@@ -25,6 +25,7 @@ App({
 
   globalData: {
     URL: 'http://www.whce.gov.cn/',
-    URi: 'http://192.168.0.107:8080/whce_new/'
+   //URi: 'http://192.168.0.107:8080/whce_new/'
+   URi: 'http://2020.whce.gov.cn/'
   }
 })

@@ -11,6 +11,11 @@ Component({
         const titleArr = news[0].split(''); // 将题目分割为数组
         let myarray = []
         let myanswerData = []
+        let inputMap = new Map(); // 新建map
+        let index = 0;
+        if (typeof (news[1]) != 'object'){
+
+       
         let myanswer = news[1].split(''); // 将题目分割为数组
         for (let i = 0; i < myanswer.length; i++) {
           if (myanswer[i] !== ",") {
@@ -18,8 +23,7 @@ Component({
           }
         }
         console.log("myanswer=>>>", myanswer)
-        let inputMap = new Map(); // 新建map
-        let index = 0;
+       
         for (let i = 0; i < titleArr.length; i++) {
           if (titleArr[i] !== '@') {
             myarray.push(
@@ -35,14 +39,18 @@ Component({
         for (let i = 0; i < titleArr.length; i++) { // 遍历分割的数组
           if (titleArr[i] === '@') {
             inputMap.set(i, ''); // 如果遇到下划线，就set进map里
-
-            myarray.splice(i, 1, myanswerData[index])
+            if(myarray[i]===" "){
+              myarray.splice(i, 1,"")
+            }
+            else{
+              myarray.splice(i, 1, myanswerData[index])
+            }
             index++;
           }
         }
         console.log("myarray=>", myarray)
 
-
+      }
 
 
         // console.log("typeof(news[1])=>>>>", typeof (news[1]))
@@ -160,8 +168,14 @@ Component({
       let answerRes = '';
       this.data.inputMap.set(index, value);
       console.log("inputMap=>>>>", this.data.inputMap)
+      if (value === '') {
+        this.data.myarray.splice(index, 1, "-")
+      } else if (value) {
+        this.data.myarray.splice(index, 1, value)
+      } else {
+        this.data.myarray.splice(index, 1, "-")
+      }
 
-      this.data.myarray.splice(index, 1, value)
       console.log("this.data.myarray=>-----", this.data.myarray)
       // this.data.inputMap.forEach((value, key) => {
       //   if (value == '') {
@@ -176,19 +190,38 @@ Component({
       // })
       let answerArray = []
       for (let i = 0; i < this.data.myarray.length; i++) {
-        if (this.data.myarray[i] !== "") {
-          answerArray.push(this.data.myarray[i])
+        if (this.data.myarray[i] !== "" && this.data.myarray[i] !== undefined) {
+          answerArray.splice(i,1,this.data.myarray[i])
         }
-        if(this.data.myarray[i]){
-
+        else if (this.data.myarray[i] === undefined||this.data.myarray[i] === "-") {
+          console.log("没填")
+          answerArray.splice(i, 1, "@")
         }
+        // else if (this.data.myarray[i] === "-") {
+        //   console.log("没填")
+        //   answerArray.splice(i, 1, "")
+        // }
       }
       console.log("answerArray=>", answerArray)
-      for (let i = 0; i < answerArray.length; i++) {
-        answerRes += answerArray[i] + ','
+      let handleAnswerArray =[]
+      for(let i = 0; i < answerArray.length; i++){
+            if(answerArray[i]==='-'){
+              handleAnswerArray.push(" ")
+            }
+            if(answerArray[i]==='@'){
+              handleAnswerArray.push(" ")
+            }
+            else{
+              handleAnswerArray.push(answerArray[i])
+            }
+      }
+      for (let i = 0; i < handleAnswerArray.length; i++) {
+        answerRes += handleAnswerArray[i] + ','
       }
       // answerRes = answerRes.substring(0, answerRes.length);
       console.log("answerRes=>", answerRes)
+      // let a = answerRes.split('')
+      // console.log("a===>", a)
       let btnActive = {
         isBtnActive: true,
         answer: answerRes

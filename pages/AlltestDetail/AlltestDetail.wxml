@@ -10,22 +10,30 @@ custom-class="custom-class"
 </view> -->
 <view class="Main-box">
   <view class="progress-box">
-    <progress percent="{{percentage}}" color="#ee0a24" active-mode="forwards" active stroke-width="3" duration="0" />
-    <!-- <icon class="progress-cancel" type="cancel"></icon> -->
-    <view>{{pageno}}</view>
-    <view>/{{totalpage}}</view>
-    <van-count-down style="" use-slot time="{{ time }}" bind:change="onChange">
-      <text class="item">{{ timeData.hours }} ：</text>
+    <view style="display:flex;justify-content: space-between;margin-top: -4px;">
+      <view style="font-size: 14px;color: gray;margin-top: 16px;margin-left: 20px;">正在诊断考点的掌握情况</view>
+      <van-count-down style="" use-slot time="{{ time }}" bind:change="onChange">
+      <text class="item-date"> 剩余时间  </text>
+      <!-- <text class="item">{{ timeData.hours }} ：</text> -->
       <text class="item">{{ timeData.minutes }} ：</text>
       <text class="item">{{ timeData.seconds }}</text>
     </van-count-down>
+      <view style="display: flex;font-size: 14px;color: gray;margin-top: 16px;margin-right: 20px;">
+        <view style="color:black">{{pageno}}</view>
+        <view>/{{totalpage}}</view>
+      </view>
+    </view>
+
+    <progress percent="{{percentage}}" color="#ee0a24" active-mode="forwards" active stroke-width="4" duration="0"
+      border-radius="3" />
+    <!-- <icon class="progress-cancel" type="cancel"></icon> -->
+    
+
   </view>
-
-
 
   <view class="container" wx:for="{{questionArray}}" wx:key="index" wx:for-item="questionitem">
     <view class="title">
-      <text wx:if="{{questionitem.type!=4}}">{{pageno}}.{{questionitem.name}}</text>
+      <text wx:if="{{questionitem.type!=4}}"><text style="color:red;font-size: 18px;font-weight: 800;">|</text> {{pageno}}.{{questionitem.name}}</text>
     </view>
     <view wx:if="{{questionitem.type ==0}}">
       <view class="radioGroup">
@@ -93,7 +101,7 @@ custom-class="custom-class"
 
       <Completion class="Completion" questiondata="{{question}}" data-id='{{questionitem.id}}'
         bind:CompletionEvent="fnGetChildParamEvent">
-        <view style="display: inline;">{{pageno}}.</view>
+        <view style="display: inline;"><text style="color:red;font-size: 18px;font-weight: 800;">|</text>{{pageno}}.</view>
       </Completion>
     </view>
   </view>
@@ -101,7 +109,7 @@ custom-class="custom-class"
   <view class="bottom-bar">
     <view wx:if="{{datika}}" class="datika" bindtap="getAllquestions">
       <image src="../../images/card.png" class="all"></image>
-      <text>答题卡</text>
+      <!-- <text>答题卡</text> -->
     </view>
     <van-popup show="{{ canshowAllquestions }}" closeable duration="500" close-icon="close" position="bottom"
       custom-style="height: 60%;" bind:close="CloseAllquestionspanel">

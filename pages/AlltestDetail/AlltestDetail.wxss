@@ -1,14 +1,27 @@
 /* pages/AlltestDetail/AlltestDetail.wxss */
+page {
+  background-color: lightgray;
+}
+
 .container {
   padding: 0 0;
+  background-color: white;
+  margin-top: 13px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
-.Main-box{
+
+
+.Main-box {
   display: flex;
   flex-direction: column;
 }
+
 .title {
   display: flex;
-  text-indent: 2em;
+  /* text-indent: 2em; */
+  line-height: 35px;
+  margin: 6px 15px 5px 19px;
 }
 
 .radioGroup {
@@ -28,6 +41,7 @@ checkbox .wx-checkbox-input {
   margin: 10rpx;
   flex: none;
 }
+
 /* 未选中的 背景样式 */
 radio .wx-radio-input {
   /* 背景的高 */
@@ -77,8 +91,9 @@ view .van-button {
 }
 
 .all {
-  width: 36px;
-  height: 32px;
+  width: 30px;
+  height: 31px;
+  margin-top: 5px;
 }
 
 .datika {
@@ -118,9 +133,11 @@ view .van-bottom-enter-to {
   line-height: 40px;
   margin: 8px 8px;
 }
-input{
+
+input {
   background-color: pink;
 }
+
 .ans-btn {
   margin: 120rpx 32rpx 32rpx 32rpx;
   opacity: 0.5;
@@ -133,31 +150,67 @@ input{
   font-size: 15px;
   color: #FFFFFF;
 }
+
 .ans-btn-active {
   opacity: 1;
 }
-view .van-progress{
+
+view .van-progress {
   width: 100%;
   /* left: 5%; */
 }
-progress{
-  width: 62%;
+
+progress {
+  width: 90%;
+  margin: 2px 0px 0px 22px;
+  margin-bottom: 10px;
 }
-.progress-box{
+
+.progress-box {
   display: flex;
   justify-content: space-around;
+  margin-top: 10px;
+  height: 48px;
+  flex-direction: column;
+  background-color: white;
+  margin-left: 10px;
+  margin-right: 10px;
 }
-.Completion{
-  text-indent: 2em;
+
+.Completion {
+  text-indent: 1em;
 }
+
 .item {
-  display: inline-block;
+  /* display: inline-block;
   width: 30px;
-  /* margin-right: 5px; */
   color: #fff;
   font-size: 12px;
   text-align: center;
   background-color: red;
   border-radius: 0;
-  margin: 0px -4px;
+  margin: 0px -4px; */
+  color: red;
+}
+
+.item-date {
+  margin-right: 5px;
+  /* position: fixed; */
+  color: gray;
+  /* border-radius: 4px;
+  font-size: 14px;
+  width: 65px;
+  text-align: center;  */
+}
+
+view .van-count-down {
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: flex-end; */
+  margin-right: 21px;
+  margin-top: 16px;
+  background-color: lightgray;
+  border-radius: 8px;
+  width: 132px;
+  text-align: center;
 }

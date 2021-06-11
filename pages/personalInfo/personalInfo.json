@@ -2,5 +2,9 @@
   "usingComponents": {
     "van-row": "@vant/weapp/row/index",
     "van-col": "@vant/weapp/col/index"
-  }
+  },
+  "navigationBarTitleText": "个人档案",
+  "navigationBarBackgroundColor": "#FF0000",
+  "navigationBarTextStyle": "white",
+  "disableScroll":true
 }

@@ -9,6 +9,13 @@
   display: flex;
   flex-wrap: wrap;
 } */
+.fill-item{
+  line-height: 48px;
+  /* margin: 0px 10px 0px 16px; */
+  width: 96%;
+  margin-left: 2%;
+    margin-right: 2%;
+}
 
  .fill-input {
    width: 57rpx;

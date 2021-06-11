@@ -560,7 +560,6 @@ Page({
             time: res.data.getrtime
           })
         }
-
         // console.log("questionType=>",that.data.questionType)
 
       },
