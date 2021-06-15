@@ -10,30 +10,37 @@ custom-class="custom-class"
 </view> -->
 <view class="Main-box">
   <view class="progress-box">
-    <view style="display:flex;justify-content: space-between;margin-top: -4px;">
-      <view style="font-size: 14px;color: gray;margin-top: 16px;margin-left: 20px;">正在诊断考点的掌握情况</view>
+   
+    <view style="display:flex;justify-content: start;">
+      <view  style="height: 30px;width: 6px;background-color:red;margin-top: 10px;position: fixed;margin-left: 9px;"></view>
       <van-count-down style="" use-slot time="{{ time }}" bind:change="onChange">
       <text class="item-date"> 剩余时间  </text>
-      <!-- <text class="item">{{ timeData.hours }} ：</text> -->
+      <text class="item">0{{ timeData.hours }} ：</text>
       <text class="item">{{ timeData.minutes }} ：</text>
       <text class="item">{{ timeData.seconds }}</text>
     </van-count-down>
-      <view style="display: flex;font-size: 14px;color: gray;margin-top: 16px;margin-right: 20px;">
+     
+    </view>
+    <!-- <icon class="progress-cancel" type="cancel"></icon> -->
+  </view>
+  <view class="progress-box">
+    <view style="display:flex;justify-content: start;">
+      <view  style="height: 30px;width: 6px;background-color:red;margin-top: 10px;position: fixed;margin-left: 9px;"></view>
+      <view style="font-size: 14px;color: gray;margin-top: 10px;margin-left: 20px;margin-bottom: 5px;">正在诊断考点的掌握情况</view>
+      <view style="display: flex;font-size: 14px;color: gray;margin-top: 10px;margin-left: 10px;">
         <view style="color:black">{{pageno}}</view>
         <view>/{{totalpage}}</view>
       </view>
     </view>
-
     <progress percent="{{percentage}}" color="#ee0a24" active-mode="forwards" active stroke-width="4" duration="0"
       border-radius="3" />
     <!-- <icon class="progress-cancel" type="cancel"></icon> -->
-    
-
   </view>
 
   <view class="container" wx:for="{{questionArray}}" wx:key="index" wx:for-item="questionitem">
     <view class="title">
-      <text wx:if="{{questionitem.type!=4}}"><text style="color:red;font-size: 18px;font-weight: 800;">|</text> {{pageno}}.{{questionitem.name}}</text>
+    <view wx:if="{{questionitem.type!=4}}" style="height: 30px;width: 6px;background-color:red;margin-top: 2px;position: fixed;margin-left: -7px;"></view>
+      <view wx:if="{{questionitem.type!=4}}"> {{pageno}}.{{questionitem.name}}</view>
     </view>
     <view wx:if="{{questionitem.type ==0}}">
       <view class="radioGroup">
@@ -101,7 +108,8 @@ custom-class="custom-class"
 
       <Completion class="Completion" questiondata="{{question}}" data-id='{{questionitem.id}}'
         bind:CompletionEvent="fnGetChildParamEvent">
-        <view style="display: inline;"><text style="color:red;font-size: 18px;font-weight: 800;">|</text>{{pageno}}.</view>
+        <view  style="height: 30px;width: 6px;background-color:red;margin-top: 10px;position: fixed;margin-left: 1px;"></view>
+        <view style="display: inline;">{{pageno}}.</view>
       </Completion>
     </view>
   </view>

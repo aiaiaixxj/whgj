@@ -1,14 +1,13 @@
 /* pages/AlltestDetail/AlltestDetail.wxss */
 page {
-  background-color: lightgray;
+  background-color: rgba(224, 212, 212, 0.438);
 }
 
 .container {
   padding: 0 0;
   background-color: white;
-  margin-top: 13px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-top: 10px;
+  font-size: 16px;
 }
 
 
@@ -21,7 +20,7 @@ page {
   display: flex;
   /* text-indent: 2em; */
   line-height: 35px;
-  margin: 6px 15px 5px 19px;
+  margin: 0px 15px 0px 15px;
 }
 
 .radioGroup {
@@ -58,11 +57,13 @@ radio {
 
 .bottom-bar {
   position: fixed;
-  /* background-color: #EEEEEE; */
-  bottom: 20px;
+  bottom: 0;
   display: flex;
   width: 100%;
   justify-content: center;
+  background-color: white;
+  height: 60px;
+  line-height: 60px;
 }
 
 .btn {
@@ -93,7 +94,7 @@ view .van-button {
 .all {
   width: 30px;
   height: 31px;
-  margin-top: 5px;
+  margin-top: 16px;
 }
 
 .datika {
@@ -162,7 +163,7 @@ view .van-progress {
 
 progress {
   width: 90%;
-  margin: 2px 0px 0px 22px;
+  margin: 0 0 0 20px;
   margin-bottom: 10px;
 }
 
@@ -173,8 +174,6 @@ progress {
   height: 48px;
   flex-direction: column;
   background-color: white;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 .Completion {
@@ -194,7 +193,7 @@ progress {
 }
 
 .item-date {
-  margin-right: 5px;
+  margin-left: 20px;
   /* position: fixed; */
   color: gray;
   /* border-radius: 4px;
@@ -207,10 +206,11 @@ view .van-count-down {
   /* display: flex; */
   /* flex-direction: row; */
   /* justify-content: flex-end; */
-  margin-right: 21px;
-  margin-top: 16px;
-  background-color: lightgray;
-  border-radius: 8px;
-  width: 132px;
+  /* margin-right: 5px; */
+  /* margin-top: 10px; */
+  /* background-color: lightgray; */
+  /* border-radius: 8px; */
+  /* width: 150px; */
   text-align: center;
+  line-height: 48px;
 }
