@@ -15,6 +15,7 @@
   width: 96%;
   margin-left: 2%;
     margin-right: 2%;
+    letter-spacing: 2px;
 }
 
  .fill-input {
@@ -23,10 +24,9 @@
    background: #FFFFFF;
    border: 1px solid #4193FF;
    border-radius: 4px;
-   margin: 0 20rpx;
+   margin: 0 10rpx;
    padding: 0 10rpx;
    font-family: 'PingFangSC-Regular';
-   font-size: 32rpx;
    color: #2F89FF;
    letter-spacing: 0;
    line-height: 44rpx;

@@ -19,16 +19,19 @@
     <view style="width:90%;height:1px;background-color:gray;margin:20rpx auto">
     </view>
    <view bindtap="gotoPersonalInfo" class="PersonalInfoBox">
-    <span style="color:white;font-size:15px;left:18px;top:-10px;position:relative">个人档案 <span style="font-size:11px;">（我的课程、培训计划、我的考试）<span style="font-size:25px;top:4px;position:relative;left:10px">></span></span></span>
+    <span style="color:white;font-size:15px;left:18px;top:-10px;position:relative">个人档案 <span style="font-size:11px;">（我的课程、培训计划、我的考试）<span style="font-size:25px;top:4px;position:relative;margin-left: -6px;">></span></span></span>
    </view>
   </view>
 </view>
-<van-grid column-num="3" clickable >
+<view style="position: relative;bottom: 32rpx;">
+  <van-grid column-num="3" clickable >
   <van-grid-item use-slot wx:for="{{ MyCourses }}" wx:key="index" ink-type="navigateTo" text="{{item.title}}"
     data-id="{{item.id}}" data-index="{{index}}" data-text="{{item.title}}" catchtap='gotoOtherPages'
-    style="position:relative;">
-    <image style="" src="{{item.url}}" />
+    style="">
+    <image style="width:100rpx;height:100rpx" src="{{item.url}}" />
     <p style="">{{item.title}}</p>
   </van-grid-item>
 </van-grid>
+</view>
+
 <wxc-toast is-show="{{false}}" text="提示成功!"></wxc-toast>

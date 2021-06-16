@@ -59,23 +59,24 @@ radio .wx-radio-input {
 
 .allquestionsBox-child {
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 42px;
+  height: 42px;
   background-color: #90EE90;
   text-align: center;
-  line-height: 30px;
-  margin: 8px 8px;
+  line-height: 42px;
+  margin: 10px 10px;
 }
 
 .allquestionsBox-child1 {
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 42px;
+  height: 42px;
   background-color: #F08080;
   text-align: center;
-  line-height: 30px;
-  margin: 8px 8px;
+  line-height: 42px;
+  margin: 10px 10px;
 }
+
 
 checkbox .wx-checkbox-input.wx-checkbox-input-checked {
   border: none;
@@ -100,4 +101,7 @@ radio .wx-radio-input.wx-radio-input-checked {
   text-align: center;
   margin: 0 auto;
   border-radius: 15px;
+}
+view .van-icon{
+font-size: 22px;
 }

@@ -13,44 +13,48 @@ Component({
         let myanswerData = []
         let inputMap = new Map(); // 新建map
         let index = 0;
-        if (typeof (news[1]) != 'object'){
+        if (typeof (news[1]) != 'object') {
 
-       
-        let myanswer = news[1].split(''); // 将题目分割为数组
-        for (let i = 0; i < myanswer.length; i++) {
-          if (myanswer[i] !== ",") {
-            myanswerData.push(myanswer[i])
-          }
-        }
-        console.log("myanswer=>>>", myanswer)
-       
-        for (let i = 0; i < titleArr.length; i++) {
-          if (titleArr[i] !== '@') {
-            myarray.push(
-              ''
-            )
-          }
-          if (titleArr[i] === '@') {
-            myarray.push(
-              ''
-            )
-          }
-        }
-        for (let i = 0; i < titleArr.length; i++) { // 遍历分割的数组
-          if (titleArr[i] === '@') {
-            inputMap.set(i, ''); // 如果遇到下划线，就set进map里
-            if(myarray[i]===" "){
-              myarray.splice(i, 1,"")
-            }
-            else{
-              myarray.splice(i, 1, myanswerData[index])
-            }
-            index++;
-          }
-        }
-        console.log("myarray=>", myarray)
 
-      }
+          let myanswer = news[1].split(''); // 将题目分割为数组
+          for (let i = 0; i < myanswer.length; i++) {
+            if (myanswer[i] !== ",") {
+              myanswerData.push(myanswer[i])
+            }
+          }
+          console.log("myanswer=>>>", myanswer)
+
+          for (let i = 0; i < titleArr.length; i++) {
+            if (titleArr[i] !== '@') {
+              myarray.push(
+                ''
+              )
+            }
+            if (titleArr[i] === '@') {
+             
+            
+              myarray.push(
+                ''
+              )
+            }
+          }
+          for (let i = 0; i < titleArr.length; i++) { // 遍历分割的数组
+            if (titleArr[i] === '@') {
+              inputMap.set(i, ''); // 如果遇到下划线，就set进map里
+              if (myarray[i] === " ") {
+                myarray.splice(i, 1, "")
+              } else {
+                myarray.splice(i, 1, myanswerData[index])
+              }
+              index++;
+              this.setData({
+                inputs:index
+              })
+            }
+          }
+          console.log("myarray=>", myarray)
+
+        }
 
 
         // console.log("typeof(news[1])=>>>>", typeof (news[1]))
@@ -120,7 +124,12 @@ Component({
     rightAnswer: [],
     canshowAnswer: false,
     myarray: '',
-    NewMyanswer: []
+    NewMyanswer: [],
+    // 是否获取焦点
+    focus: false,
+    // 需要获取焦点的序号
+    focusIndex: 0,
+    inputs:0
   },
   observers: {
     // '**' (val) {
@@ -161,10 +170,31 @@ Component({
       }
       console.log("inputMap===========>", this.data.inputMap)
     },
+    // 输入完成事件
+    confirmListener(event) {
+      console.log("输入完成事件")
+      let currentIndex = event.currentTarget.dataset.categoryIndex
+      if (currentIndex < this.data.inputs - 1) {
+        this.setData({
+          focus: true,
+          focusIndex: currentIndex + 1
+        })
+      } else {
+        this.setData({
+          focus: false
+        })
+      }
+    },
     fnInput(e) {
       console.log("e=>", e)
       const value = e.detail.value;
       const index = e.currentTarget.dataset.value;
+      let currentIndex = e.currentTarget.dataset.categoryIndex
+      if (this.focusIndex != currentIndex) {
+        this.setData({
+          focusIndex: currentIndex
+        })
+      }
       let answerRes = '';
       this.data.inputMap.set(index, value);
       console.log("inputMap=>>>>", this.data.inputMap)
@@ -191,9 +221,8 @@ Component({
       let answerArray = []
       for (let i = 0; i < this.data.myarray.length; i++) {
         if (this.data.myarray[i] !== "" && this.data.myarray[i] !== undefined) {
-          answerArray.splice(i,1,this.data.myarray[i])
-        }
-        else if (this.data.myarray[i] === undefined||this.data.myarray[i] === "-") {
+          answerArray.splice(i, 1, this.data.myarray[i])
+        } else if (this.data.myarray[i] === undefined || this.data.myarray[i] === "-") {
           console.log("没填")
           answerArray.splice(i, 1, "@")
         }
@@ -203,17 +232,16 @@ Component({
         // }
       }
       console.log("answerArray=>", answerArray)
-      let handleAnswerArray =[]
-      for(let i = 0; i < answerArray.length; i++){
-            if(answerArray[i]==='-'){
-              handleAnswerArray.push(" ")
-            }
-            if(answerArray[i]==='@'){
-              handleAnswerArray.push(" ")
-            }
-            else{
-              handleAnswerArray.push(answerArray[i])
-            }
+      let handleAnswerArray = []
+      for (let i = 0; i < answerArray.length; i++) {
+        if (answerArray[i] === '-') {
+          handleAnswerArray.push(" ")
+        }
+        if (answerArray[i] === '@') {
+          handleAnswerArray.push(" ")
+        } else {
+          handleAnswerArray.push(answerArray[i])
+        }
       }
       for (let i = 0; i < handleAnswerArray.length; i++) {
         answerRes += handleAnswerArray[i] + ','
@@ -226,7 +254,21 @@ Component({
         isBtnActive: true,
         answer: answerRes
       }
+      
+      if (currentIndex < 999) {
+        console.log("this.data.inputs=>",this.data.inputs)
+        this.setData({
+          focus: true,
+          focusIndex: currentIndex + 1
+        })
+      } else {
+        console.log("this.data.inputs=>",this.data.inputs)
+        this.setData({
+          focus: false
+        })
+      }
       this.triggerEvent('CompletionEvent', btnActive)
+     
     }
   }
 })

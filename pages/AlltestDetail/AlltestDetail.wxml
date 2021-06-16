@@ -39,7 +39,7 @@ custom-class="custom-class"
 
   <view class="container" wx:for="{{questionArray}}" wx:key="index" wx:for-item="questionitem">
     <view class="title">
-    <view wx:if="{{questionitem.type!=4}}" style="height: 30px;width: 6px;background-color:red;margin-top: 2px;position: fixed;margin-left: -7px;"></view>
+    <view wx:if="{{questionitem.type!=4}}" style="height: 30px;width: 6px;background-color:red;margin-top: 2px;position: fixed;margin-left: -9px;"></view>
       <view wx:if="{{questionitem.type!=4}}"> {{pageno}}.{{questionitem.name}}</view>
     </view>
     <view wx:if="{{questionitem.type ==0}}">
@@ -109,7 +109,7 @@ custom-class="custom-class"
       <Completion class="Completion" questiondata="{{question}}" data-id='{{questionitem.id}}'
         bind:CompletionEvent="fnGetChildParamEvent">
         <view  style="height: 30px;width: 6px;background-color:red;margin-top: 10px;position: fixed;margin-left: 1px;"></view>
-        <view style="display: inline;">{{pageno}}.</view>
+        <view style="display: inline;margin-left: -5px;">{{pageno}}.</view>
       </Completion>
     </view>
   </view>
@@ -120,13 +120,16 @@ custom-class="custom-class"
       <!-- <text>答题卡</text> -->
     </view>
     <van-popup show="{{ canshowAllquestions }}" closeable duration="500" close-icon="close" position="bottom"
-      custom-style="height: 60%;" bind:close="CloseAllquestionspanel">
-      <view wx:for="{{allquestionsData}}" wx:if="{{canshowallquestionsData}}" class="allquestionsBox" wx:key="index"
+      custom-style="height: 60%;" custom-class="custom-class" bind:close="CloseAllquestionspanel">
+      <view style="display: flex;flex-wrap: wrap;">
+        <view wx:for="{{allquestionsData}}" wx:if="{{canshowallquestionsData}}" class="allquestionsBox" wx:key="index"
         wx:for-item="" data-index="{{index+1}}" bindtap="jumpTosomeoneQuestion">
         <view class="{{allquestionsData[index].answer ? 'allquestionsBox-child':'allquestionsBox-child1' }}">
           {{index+1}}
         </view>
       </view>
+      </view>
+     
     </van-popup>
     <!-- <view class="btn"  bindtap="BeforeStep" hidden="{{hiddenBeforeStep}}" > 上一题 </view>
   <view class="btn"  bindtap="NextStep" hidden="{{hiddenNextStep}}"> 下一题 </view>

@@ -20,7 +20,7 @@ page {
   display: flex;
   /* text-indent: 2em; */
   line-height: 35px;
-  margin: 0px 15px 0px 15px;
+  margin: 0px 15px 0px 17px;
 }
 
 .radioGroup {
@@ -113,7 +113,12 @@ view .van-bottom-enter-to {
 .allquestionsBox {
   position: relative;
   top: 50px;
+  margin-left: 10px;
+  margin-right: -20px;
 }
+view .van-icon{
+  font-size: 22px;
+  }
 
 .allquestionsBox-child {
   border-radius: 50%;
@@ -122,7 +127,7 @@ view .van-bottom-enter-to {
   background-color: #1099FB;
   text-align: center;
   line-height: 40px;
-  margin: 8px 8px;
+  margin: 8px 12px;
 }
 
 .allquestionsBox-child1 {
@@ -132,7 +137,7 @@ view .van-bottom-enter-to {
   background-color: #D3D3D3;
   text-align: center;
   line-height: 40px;
-  margin: 8px 8px;
+  margin: 8px 12px;
 }
 
 input {
@@ -181,36 +186,20 @@ progress {
 }
 
 .item {
-  /* display: inline-block;
-  width: 30px;
-  color: #fff;
-  font-size: 12px;
-  text-align: center;
-  background-color: red;
-  border-radius: 0;
-  margin: 0px -4px; */
   color: red;
 }
 
 .item-date {
   margin-left: 20px;
-  /* position: fixed; */
   color: gray;
-  /* border-radius: 4px;
-  font-size: 14px;
-  width: 65px;
-  text-align: center;  */
 }
 
 view .van-count-down {
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* justify-content: flex-end; */
-  /* margin-right: 5px; */
-  /* margin-top: 10px; */
-  /* background-color: lightgray; */
-  /* border-radius: 8px; */
-  /* width: 150px; */
   text-align: center;
   line-height: 48px;
+  
+}
+.custom-class{
+display: flex;
+justify-content: center;
 }
