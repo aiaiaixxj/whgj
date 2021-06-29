@@ -5,6 +5,5 @@
   },
   "navigationBarTitleText": "个人档案",
   "navigationBarBackgroundColor": "#FF0000",
-  "navigationBarTextStyle": "white",
-  "disableScroll":true
+  "navigationBarTextStyle": "white"
 }

@@ -1,13 +1,19 @@
 <!--pages/Dynamicwork/Dynamicwork.wxml-->
 <view class="box transition" wx:if="{{resdata.length}}">
 	<view class="user-panel" wx:for="{{resdata}}" wx:key="index">
+		<view style="display: flex;align-items: center;margin: 0 0 0 15px;">
+	   <image src="../../images/gzdt.png" style="width:30px;height:30px"></image>
+	</view>
 		<navigator url="../Newsdetail/Newsdetail?index={{resdata[index].id}}" style="" class="navigator">
 		<!-- <image class="head" src="https://whtx.gkybi.com.cn{{resdata[index].titleImg}} "></image> -->
+		<view style="position:absolute;margin-left:78%;margin-top:15px">
+			<span style="font-size:25px;top:4px;color:lightgray">></span>
+		</view>
 		<view class="center">
 			<view class="name">
 				<text class="name-text"> {{resdata[index].title}}</text>
 			</view>
-			<view class="code">{{resdata[index].date}} </view>
+			<view class="code">发布时间：{{resdata[index].date}} </view>
 		</view>
 			</navigator> 
 	</view>

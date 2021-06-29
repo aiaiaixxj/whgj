@@ -1,49 +1,31 @@
-// pages/loading/loading.js
-
+// pages/Netliving.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    height:'',
-    width:'',
-    isConnecte:'',
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.getNetworkType({
-      success: function (res) {
-        console.log(res.networkType)
-        wx.setStorageSync('networkType', res.networkType)
-      }
-    })
-    let networkTypearray =['3g','4g','5g','wifi'];
-     let a=networkTypearray.includes(wx.getStorageSync('networkType'),0)
-     console.log('wx.get=>>>',wx.getStorageSync('networkType'))
-     console.log('a=>>>',a)
-    if(1){
-      if(wx.getStorageSync('openId'))
-      {
-        wx.redirectTo({
-          url: '../index/index',
-        })
-      }
-      else{
-        wx.redirectTo({
-          url: '../login/login',
-        })
-      }
-    }
-    else{
 
-    }
-    
+  },
+  // 网页加载成功时候触发此事件
+  bindload(res) {
+
+    console.log(res, res.detail)
   },
 
+
+  // 网页加载失败的时候触发此事件
+  binderror(err) {
+
+    console.log(err, err.detail)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

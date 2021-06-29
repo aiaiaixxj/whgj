@@ -6,7 +6,7 @@ Page({
   data: {
     netWorkType: '',
     times: '',
-    ranking:'',
+    ranking: '',
     realname: '',
     motto: 'Hello World',
     userInfo: {},
@@ -28,8 +28,8 @@ Page({
         id: 2
       },
       {
-        url: '../../images/block3.png',
-        title: "干教资讯",
+        url: '../../images/zb.png',
+        title: "网络直播",
         des: "",
         id: 3
       },
@@ -91,6 +91,11 @@ Page({
       wx.navigateTo({
         url: '../Dryteachinginformation/Dryteachinginformation'
       });
+    }
+    if ("网络直播" == aimtext) {
+      // wx.navigateTo({
+      //   url: '../Netliving/Netliving'
+      // });
     }
     if ("全部课程" == aimtext) {
       wx.navigateTo({
@@ -167,10 +172,10 @@ Page({
       hasUserInfo: true
     })
   },
-onShow(){
-  wx.hideHomeButton({
-    success: (res) => {},
-  })
-}
+  onShow() {
+    wx.hideHomeButton({
+      success: (res) => {},
+    })
+  }
 
 })

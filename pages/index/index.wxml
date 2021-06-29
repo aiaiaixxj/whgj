@@ -1,11 +1,13 @@
 <!--index.wxml-->
 <view class="nav">
   <view class="mengceng">
+     <image src="../../images/mcbg.png" class="mcbg-img" >
+     </image>
     <van-row>
-      <van-col span="8" offset="" custom-class="custom-class">{{realname}}</van-col>
+      <van-col span="8" offset="" custom-class="custom-class"> <span style="color:white;position:relative;">{{realname}}</span> </van-col>
     </van-row>
     <van-row>
-      <van-col span="8" offset="8" custom-class="custom-class"><span style="color:white;font-size:17px">已修学时</span>
+      <van-col span="8" offset="8" custom-class="custom-class"><span style="color:white;font-size:17px;position:relative;">已修学时</span>
       </van-col>
     </van-row>
     <van-row>
@@ -13,13 +15,14 @@
       </van-col>
     </van-row>
     <van-row>
-      <van-col span="8" offset="8" custom-class="custom-class"><span style="color:white;font-size:14px">全市排名{{ranking}}</span>
+      <van-col span="8" offset="8" custom-class="custom-class"><span style="color:white;font-size:14px;position:relative;">全市排名{{ranking}}</span>
       </van-col>
     </van-row>
-    <view style="width:90%;height:1px;background-color:gray;margin:20rpx auto">
+    <view class="divide-line">
     </view>
    <view bindtap="gotoPersonalInfo" class="PersonalInfoBox">
-    <span style="color:white;font-size:15px;left:18px;top:-10px;position:relative">个人档案 <span style="font-size:11px;">（我的课程、培训计划、我的考试）<span style="font-size:25px;top:4px;position:relative;margin-left: -6px;">></span></span></span>
+    <span class="personalinfo-font">个人档案 <span style="font-size:22rpx;line-height: 46rpx;">（我的课程、培训计划、我的考试）</span></span>
+    <span class="personalinfo-font-rightmark">></span>
    </view>
   </view>
 </view>
@@ -33,5 +36,3 @@
   </van-grid-item>
 </van-grid>
 </view>
-
-<wxc-toast is-show="{{false}}" text="提示成功!"></wxc-toast>

@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    statusidArray:[],
     statusArry: [],
     userId: '',
     resdata: [],
@@ -227,6 +228,7 @@ Page({
         })
         console.log("statusid=>", statusid)
         var statusArry = []
+        var statusidArray=[]
         for (var i = 0; i < statusid.length; i++) {
           if (statusid[i] == true) {
             statusArry.push('已通过')
@@ -234,9 +236,11 @@ Page({
           if (statusid[i] == false) {
             statusArry.push('未通过')
           }
+          statusidArray.push(statusid[i])
         }
         that.setData({
-          statusArry: statusArry
+          statusArry: statusArry,
+          statusidArray:statusidArray
         })
         console.log("statusArry=>", statusArry)
 
@@ -259,6 +263,7 @@ Page({
             return item.pass;
           })
           var statusArry = []
+          var statusidArray=[]
           for (var i = 0; i < that.data.resdata.length; i++) {
             if (statusid[i] == true) {
               statusArry.push('已通过')
@@ -266,10 +271,11 @@ Page({
             if (statusid[i] == false) {
               statusArry.push('未通过')
             }
-           
+            statusidArray.push(statusid[i])
           }
           that.setData({
-            statusArry: statusArry
+            statusArry: statusArry,
+            statusidArray:statusidArray
           })
           console.log("resdata",that.data.resdata)
 

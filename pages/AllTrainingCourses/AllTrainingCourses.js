@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    statusidArray:[],
     statusArry: [],
     userId: '',
     resdata: [],
@@ -92,6 +93,7 @@ Page({
         })
         console.log("statusid=>", statusid)
         var statusArry = []
+        var statusidArray=[]
         for (var i = 0; i < statusid.length; i++) {
           if (statusid[i] == 1) {
             statusArry.push('已开始')
@@ -99,9 +101,11 @@ Page({
           if (statusid[i] == 2) {
             statusArry.push('已结束')
           }
+          statusidArray.push(statusid[i])
         }
         that.setData({
-          statusArry: statusArry
+          statusArry: statusArry,
+          statusidArray:statusidArray
         })
         console.log("statusArry=>", statusArry)
 
@@ -123,6 +127,7 @@ Page({
             return item.status;
           })
           var statusArry = []
+          var statusidArray=[]
           for (var i = 0; i < that.data.resdata.length; i++) {
             if (statusid[i] == 1) {
               statusArry.push('已开始')
@@ -130,9 +135,11 @@ Page({
             if (statusid[i] == 2) {
               statusArry.push('已结束')
             }
+            statusidArray.push(statusid[i])
           }
           that.setData({
-            statusArry: statusArry
+            statusArry: statusArry,
+            statusidArray:statusidArray
           })
           console.log("resdata", that.data.resdata)
 

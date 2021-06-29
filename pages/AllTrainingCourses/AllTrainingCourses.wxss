@@ -45,7 +45,7 @@ page {
   border: 3rpx solid #EAEAEA;
   border-radius: 10rpx;
   padding: 10rpx;
-  margin-left:25rpx;
+  margin-left: 25rpx;
 }
 
 .center {
@@ -83,10 +83,38 @@ page {
   color: #999;
   margin-top: 12rpx;
 }
-.custom-class{
-text-align: center;
-  }
-  .custom-class1{
-    position: relative;
-    left: 40%;
-  }
+
+.custom-class {
+  text-align: center;
+}
+
+.custom-class1 {
+  position: relative;
+  left: 40%;
+}
+
+.status-start {
+  text-align: center;
+  color: white;
+  width: 130rpx;
+  height: 48rpx;
+  background-color: #F9B552;
+  line-height: 48rpx;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  letter-spacing: 4rpx;
+  margin-top: 24rpx;
+}
+
+.status-finish {
+  text-align: center;
+  color: white;
+  width: 130rpx;
+  height: 48rpx;
+  background-color: #DCDCDC;
+  line-height: 48rpx;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  letter-spacing: 4rpx;
+  margin-top: 24rpx;
+}

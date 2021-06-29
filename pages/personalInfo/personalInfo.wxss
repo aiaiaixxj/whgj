@@ -1,31 +1,51 @@
 /* pages/personalInfo/personalInfo.wxss */
-.custom-class1{
-  background-color: #F8EECD;
+.custom-class1 {
+  background-color: #EDEDED;
   text-align: center;
-  height: 30px;
-  line-height: 30px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid lightgray;
 }
 
-.custom-class2{
+.custom-class2 {
   background-color: white;
   text-align: center;
-  height: 30px;
-  line-height: 30px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid lightgray;
 }
-.title{
-  width:100%;
-  height:30px;
-  background-color:#D5D5D5;
-  margin-top:15px;line-height:30px
+
+.title {
+  height: 40px;
+  background-color: white;
+  margin-top: 11px;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid lightgray;
 }
-.title1{
-  width:100%;
-  height:30px;
-  background-color:#D5D5D5;
-  line-height:30px
+
+.title1 {
+  height: 40px;
+  background-color: white;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid lightgray;
+  margin-top: 20px;
 }
-.title_class{
-  margin-left:15px;
-  font-weight:bold;
-  font-size:15px
+
+.title_class {
+  margin-left: 15px;
+  font-size: 15px;
+}
+
+.box-border {
+  margin: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
+  letter-spacing: 1px;
+}
+
+.box {
+  width: 90%;
+  margin: 20px auto;
+  background-color: #EDEDED;
 }

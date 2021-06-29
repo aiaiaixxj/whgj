@@ -1,19 +1,19 @@
 <!--pages/finishTest/finishTest.wxml-->
-<view style="display: flex;justify-content: center;margin-top: 19px;font-size: 18px;font-weight: 400;">{{resData.name}}</view>
-<view style="display:flex;justify-content:center">
+<view class="finish-title">{{resData.name}}</view>
+<view class="finish-img-area">
   <image wx:if="{{resData.ispass==1}}" src="../../images/complete.png" mode="aspectFit"></image>
   <image wx:else="{{resData.ispass==0}}" src="../../images/unfinished.png" mode="aspectFit"></image>
-  <view wx:if="{{resData.ispass==1}}" style="position:absolute;top:23%;font-size:30px;font-weight:bold;color:green">{{resData.score}}</view>
-  <view wx:else="{{resData.ispass==0}}" style="position:absolute;top:23%;font-size:30px;font-weight:bold;color:red">{{resData.score}}</view>
+  <view class="pass-sty" wx:if="{{resData.ispass==1}}" >{{resData.score}}</view>
+  <view class="unpass-sty" wx:else="{{resData.ispass==0}}" >{{resData.score}}</view>
 </view>
 
-<view style="display:flex;justify-content:center;font-size:12px;color: gray;line-height:20px">合格分数: <text
+<view class="passScore">合格分数: <text
     style="color:black;text-indent: 1em;font-size:14px"> {{resData.passscore}}分</text> </view>
 <view style="margin: 4px auto;">
   <view class="btn" style="" bindtap="ReTest" hidden="{{}}"> 返回列表 </view>
 </view>
 
-<view style="display:flex;flex-wrap:wrap;width:100%;margin: -47px 0px;justify-content: center;">
+<view class="review-box">
   <view wx:for="{{resArraylist}}" class="allquestionsBox" wx:key="index" wx:for-item="" data-index="{{index+1}}"
     bindtap="jumpTosomeoneQuestion">
     <view class="{{resArraylist[index].right ? 'allquestionsBox-child':'allquestionsBox-child1' }}">

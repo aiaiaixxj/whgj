@@ -1,0 +1,6 @@
+<!--pages/Netliving.wxml-->
+
+<text>pages/Netliving.wxml</text>
+<navigator url="plugin-private://wx5df9d6ed98f137ae/pages/live-player-plugin?room_id={{roomId}}&custom_params={{customParams}}">sss</navigator>
+
+<web-view src="https://cn.bing.com/?toHttps=1&redig=bing" bindload="bindload" binderror="binderror">ssssssssssserr</web-view>

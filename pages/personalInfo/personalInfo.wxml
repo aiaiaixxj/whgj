@@ -1,42 +1,45 @@
 <!--pages/personalInfo/personalInfo.wxml-->
-<view style="width:94%;margin:0 auto" >
-          <text decode="{{true}}" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;截止{{archives.date}}为止，您总共选修{{archives.courseJoined}}门课程，已学完{{archives.courseFinished}}门，{{archives.courseLearning}}门未完成，累计获得{{archives.times}}学时。累计参加{{archives.examJoined}}次测试，获得{{archives.examcredithour}}学时。累计完成{{archives.pollFinished}}次调查问卷，获得{{archives.pollcredithour}}学时。您的学时在全市排名，祝您学有所成！
-          </text>     
+<view class="box">
+  <view class="box-border">
+    <view
+      decode="{{true}}" style="display: inline-block;text-indent: 2em;">截止 <text style="color:red">{{archives.date}}</text>为止，您总共选修 <text style="color:red">{{archives.courseJoined}}</text>门课程，已学完<text style="color:red">{{archives.courseFinished}}</text>门，<text style="color:red">{{archives.courseLearning}}</text>门未完成，累计获得<text style="color:red">{{archives.times}}</text>学时。累计参加<text style="color:red">{{archives.examJoined}}</text>次测试，获得<text style="color:red">{{archives.examcredithour}}</text>学时。累计完成<text style="color:red">{{archives.pollFinished}}</text>次调查问卷，获得<text style="color:red">{{archives.pollcredithour}}</text>学时。祝您学有所成！
+    </view>
+  </view>
 </view>
-<view>
-  <view class="title" style=""><text class="title_class" >学习课件获得学时</text></view>
+<view style="margin: 20px;">
+  <view class="title" style=""><text class="title_class">学习课件获得学时</text></view>
   <van-row>
-  <van-col  span="8" custom-class="custom-class1">选择</van-col>
-  <van-col span="8" custom-class="custom-class1">完成</van-col>
-  <van-col span="8" custom-class="custom-class1">学时</van-col>
-</van-row>
-<van-row>
-  <van-col  span="8" custom-class="custom-class2">{{archives.courseJoined}}</van-col>
-  <van-col span="8" custom-class="custom-class2">{{archives.courseFinished}}</van-col>
-  <van-col span="8" custom-class="custom-class2">{{archives.times}}</van-col>
-</van-row>
+    <van-col span="8" custom-class="custom-class1">选择</van-col>
+    <van-col span="8" custom-class="custom-class1">完成</van-col>
+    <van-col span="8" custom-class="custom-class1">学时</van-col>
+  </van-row>
+  <van-row>
+    <van-col span="8" custom-class="custom-class2">{{archives.courseJoined}}</van-col>
+    <van-col span="8" custom-class="custom-class2">{{archives.courseFinished}}</van-col>
+    <van-col span="8" custom-class="custom-class2">{{archives.times}}</van-col>
+  </van-row>
 
-<view class="title1"  ><text class="title_class" >考试档案</text></view>
+  <view class="title1"><text class="title_class">考试档案</text></view>
   <van-row>
-  <van-col  span="8" custom-class="custom-class1">参加</van-col>
-  <van-col span="8" custom-class="custom-class1">考试</van-col>
-  <van-col span="8" custom-class="custom-class1">完成</van-col>
-</van-row>
-<van-row>
-  <van-col  span="8" custom-class="custom-class2">{{archives.examJoined}}</van-col>
-  <van-col span="8" custom-class="custom-class2">{{archives.examLearning}}</van-col>
-  <van-col span="8" custom-class="custom-class2">{{archives.examFinished}}</van-col>
-</van-row>
-<view class="title1" ><text class="title_class" >培训班档案</text></view>
+    <van-col span="8" custom-class="custom-class1">参加</van-col>
+    <van-col span="8" custom-class="custom-class1">考试</van-col>
+    <van-col span="8" custom-class="custom-class1">完成</van-col>
+  </van-row>
   <van-row>
-  <van-col  span="8" custom-class="custom-class1">参加</van-col>
-  <van-col span="8" custom-class="custom-class1">学习</van-col>
-  <van-col span="8" custom-class="custom-class1">完成</van-col>
-</van-row>
-<van-row>
-  <van-col  span="8" custom-class="custom-class2">{{archives.trainingclassJoined}}</van-col>
-  <van-col span="8" custom-class="custom-class2">{{archives.trainingclassLearning}}</van-col>
-  <van-col span="8" custom-class="custom-class2">{{archives.trainingclassFinished}}</van-col>
-</van-row>
+    <van-col span="8" custom-class="custom-class2">{{archives.examJoined}}</van-col>
+    <van-col span="8" custom-class="custom-class2">{{archives.examLearning}}</van-col>
+    <van-col span="8" custom-class="custom-class2">{{archives.examFinished}}</van-col>
+  </van-row>
+  <view class="title1"><text class="title_class">培训班档案</text></view>
+  <van-row>
+    <van-col span="8" custom-class="custom-class1">参加</van-col>
+    <van-col span="8" custom-class="custom-class1">学习</van-col>
+    <van-col span="8" custom-class="custom-class1">完成</van-col>
+  </van-row>
+  <van-row>
+    <van-col span="8" custom-class="custom-class2">{{archives.trainingclassJoined}}</van-col>
+    <van-col span="8" custom-class="custom-class2">{{archives.trainingclassLearning}}</van-col>
+    <van-col span="8" custom-class="custom-class2">{{archives.trainingclassFinished}}</van-col>
+  </van-row>
 
 </view>

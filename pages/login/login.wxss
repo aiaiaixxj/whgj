@@ -8,6 +8,14 @@ page {
   height: 100%;
 }
 
+.img-title {
+  position: absolute;
+  width: 25%;
+  height: 14%;
+  left: 37%;
+  top: 15%;
+}
+
 .container {
   height: 100%;
   display: flex;

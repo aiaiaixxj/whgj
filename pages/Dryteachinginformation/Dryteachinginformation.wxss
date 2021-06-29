@@ -8,6 +8,9 @@ page {
 .user-panel {
   width: 100%;
   overflow-x: hidden;
+  display: flex;
+    flex-direction: row;
+    border-bottom: 2rpx solid #C0C0C0;
 }
 
 .divLine {
@@ -49,7 +52,7 @@ page {
   padding: 30rpx 0;
   display: flex;
   align-items: center;
-  border-bottom: 2rpx solid #C0C0C0;
+  width: 100%;
 }
 
 
@@ -82,9 +85,9 @@ page {
 
 .code {
   display: flex;
-  font-size: 30rpx;
+  font-size: 28rpx;
   color: #999;
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */
   margin-top: 10rpx;
 }
 

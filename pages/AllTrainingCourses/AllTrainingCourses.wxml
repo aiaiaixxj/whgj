@@ -15,8 +15,10 @@
 				<view class="data_time">
 					<view class="code">开始时间：{{resdata[index].startDate}} </view>
 					<view class="code">结束时间：{{resdata[index].endDate}} </view>
-					<view class="code" style="">{{statusArry[index]}} </view>
+					<!-- <view class="code" style="">{{statusArry[index]}} </view> -->
 				</view>
+				<view class="" wx:if="{{statusidArray[index]==1}}" class="status-start">{{statusArry[index]}} </view>
+				<view class="" wx:else="{{statusidArray[index]==2}}" class="status-finish">{{statusArry[index]}} </view>
 			</view>
 		</view>
 	</view>

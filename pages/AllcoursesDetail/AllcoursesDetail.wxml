@@ -12,7 +12,7 @@
 <view class="title_item" style="">
   <view style="font-size:18px;word-break:break-all;margin:10px 10px;font-weight: 600;"> {{detail.name}} </view>
 </view>
-
+<view style="border-bottom: 1px solid lightgray;"></view>
 <van-row>
   <van-col span="20" offset="1" custom-class="custom-class"><span style="font-size:14px;color: gray;">已学进度：{{detail.progress}}</span>
   </van-col>
@@ -23,8 +23,11 @@
   <!-- <van-col span="25" offset="1" custom-class="custom-class"><span style="font-size:17px">课程简介：{{detail.absract}}</span>
   </van-col> -->
 </van-row>
+<view style="border-bottom: 10px solid lightgray;margin-top: 10px;">
+</view>
 <view class="content">
   <view class="content_mark"></view>
   <view class="content_title">课程简介：</view>
 </view>
+<view style="border-bottom: 1px solid lightgray;margin-bottom: 15px;"></view>
 <view class="content_main">{{detail.absract}}我说的很好德令哈市离开我说的很好德令哈市离开我说的很好德令哈市离开我说的很好德令哈市离开我说的很好德令哈市离开我说的很好德令哈市离开我说的很好德令哈市离开我说的很好德令哈市离开我说的很好德令哈市离开我说的很好德令哈市离开我说的很好德令哈市离开</view>

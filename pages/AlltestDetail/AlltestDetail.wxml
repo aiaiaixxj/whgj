@@ -12,7 +12,7 @@ custom-class="custom-class"
   <view class="progress-box">
    
     <view style="display:flex;justify-content: start;">
-      <view  style="height: 30px;width: 6px;background-color:red;margin-top: 10px;position: fixed;margin-left: 9px;"></view>
+      <view  class="mark-timer" style=""></view>
       <van-count-down style="" use-slot time="{{ time }}" bind:change="onChange">
       <text class="item-date"> 剩余时间  </text>
       <text class="item">0{{ timeData.hours }} ：</text>
@@ -25,9 +25,9 @@ custom-class="custom-class"
   </view>
   <view class="progress-box">
     <view style="display:flex;justify-content: start;">
-      <view  style="height: 30px;width: 6px;background-color:red;margin-top: 10px;position: fixed;margin-left: 9px;"></view>
-      <view style="font-size: 14px;color: gray;margin-top: 10px;margin-left: 20px;margin-bottom: 5px;">正在诊断考点的掌握情况</view>
-      <view style="display: flex;font-size: 14px;color: gray;margin-top: 10px;margin-left: 10px;">
+      <view  class="mark-red"></view>
+      <view class="mark-title">正在诊断考点的掌握情况</view>
+      <view class="mark-pageno">
         <view style="color:black">{{pageno}}</view>
         <view>/{{totalpage}}</view>
       </view>
@@ -39,7 +39,7 @@ custom-class="custom-class"
 
   <view class="container" wx:for="{{questionArray}}" wx:key="index" wx:for-item="questionitem">
     <view class="title">
-    <view wx:if="{{questionitem.type!=4}}" style="height: 30px;width: 6px;background-color:red;margin-top: 2px;position: fixed;margin-left: -9px;"></view>
+    <view wx:if="{{questionitem.type!=4}}" class="title-layout"></view>
       <view wx:if="{{questionitem.type!=4}}"> {{pageno}}.{{questionitem.name}}</view>
     </view>
     <view wx:if="{{questionitem.type ==0}}">
@@ -108,7 +108,7 @@ custom-class="custom-class"
 
       <Completion class="Completion" questiondata="{{question}}" data-id='{{questionitem.id}}'
         bind:CompletionEvent="fnGetChildParamEvent">
-        <view  style="height: 30px;width: 6px;background-color:red;margin-top: 10px;position: fixed;margin-left: 1px;"></view>
+        <view  class="mark-sty"></view>
         <view style="display: inline;margin-left: -5px;">{{pageno}}.</view>
       </Completion>
     </view>
@@ -121,7 +121,7 @@ custom-class="custom-class"
     </view>
     <van-popup show="{{ canshowAllquestions }}" closeable duration="500" close-icon="close" position="bottom"
       custom-style="height: 60%;" custom-class="custom-class" bind:close="CloseAllquestionspanel">
-      <view style="display: flex;flex-wrap: wrap;">
+      <view style="display: flex;flex-wrap: wrap;justify-content: center;">
         <view wx:for="{{allquestionsData}}" wx:if="{{canshowallquestionsData}}" class="allquestionsBox" wx:key="index"
         wx:for-item="" data-index="{{index+1}}" bindtap="jumpTosomeoneQuestion">
         <view class="{{allquestionsData[index].answer ? 'allquestionsBox-child':'allquestionsBox-child1' }}">

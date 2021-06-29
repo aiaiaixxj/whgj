@@ -12,14 +12,14 @@ page {
 .PersonalInfoBox {
   display: flex;
   justify-content: center;
-  line-height: 39px;
+  flex-direction: row;
 }
 
 .mengceng {
   display: block;
   width: 92%;
   height: 192px;
-  background: rgba(0, 0, 0, .2);
+  /* background: rgba(0, 0, 0, .2); */
   bottom: 5%px;
   left: 4%;
   position: relative;
@@ -44,4 +44,36 @@ van-grid-item image {
   width: 55px;
   height: 55px;
   position: relative
+}
+
+.mcbg-img {
+  width: 92%;
+  height: 192px;
+  bottom: 5%px;
+  left: 4%;
+  position: fixed;
+  border-radius: 12px;
+}
+
+.divide-line {
+  position: relative;
+  width: 90%;
+  height: 1px;
+  background-color: #FE9D18;
+  margin: 20rpx auto
+}
+
+.personalinfo-font {
+  color: white;
+  font-size: 15px;
+  display: flex;
+  z-index: 999;
+  flex-direction: row;
+}
+
+.personalinfo-font-rightmark {
+  z-index: 999;
+  margin-top: -2px;
+  font-size: 38rpx;
+  color: white;
 }

@@ -113,31 +113,33 @@ view .van-bottom-enter-to {
 .allquestionsBox {
   position: relative;
   top: 50px;
-  margin-left: 10px;
-  margin-right: -20px;
+  /* margin-left: 10px; */
+  /* margin-right: -20px; */
+
 }
-view .van-icon{
+
+view .van-icon {
   font-size: 22px;
-  }
+}
 
 .allquestionsBox-child {
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 47px;
+  height: 47px;
   background-color: #1099FB;
   text-align: center;
   line-height: 40px;
-  margin: 8px 12px;
+  margin: 10px 10px;
 }
 
 .allquestionsBox-child1 {
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 47px;
+  height: 47px;
   background-color: #D3D3D3;
   text-align: center;
   line-height: 40px;
-  margin: 8px 12px;
+  margin: 10px 10px;
 }
 
 input {
@@ -197,9 +199,64 @@ progress {
 view .van-count-down {
   text-align: center;
   line-height: 48px;
-  
+
 }
-.custom-class{
-display: flex;
-justify-content: center;
+
+.custom-class {
+  display: flex;
+  justify-content: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.mark-sty {
+  height: 30px;
+  width: 6px;
+  background-color: red;
+  margin-top: 10px;
+  position: fixed;
+  margin-left: 1px;
+}
+
+.mark-red {
+  height: 30px;
+  width: 6px;
+  background-color: red;
+  margin-top: 10px;
+  position: fixed;
+  margin-left: 9px;
+}
+
+.mark-title {
+  font-size: 14px;
+  color: gray;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-bottom: 5px;
+}
+
+.mark-pageno {
+  display: flex;
+  font-size: 14px;
+  color: gray;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.title-layout {
+  height: 30px;
+  width: 6px;
+  background-color: red;
+  margin-top: 2px;
+  position: fixed;
+  margin-left: -9px;
+}
+
+.mark-timer {
+  height: 30px;
+  width: 6px;
+  background-color: red;
+  margin-top: 10px;
+  position: fixed;
+  margin-left: 9px;
 }

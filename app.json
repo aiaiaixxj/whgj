@@ -17,7 +17,8 @@
     "pages/CourseRecord/CourseRecord",
     "pages/AllcoursesDetail/AllcoursesDetail",
     "pages/AlltestDetail/AlltestDetail",
-    "pages/finishTest/finishTest"
+    "pages/finishTest/finishTest",
+    "pages/Netliving/Netliving"
   ],
   "window": {
     "backgroundTextStyle": "light",

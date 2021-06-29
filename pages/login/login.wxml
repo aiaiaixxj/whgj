@@ -1,7 +1,7 @@
 <!--pages/login/login.wxml-->
 <view class="container" style="">
-			<image class="img" src="../../images/bg_login.png" style="" mode=""></image>
-			<image class="" src="../../images/title.png" style="position:absolute;width:25%;height:14%;left:37%;top:15%;"></image>
+			<image class="img" src="../../images/bg_login.png"  mode=""></image>
+			<image class="img-title" src="../../images/title.png" ></image>
 		<view class="login-from" style="">
 			<!--账号-->
 			<view class="inputView">
@@ -19,7 +19,7 @@
 		
 			<!--按钮-->
 			<view class="loginBtnView">
-				<view class="loginBtn" type="" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"  style="" bindtap="login">登录</view>
+				<view class="loginBtn" type="" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"  bindtap="login">登录</view>
 			</view>
 		</view>
 		<view class="footer-text">
