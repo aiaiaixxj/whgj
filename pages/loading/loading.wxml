@@ -1,7 +1,9 @@
 <!--pages/loading/loading.wxml-->
-<view class="container" style="">
+<view class="container" style="" >
   <!-- <van-loading type="spinner" custom-class="custom-class" /> -->
-  <image class="img" src="../../images/bg_loading.jpg" style="" mode="">
+  <image wx:if="{{isConnecte}}" class="img" src="../../images/bg_loading.jpg" style="" mode="">
+  </image>
+  <image  wx:else class="img" src="../../images/netError.jpg" style="" mode="" >
   </image>
 
 </view>

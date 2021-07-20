@@ -1,47 +1,66 @@
 // pages/loading/loading.js
-
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    height:'',
-    width:'',
-    isConnecte:'',
+    height: '',
+    width: '',
+    isConnecte: '',
+    isConnecteTimer:''
   },
-
+  refresh(){},
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that =this
     wx.getNetworkType({
-      success: function (res) {
-        console.log(res.networkType)
-        wx.setStorageSync('networkType', res.networkType)
+      success(res) {
+        const networkType = res.networkType
+        console.log(res);
+        if ("none" == networkType) {
+          // wx.showLoading({
+          //   title: '网络连接失败',
+          //   mask: true
+          // })
+          that.setData({
+            isConnecte:false
+          })
+          // judgeNetworkStatus(callback);
+        } else {
+          // wx.hideLoading()
+          that.setData({
+            isConnecte:true
+          })
+        }
+      },
+      fail(err) {
+        console.log(err)
+      },
+      complete(cpe) {
+        console.log(cpe)
       }
     })
-    let networkTypearray =['3g','4g','5g','wifi'];
-     let a=networkTypearray.includes(wx.getStorageSync('networkType'),0)
-     console.log('wx.get=>>>',wx.getStorageSync('networkType'))
-     console.log('a=>>>',a)
-    if(1){
-      if(wx.getStorageSync('openId'))
-      {
-        wx.redirectTo({
-          url: '../index/index',
-        })
+   that.setData({
+    isConnecteTimer: setTimeout(()=>{
+      console.log("that.data.isConnecte=>",that.data.isConnecte)
+      if (that.data.isConnecte) {
+        if (wx.getStorageSync('openId')) {
+          wx.redirectTo({
+            url: '../index/index',
+          })
+        } else {
+          wx.redirectTo({
+            url: '../login/login',
+          })
+        }
+      } else {
       }
-      else{
-        wx.redirectTo({
-          url: '../login/login',
-        })
-      }
-    }
-    else{
-
-    }
-    
+      console.log("isConnecteTimer=>",that.data.isConnecteTimer)
+    },
+    200)
+   })
   },
 
   /**
@@ -69,7 +88,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    clearTimeout(this.data.isConnecteTimer) 
   },
 
   /**

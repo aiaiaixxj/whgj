@@ -86,8 +86,8 @@ view .van-field__input {
 }
 
 view .van-button {
-  width: 132px;
-  height: 40px;
+  width: 125px;
+  height: 35px;
   margin: 0 10px;
 }
 
@@ -170,7 +170,7 @@ view .van-progress {
 
 progress {
   width: 90%;
-  margin: 0 0 0 20px;
+  margin: 0 0 0 25px;
   margin-bottom: 10px;
 }
 
@@ -192,14 +192,13 @@ progress {
 }
 
 .item-date {
-  margin-left: 20px;
+  margin-left: 10px;
   color: gray;
 }
 
 view .van-count-down {
   text-align: center;
   line-height: 48px;
-
 }
 
 .custom-class {
@@ -214,8 +213,9 @@ view .van-count-down {
   width: 6px;
   background-color: red;
   margin-top: 10px;
-  position: fixed;
-  margin-left: 1px;
+  /* position: fixed; */
+  margin-left: 0;
+  position: absolute;
 }
 
 .mark-red {
@@ -223,7 +223,7 @@ view .van-count-down {
   width: 6px;
   background-color: red;
   margin-top: 10px;
-  position: fixed;
+  /* position: fixed; */
   margin-left: 9px;
 }
 
@@ -231,7 +231,7 @@ view .van-count-down {
   font-size: 14px;
   color: gray;
   margin-top: 10px;
-  margin-left: 20px;
+  margin-left: 10px;
   margin-bottom: 5px;
 }
 
@@ -239,8 +239,9 @@ view .van-count-down {
   display: flex;
   font-size: 14px;
   color: gray;
-  margin-top: 10px;
-  margin-left: 10px;
+  line-height: 48px;
+  /* margin-top: 10px;
+  margin-left: 10px; */
 }
 
 .title-layout {
@@ -257,6 +258,6 @@ view .van-count-down {
   width: 6px;
   background-color: red;
   margin-top: 10px;
-  position: fixed;
+  /* position: fixed; */
   margin-left: 9px;
 }

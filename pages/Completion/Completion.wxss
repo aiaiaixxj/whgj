@@ -9,31 +9,34 @@
   display: flex;
   flex-wrap: wrap;
 } */
-.fill-item{
+.fill-item {
   line-height: 48px;
   /* margin: 0px 10px 0px 16px; */
   width: 96%;
   margin-left: 2%;
-    margin-right: 2%;
-    letter-spacing: 2px;
+  margin-right: 2%;
+  letter-spacing: 2px;
+  margin-bottom: 58px;
 }
 
- .fill-input {
-   width: 57rpx;
-   height: 52rpx;
-   background: #FFFFFF;
-   border: 1px solid #4193FF;
-   border-radius: 4px;
-   margin: 0 10rpx;
-   padding: 0 10rpx;
-   font-family: 'PingFangSC-Regular';
-   color: #2F89FF;
-   letter-spacing: 0;
-   line-height: 44rpx;
-   display: inline-block;
-   vertical-align: middle;
- }
- .rightAnswer{
+.fill-input {
+  width: 57rpx;
+  height: 52rpx;
+  background: #FFFFFF;
+  border: 1px solid #4193FF;
+  border-radius: 4px;
+  margin: 10px 10rpx;
+  padding: 0 10rpx;
+  font-family: 'PingFangSC-Regular';
+  color: #2F89FF;
+  letter-spacing: 0;
+  line-height: 44rpx;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.rightAnswer {
   margin: 28px 6px;
   font-size: 17px;
- }
+}

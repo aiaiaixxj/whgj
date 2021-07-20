@@ -88,6 +88,7 @@ Page({
         let questionarray = []
         questionarray.push(res.data.array[0].name)
         questionarray.push(res.data.array[0].answer)
+        questionarray.push(res.data.array[0].space)
         console.log("questionarray=>", questionarray)
         that.setData({
           questionArray: res.data.array,
@@ -588,6 +589,7 @@ Page({
         var questionarray = []
         questionarray.push(res.data.array[0].name)
         questionarray.push(res.data.array[0].answer)
+        questionarray.push(res.data.array[0].space)
         that.setData({
           questionArray: res.data.array,
           question: questionarray,
@@ -641,10 +643,10 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    console.log('下拉');
-    wx.showNavigationBarLoading() //在标题栏中显示加载
-    this.data.pageNo = 1
-    this.getData('正在刷新数据')
+    // console.log('下拉');
+    // wx.showNavigationBarLoading() //在标题栏中显示加载
+    // this.data.pageNo = 1
+    // this.getData('正在刷新数据')
 
   },
 
@@ -652,13 +654,13 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    if (this.data.hasMoreData) {
-      this.getData('加载更多数据')
-    } else {
-      // wx.showToast({
-      //   title: '没有更多数据',
-      // })
-    }
+    // if (this.data.hasMoreData) {
+    //   this.getData('加载更多数据')
+    // } else {
+    //   // wx.showToast({
+    //   //   title: '没有更多数据',
+    //   // })
+    // }
   },
   /**
    * 用户点击右上角分享

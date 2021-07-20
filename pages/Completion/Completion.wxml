@@ -2,9 +2,15 @@
 <view class="fill-item">
   <block wx:for="{{titleArr}}" wx:key="index">
     <slot></slot>
-    <text wx:if="{{item !== '@'}}">{{item}}</text>
-    <input wx:else class="fill-input" data-value="{{index}}"  bindinput="fnInput" maxlength="1" id="{{index}}" data-category-index="{{index}}" bindconfirm="confirmListener" focus="{{focus && focusIndex == index}}" value="{{myarray[index]==' ' ? '':myarray[index]  }}" />
-   
+    <text >{{item}}</text>
+    <!-- <text wx:if="{{item !== '@'}}">{{item}}</text> -->
+    <!-- <input wx:else class="fill-input" data-value="{{index}}"  bindinput="fnInput" maxlength="1" id="{{index}}" data-category-index="{{index}}" bindconfirm="confirmListener" focus="{{focus && focusIndex == index}}" value="{{myarray[index]==' ' ? '':myarray[index]  }}" /> -->
   </block>
+  <view style="display: flex;flex-wrap: wrap;">
+    <block wx:for="{{answerNumArr}}" wx:key="index">
+      <input  wx:if="{{item !== '、'}}" class="fill-input" data-value="{{index}}"  bindinput="fnInput" maxlength="1" id="{{index}}" data-category-index="{{index}}" bindconfirm="confirmListener" focus="{{focus && focusIndex == index}}" value="{{myanswerData[index]==' ' ? '':myanswerData[index]  }}" />
+      <text wx:else>、</text>
+  </block>
+  </view>
      <view wx:if="{{canshowAnswer}}" class="rightAnswer">正确答案：{{rightAnswer}}</view>
 </view>

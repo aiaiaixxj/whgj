@@ -13,17 +13,20 @@ custom-class="custom-class"
    
     <view style="display:flex;justify-content: start;">
       <view  class="mark-timer" style=""></view>
-      <van-count-down style="" use-slot time="{{ time }}" bind:change="onChange">
+      <van-count-down style="width: 80%;display: flex;" use-slot time="{{ time }}" bind:change="onChange">
       <text class="item-date"> 剩余时间  </text>
       <text class="item">0{{ timeData.hours }} ：</text>
       <text class="item">{{ timeData.minutes }} ：</text>
       <text class="item">{{ timeData.seconds }}</text>
     </van-count-down>
-     
+    <view class="mark-pageno">
+        <view style="color:black">{{pageno}}</view>
+        <view>/{{totalpage}}</view>
+      </view>
     </view>
     <!-- <icon class="progress-cancel" type="cancel"></icon> -->
   </view>
-  <view class="progress-box">
+  <view wx:if="{{false}}" class="progress-box">
     <view style="display:flex;justify-content: start;">
       <view  class="mark-red"></view>
       <view class="mark-title">正在诊断考点的掌握情况</view>
@@ -109,7 +112,7 @@ custom-class="custom-class"
       <Completion class="Completion" questiondata="{{question}}" data-id='{{questionitem.id}}'
         bind:CompletionEvent="fnGetChildParamEvent">
         <view  class="mark-sty"></view>
-        <view style="display: inline;margin-left: -5px;">{{pageno}}.</view>
+        <view style="display: inline;margin-left: 0;">{{pageno}}.</view>
       </Completion>
     </view>
   </view>

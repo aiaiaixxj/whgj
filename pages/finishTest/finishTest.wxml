@@ -3,10 +3,11 @@
 <view class="finish-img-area">
   <image wx:if="{{resData.ispass==1}}" src="../../images/complete.png" mode="aspectFit"></image>
   <image wx:else="{{resData.ispass==0}}" src="../../images/unfinished.png" mode="aspectFit"></image>
-  <view class="pass-sty" wx:if="{{resData.ispass==1}}" >{{resData.score}}</view>
-  <view class="unpass-sty" wx:else="{{resData.ispass==0}}" >{{resData.score}}</view>
+  <!-- <view class="pass-sty" wx:if="{{resData.ispass==1}}" >{{resData.score}}</view>
+  <view class="unpass-sty" wx:else="{{resData.ispass==0}}" >{{resData.score}}</view> -->
 </view>
-
+<view class="passScore">获得分数: <text
+    style="color:black;text-indent: 1em;font-size:14px"> {{resData.score}}分</text> </view>
 <view class="passScore">合格分数: <text
     style="color:black;text-indent: 1em;font-size:14px"> {{resData.passscore}}分</text> </view>
 <view style="margin: 4px auto;">
